@@ -20,6 +20,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -74,7 +75,8 @@ fun GridBackgroundScreenUI(onBack: () -> Unit = {}) {
                         )
                         .padding(20.dp)
                 ) {
-                    Text(text = Lorem.short, fontSize = 64.sp, color = Gray)
+                    // Add Ellipsis for preventing overflow on some devices
+                    Text(text = Lorem.short, fontSize = 64.sp, color = Gray, overflow = TextOverflow.Ellipsis)
                 }
 
                 CodeBlock(
