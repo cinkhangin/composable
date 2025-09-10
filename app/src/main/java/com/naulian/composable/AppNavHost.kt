@@ -15,7 +15,9 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.naulian.composable.home.HomeScreen
 import com.naulian.composable.screens.background.GridBackgroundScreen
+import com.naulian.composable.screens.bottomBar.BottomBarScreen
 import com.naulian.composable.screens.box.CorneredBoxScreen
+import com.naulian.composable.screens.calenderTopBar.CalenderTopBarScreen
 import com.naulian.composable.screens.cardCrousel.CarouselCard3DScreen
 import com.naulian.composable.screens.neumorphic.NeumorphicScreen
 import com.naulian.composable.screens.parallaxCards.ParallaxCardStackScreen
@@ -79,6 +81,13 @@ fun AppNavHost() {
 
             composable<Screen.Carousel3DStack> {
                 CarouselCard3DScreen(navController)
+            }
+
+            composable<Screen.BottomBar> {
+                BottomBarScreen()
+            }
+            composable<Screen.CalenderTopBar> {
+                CalenderTopBarScreen()
             }
         }
     }

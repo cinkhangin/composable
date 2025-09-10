@@ -100,6 +100,9 @@ dependencies {
     implementation(libs.coil.compose)
     implementation(libs.coil.network.okhttp)
 
+    //threeTenABP
+    implementation(libs.threetenabp)
+
     implementation(project(":theme"))
     implementation(project(":neumorphism"))
 }

@@ -49,6 +49,8 @@ sealed interface HomeUIEvent {
     data object RatingStars : HomeUIEvent
     data object ParallaxCardStack : HomeUIEvent
     data object CarouselCard: HomeUIEvent
+    data object BottomBar: HomeUIEvent
+    data object CalenderTopBar: HomeUIEvent
 }
 
 @OptIn(ExperimentalMaterial3Api::class, ExperimentalModifyApi::class)
@@ -247,6 +249,44 @@ fun HomeScreenUI(
                     contentAlignment = Alignment.Center
                 ) {
                     ListItemText(title = "Carousel Card", createdBy = "Aryan Jaiswal")
+                }
+            }
+            item {
+                Box(
+                    modifier = Modifier
+                        .padding(20.dp)
+                        .fillMaxWidth()
+                        .aspectRatio(2f / 1f)
+                        .background(
+                            color = MaterialTheme.colorScheme.surface,
+                            shape = RoundedCornerShape(20.dp)
+                        )
+                        .clickable {
+                            uiEvent(HomeUIEvent.BottomBar)
+                        }
+                        .padding(20.dp),
+                    contentAlignment = Alignment.Center
+                ) {
+                    ListItemText(title = "Bottom Navigation Bar", createdBy = "Zain ul Abdin")
+                }
+            }
+            item {
+                Box(
+                    modifier = Modifier
+                        .padding(20.dp)
+                        .fillMaxWidth()
+                        .aspectRatio(2f / 1f)
+                        .background(
+                            color = MaterialTheme.colorScheme.surface,
+                            shape = RoundedCornerShape(20.dp)
+                        )
+                        .clickable {
+                            uiEvent(HomeUIEvent.CalenderTopBar)
+                        }
+                        .padding(20.dp),
+                    contentAlignment = Alignment.Center
+                ) {
+                    ListItemText(title = "Calender Top Bar", createdBy = "Zain ul Abdin")
                 }
             }
         }

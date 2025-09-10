@@ -1,3 +1,6 @@
 <resources>
     <string name="app_name">Composable</string>
+    <string name="home">Home</string>
+    <string name="progress">Progress</string>
+    <string name="settings">Settings</string>
 </resources>

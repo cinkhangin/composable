@@ -22,6 +22,7 @@ kotlin = "2.2.10"
 agp = "8.13.0"
 ksp = "2.2.10-2.0.2"
 hilt = "2.57.1"
+threetenabp = "1.4.9"
 vanniktech = "0.34.0"
 
 
@@ -55,6 +56,7 @@ naulian-anhance = { module = "com.naulian:anhance", version.ref = "anhance" }
 naulian-modify = { module = "com.naulian:modify", version.ref = "modify" }
 coil-compose = { module = "io.coil-kt.coil3:coil-compose", version.ref = "coilCompose" }
 coil-network-okhttp = { module = "io.coil-kt.coil3:coil-network-okhttp", version.ref = "coilCompose" }
+threetenabp = { module = "com.jakewharton.threetenabp:threetenabp", version.ref = "threetenabp" }
 
 
 [plugins]
