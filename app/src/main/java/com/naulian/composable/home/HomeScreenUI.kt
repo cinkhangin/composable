@@ -368,8 +368,6 @@ fun HomeScreenUI(
                 }
             }
 
-
-
         }
     }
 }
