@@ -48,16 +48,15 @@ sealed interface HomeUIEvent {
     data object CorneredBox : HomeUIEvent
     data object RatingStars : HomeUIEvent
     data object ParallaxCardStack : HomeUIEvent
-    data object CarouselCard: HomeUIEvent
-    data object Progress: HomeUIEvent
-
-    data object BottomBar: HomeUIEvent
-    data object CalenderTopBar: HomeUIEvent
-    data object AnimatedInteractionScreen: HomeUIEvent
-    data object GlassDashboardScreen: HomeUIEvent
-
-    data object CardsScreen: HomeUIEvent
+    data object CarouselCard : HomeUIEvent
+    data object Progress : HomeUIEvent
+    data object BottomBar : HomeUIEvent
+    data object CalenderTopBar : HomeUIEvent
+    data object AnimatedInteractionScreen : HomeUIEvent
+    data object GlassDashboardScreen : HomeUIEvent
+    data object CardsScreen : HomeUIEvent
 }
+
 
 @OptIn(ExperimentalMaterial3Api::class, ExperimentalModifyApi::class)
 @Composable
