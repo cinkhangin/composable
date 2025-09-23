@@ -52,6 +52,9 @@ sealed interface Screen {
     @Serializable
     data object MovieTicket : Screen
 
+    @Serializable
+    data object DepthCard: Screen
+
 
     //Animated
     @Serializable

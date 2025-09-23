@@ -1,5 +1,6 @@
 package com.naulian.composable.scc
 
+import android.R.attr.name
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -48,6 +49,11 @@ private val sccItemList = listOf(
         name = "Glass Card",
         contributor = "Shree Bhargav R K",
         route = Screen.GlassCard
+    ),
+    StaticCCItem(
+        name = "Depth Card",
+        contributor = "Romit Sharma",
+        route = Screen.DepthCard
     )
 )
 

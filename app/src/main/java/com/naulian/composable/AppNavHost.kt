@@ -25,6 +25,7 @@ import com.naulian.composable.icc.rating.RatingStarsScreen
 import com.naulian.composable.icc.step_progress.ProgressScreen
 import com.naulian.composable.scc.StaticCCScreen
 import com.naulian.composable.scc.cornered_box.CorneredBoxScreen
+import com.naulian.composable.scc.depthCards.DepthCardScreen
 import com.naulian.composable.scc.glass.GlassCardScreen
 import com.naulian.composable.scc.grid_background.GridBackgroundScreen
 import com.naulian.composable.scc.neumorphic.NeumorphicScreen
@@ -123,6 +124,10 @@ fun AppNavHost() {
 
             composable<Screen.MovieTicket> {
                 MovieTicketScreen()
+            }
+
+            composable<Screen.DepthCard> {
+                DepthCardScreen()
             }
 
 
