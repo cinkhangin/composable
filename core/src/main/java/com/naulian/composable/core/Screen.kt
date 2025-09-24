@@ -68,4 +68,7 @@ sealed interface Screen {
 
     @Serializable
     data object Clock : Screen
+
+    @Serializable
+    data object CafeReceipt : Screen
 }
