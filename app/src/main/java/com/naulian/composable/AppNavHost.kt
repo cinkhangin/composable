@@ -20,10 +20,12 @@ import com.naulian.composable.home.HomeScreen
 import com.naulian.composable.icc.InteractiveCCScreen
 import com.naulian.composable.icc.calenderTopBar.CalenderTopBarScreen
 import com.naulian.composable.icc.cardCrousel.BetterCarouselScreen
+import com.naulian.composable.icc.cylindricalButton.CylindricalButtonsScreen
 import com.naulian.composable.icc.parallaxCards.ParallaxCardStackScreen
 import com.naulian.composable.icc.rating.RatingStarsScreen
 import com.naulian.composable.icc.step_progress.ProgressScreen
 import com.naulian.composable.scc.StaticCCScreen
+//import com.naulian.composable.scc.cafeReceipt.CafeReceiptScreen
 import com.naulian.composable.scc.cornered_box.CorneredBoxScreen
 import com.naulian.composable.scc.depthCards.DepthCardScreen
 import com.naulian.composable.scc.glass.GlassCardScreen
@@ -65,85 +67,76 @@ fun AppNavHost() {
                 )
             },
         ) {
+            // General
             composable<Screen.Home> {
                 HomeScreen()
             }
 
+            // Static Components
             composable<Screen.StaticCC> {
                 StaticCCScreen()
             }
-
-            composable<Screen.InteractiveCC> {
-                InteractiveCCScreen()
-            }
-
-            composable<Screen.AnimatedCC> {
-                AnimatedCCScreen()
-            }
-
             composable<Screen.Neumorphism> {
                 NeumorphicScreen()
             }
-
             composable<Screen.GridBackground> {
                 GridBackgroundScreen()
             }
-
             composable<Screen.CorneredBox> {
                 CorneredBoxScreen()
             }
-
-            composable<Screen.RatingStars> {
-                RatingStarsScreen()
-            }
-
-            composable<Screen.ParallaxCardStack> {
-                ParallaxCardStackScreen()
-            }
-
-            composable<Screen.BetterCarousel> {
-                BetterCarouselScreen()
-            }
-
-            composable<Screen.StepsProgress> {
-                ProgressScreen()
-            }
-
-            composable<Screen.BottomBar> {
-                BottomBarScreen()
-            }
-
-            composable<Screen.CalenderTopBar> {
-                CalenderTopBarScreen()
-            }
-
-
             composable<Screen.GlassCard> {
                 GlassCardScreen()
             }
-
             composable<Screen.MovieTicket> {
                 MovieTicketScreen()
             }
-
             composable<Screen.DepthCard> {
                 DepthCardScreen()
             }
+//            composable<Screen.CafeReceipt> {
+//                CafeReceiptScreen()
+//            }
 
+            // Interactive Components
+            composable<Screen.InteractiveCC> {
+                InteractiveCCScreen()
+            }
+            composable<Screen.RatingStars> {
+                RatingStarsScreen()
+            }
+            composable<Screen.ParallaxCardStack> {
+                ParallaxCardStackScreen()
+            }
+            composable<Screen.BetterCarousel> {
+                BetterCarouselScreen()
+            }
+            composable<Screen.StepsProgress> {
+                ProgressScreen()
+            }
+            composable<Screen.BottomBar> {
+                BottomBarScreen()
+            }
+            composable<Screen.CalenderTopBar> {
+                CalenderTopBarScreen()
+            }
+            composable<Screen.CylindricalButtons> {
+                CylindricalButtonsScreen()
+            }
 
-            //Animated Composable Components
+            // Animated Components
+            composable<Screen.AnimatedCC> {
+                AnimatedCCScreen()
+            }
             composable<Screen.TypingText> {
                 TypingTextScreen()
             }
-
             composable<Screen.PulseHeart> {
                 PulseScreen()
             }
-
             composable<Screen.GlitchEffect> {
                 GlitchScreen()
             }
-
             composable<Screen.Clock> {
                 ClockScreen()
             }
