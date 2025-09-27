@@ -5,16 +5,11 @@ import kotlinx.serialization.Serializable
 sealed interface Screen {
 
     @Serializable
-    data object Home : Screen
+    data object Home : Screen // General
 
+    // Static Components
     @Serializable
     data object StaticCC : Screen
-
-    @Serializable
-    data object InteractiveCC : Screen
-
-    @Serializable
-    data object AnimatedCC : Screen
 
     @Serializable
     data object Neumorphism : Screen
@@ -26,10 +21,20 @@ sealed interface Screen {
     data object CorneredBox : Screen
 
     @Serializable
-    data object RatingStars : Screen
+    data object GlassCard : Screen
 
     @Serializable
-    data object Second : Screen
+    data object MovieTicket : Screen
+
+    @Serializable
+    data object DepthCard: Screen
+
+    // Interactive Components
+    @Serializable
+    data object InteractiveCC : Screen
+
+    @Serializable
+    data object RatingStars : Screen
 
     @Serializable
     data object ParallaxCardStack : Screen
@@ -47,14 +52,14 @@ sealed interface Screen {
     data object CalenderTopBar : Screen
 
     @Serializable
-    data object GlassCard : Screen
+    data object CylindricalButtons: Screen
+
+    // Animated Components
+    @Serializable
+    data object AnimatedCC : Screen 
 
     @Serializable
-    data object MovieTicket : Screen
-
-    @Serializable
-    data object DepthCard: Screen
-
+    data object Second : Screen // Unsure, leaving as is for now
 
     //Animated
     @Serializable
