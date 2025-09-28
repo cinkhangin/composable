@@ -274,6 +274,7 @@ val audioPlayer = """
         Box(
             modifier = Modifier
                 .size((radius * 2 + stroke * 2 ).dp)
+                .padding(5.dp)
                 .shadow(
                     elevation = 10.dp,
                     shape = CircleShape,
