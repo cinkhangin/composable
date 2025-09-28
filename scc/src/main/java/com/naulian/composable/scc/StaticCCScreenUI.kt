@@ -59,6 +59,11 @@ private val sccItemList = listOf(
         name = "Cafe Receipt",
         contributor = "Prashant Panwar",
         route = Screen.CafeReceipt
+    ),
+    StaticCCItem(
+        name = "Audio Player",
+        contributor = "Samarth",
+        route = Screen.AudioPlayer
     )
 )
 

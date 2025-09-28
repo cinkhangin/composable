@@ -76,4 +76,7 @@ sealed interface Screen {
 
     @Serializable
     data object CafeReceipt : Screen
+
+    @Serializable
+    data object AudioPlayer : Screen
 }
