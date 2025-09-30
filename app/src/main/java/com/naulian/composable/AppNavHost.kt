@@ -11,6 +11,7 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.naulian.composable.acc.AnimatedCCScreen
 import com.naulian.composable.acc.clock.ClockScreen
+import com.naulian.composable.acc.counter.CounterScreen
 import com.naulian.composable.acc.glitch.GlitchScreen
 import com.naulian.composable.acc.pulse.PulseScreen
 import com.naulian.composable.acc.typing.TypingTextScreen
@@ -22,6 +23,7 @@ import com.naulian.composable.icc.calenderTopBar.CalenderTopBarScreen
 import com.naulian.composable.icc.cardCrousel.BetterCarouselScreen
 import com.naulian.composable.icc.cylindricalButton.CylindricalButtonsScreen
 import com.naulian.composable.icc.parallaxCards.ParallaxCardStackScreen
+import com.naulian.composable.icc.physicsbutton.PhysicsButtonScreen
 import com.naulian.composable.icc.rating.RatingStarsScreen
 import com.naulian.composable.icc.step_progress.ProgressScreen
 import com.naulian.composable.scc.StaticCCScreen
@@ -125,6 +127,9 @@ fun AppNavHost() {
             composable<Screen.CylindricalButtons> {
                 CylindricalButtonsScreen()
             }
+            composable<Screen.PhysicsButton> {
+                PhysicsButtonScreen()
+            }
 
             // Animated Components
             composable<Screen.AnimatedCC> {
@@ -143,6 +148,9 @@ fun AppNavHost() {
             }
             composable<Screen.Clock> {
                 ClockScreen()
+            }
+            composable<Screen.Counter> {
+                CounterScreen()
             }
         }
     }

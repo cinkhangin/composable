@@ -41,7 +41,13 @@ private val animatedCCItems = listOf(
         name = "Analog Clock",
         contributor = "Naulian",
         route = Screen.Clock
+    ),
+    AnimatedCCItem(
+        name = "Animated Counter",
+        contributor = "Eleazar Cole-Showers",
+        route = Screen.Counter
     )
+
 )
 
 @OptIn(ExperimentalMaterial3Api::class)
