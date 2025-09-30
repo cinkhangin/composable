@@ -46,7 +46,50 @@ fun InteractiveCCAnimation(modifier: Modifier = Modifier) {
         }
     ) {
 
-        val scale by infiniteTransition.animateFloat(
+        val boxScale by infiniteTransition.animateFloat(
+            initialValue = 1f,
+            targetValue = 1f,
+            animationSpec = InfiniteRepeatableSpec(
+                animation = keyframes {
+                    durationMillis = 2000
+                    1f at 750
+                    0.8f at 1000 using FastOutSlowInEasing
+                    1f at 1250 using FastOutSlowInEasing
+                },
+                repeatMode = RepeatMode.Restart
+            ),
+        )
+
+        Box(
+            modifier = Modifier
+                .fillMaxSize()
+                .scale(boxScale)
+                .background(
+                    color = MaterialTheme.colorScheme.surface.copy(alpha = 0.5f),
+                    shape = RoundedCornerShape(10)
+                )
+        )
+
+        val offset by infiniteTransition.animateValue(
+            initialValue = IntOffset(center.y, center.y * 3),
+            targetValue = IntOffset(center.y, center.y * 3),
+            animationSpec = InfiniteRepeatableSpec(
+                animation = keyframes {
+                    durationMillis = 2000
+                    IntOffset(center.y, center.y * 3) at 0
+                    center at 500 using FastOutSlowInEasing
+                    center at 1500
+                    IntOffset(center.y, center.y * 3) at 2000 using FastOutSlowInEasing
+                },
+                repeatMode = RepeatMode.Restart
+            ),
+            typeConverter = TwoWayConverter(
+                convertToVector = { AnimationVector2D(it.x.toFloat(), it.y.toFloat()) },
+                convertFromVector = { IntOffset(it.v1.toInt(), it.v2.toInt()) }
+            ),
+        )
+
+        val cursorScale by infiniteTransition.animateFloat(
             initialValue = 1f,
             targetValue = 1f,
             animationSpec = InfiniteRepeatableSpec(
@@ -60,38 +103,9 @@ fun InteractiveCCAnimation(modifier: Modifier = Modifier) {
             ),
         )
 
-        Box(
-            modifier = Modifier
-                .fillMaxSize()
-                .scale(scale)
-                .background(
-                    color = MaterialTheme.colorScheme.surface.copy(alpha = 0.5f),
-                    shape = RoundedCornerShape(10)
-                )
-        )
-
-        val offset by infiniteTransition.animateValue(
-            initialValue = IntOffset(center.y, center.y * 3),
-            targetValue = IntOffset(center.y, center.y * 3),
-            animationSpec = InfiniteRepeatableSpec(
-                animation = keyframes {
-                    durationMillis = 2000
-                    IntOffset(center.y, center.y * 3) at 0 using FastOutSlowInEasing
-                    center at 500 using FastOutSlowInEasing
-                    center at 1500 using FastOutSlowInEasing
-                    IntOffset(center.y, center.y * 3) at 2000 using FastOutSlowInEasing
-                },
-                repeatMode = RepeatMode.Restart
-            ),
-            typeConverter = TwoWayConverter(
-                convertToVector = { AnimationVector2D(it.x.toFloat(), it.y.toFloat()) },
-                convertFromVector = { IntOffset(it.v1.toInt(), it.v2.toInt()) }
-            ),
-        )
-
         Icon(
             modifier = Modifier.offset { offset }
-                .scale(scale),
+                .scale(cursorScale),
             painter = painterResource(R.drawable.ic_cursor),
             contentDescription = "Cursor Icon",
             tint = MaterialTheme.colorScheme.primary
