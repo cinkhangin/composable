@@ -27,6 +27,7 @@ import com.naulian.composable.icc.physicsbutton.PhysicsButtonScreen
 import com.naulian.composable.icc.rating.RatingStarsScreen
 import com.naulian.composable.icc.step_progress.ProgressScreen
 import com.naulian.composable.scc.StaticCCScreen
+import com.naulian.composable.scc.audio_progress.AudioPlayerScreen
 import com.naulian.composable.scc.cafeReceipt.CafeReceiptScreen
 import com.naulian.composable.scc.cornered_box.CorneredBoxScreen
 import com.naulian.composable.scc.depthCards.DepthCardScreen
@@ -99,6 +100,10 @@ fun AppNavHost() {
 
             composable<Screen.CafeReceipt> {
                 CafeReceiptScreen()
+            }
+
+            composable<Screen.AudioPlayer> {
+                AudioPlayerScreen()
             }
 
 

@@ -83,5 +83,6 @@ sealed interface Screen {
     @Serializable
     data object Counter : Screen
 
-
+    @Serializable
+    data object AudioPlayer : Screen
 }

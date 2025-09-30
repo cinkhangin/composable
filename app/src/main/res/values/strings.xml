@@ -3,4 +3,6 @@
     <string name="home">Home</string>
     <string name="progress">Progress</string>
     <string name="settings">Settings</string>
+
+    <string name="media_playback_attribution_label">Audio</string>
 </resources>

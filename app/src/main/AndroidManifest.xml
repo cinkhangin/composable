@@ -2,6 +2,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <attribution android:tag="audioPlayback"
+        android:label="@string/media_playback_attribution_label" />
+
     <application
         android:name=".Application"
         android:allowBackup="true"
