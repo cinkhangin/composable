@@ -54,6 +54,9 @@ sealed interface Screen {
     @Serializable
     data object CylindricalButtons: Screen
 
+    @Serializable
+    data object PhysicsButton : Screen
+
     // Animated Components
     @Serializable
     data object AnimatedCC : Screen 
@@ -76,6 +79,9 @@ sealed interface Screen {
 
     @Serializable
     data object CafeReceipt : Screen
+
+    @Serializable
+    data object Counter : Screen
 
     @Serializable
     data object AudioPlayer : Screen
