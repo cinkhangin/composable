@@ -10,10 +10,6 @@ import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
-data class HomeUIState(
-    val title : String = "Composable"
-)
-
 sealed interface HomeEvent{
     data object ToSecond : HomeEvent
 }

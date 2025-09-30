@@ -1,5 +1,6 @@
 package com.naulian.composable.home
 
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
@@ -26,43 +27,15 @@ import com.naulian.composable.core.Screen
 import com.naulian.composable.core.component.ComposableTopAppBar
 import com.naulian.composable.core.theme.ComposableTheme
 import com.naulian.modify.ExperimentalModifyApi
+import com.naulian.modify.SemiBold
+
 
 sealed interface HomeUIEvent {
     data class Navigate(val route: Screen) : HomeUIEvent
 }
 
-@OptIn(ExperimentalMaterial3ExpressiveApi::class)
-private val homeScreenList = listOf(
-    HomeScreenItem(
-        primaryText = "Static Composable\nComponents",
-        secondaryText = """
-            Essential building blocks with clean, consistent design.
-            Ready-to-use UI elements for structure and layout.
-            Simple, reliable, and visually balanced components.
-        """.trimIndent(),
-        route = Screen.StaticCC,
-        component = { StaticCC(modifier = it) }
-    ),
-    HomeScreenItem(
-        primaryText = "Interactive Composable\nComponents",
-        secondaryText = """
-            Engage users with dynamic, responsive elements.
-            Click, type, or drag—designed for real interaction.
-            Smart components that adapt to user input.
-        """.trimIndent(),
-        route = Screen.InteractiveCC,
-        component = { InteractiveCCAnimation(modifier = it) }
-    ),
-    HomeScreenItem(
-        primaryText = "Animated Composable\nComponents",
-        secondaryText = """
-            Bring your UI to life with smooth motion effects.
-            Eye-catching transitions that enhance the experience.
-            Animations that make your interface feel alive.
-        """.trimIndent(),
-        route = Screen.AnimatedCC,
-        component = { AnimatedCCAnimation(modifier = it) }
-    )
+data class HomeUIState(
+    val menuItem : List<HomeScreenItem> = homeScreenList
 )
 
 @OptIn(ExperimentalMaterial3Api::class, ExperimentalModifyApi::class)
@@ -93,11 +66,14 @@ fun HomeScreenUI(
             }
 
 
-            items(items = homeScreenList) {
+            items(items = uiState.menuItem) {
                 ConstraintLayout(
                     modifier = Modifier
                         .fillMaxWidth()
                         .padding(20.dp)
+                        .clickable{
+                            uiEvent(HomeUIEvent.Navigate(it.route))
+                        }
                 ) {
                     val (texts, graphic) = createRefs()
 
@@ -127,7 +103,7 @@ fun HomeScreenUI(
                     ) {
                         Text(
                             text = it.primaryText,
-                            style = MaterialTheme.typography.titleMedium,
+                            style = MaterialTheme.typography.titleMedium.SemiBold,
                             color = MaterialTheme.colorScheme.onSurface,
                             overflow = TextOverflow.Ellipsis
                         )
@@ -156,9 +132,43 @@ private fun HomeScreenPreview() {
     }
 }
 
-private data class HomeScreenItem(
+data class HomeScreenItem(
     val primaryText: String,
     val secondaryText: String,
     val route: Screen,
     val component: @Composable (modifier: Modifier) -> Unit = {}
+)
+
+@OptIn(ExperimentalMaterial3ExpressiveApi::class)
+val homeScreenList = listOf(
+    HomeScreenItem(
+        primaryText = "Static Composable\nComponents",
+        secondaryText = """
+            Essential building blocks with clean, consistent design.
+            Ready-to-use UI elements for structure and layout.
+            Simple, reliable, and visually balanced components.
+        """.trimIndent(),
+        route = Screen.StaticCC,
+        component = { StaticCC(modifier = it) }
+    ),
+    HomeScreenItem(
+        primaryText = "Interactive Composable\nComponents",
+        secondaryText = """
+            Engage users with dynamic, responsive elements.
+            Click, type, or drag—designed for real interaction.
+            Smart components that adapt to user input.
+        """.trimIndent(),
+        route = Screen.InteractiveCC,
+        component = { InteractiveCCAnimation(modifier = it) }
+    ),
+    HomeScreenItem(
+        primaryText = "Animated Composable\nComponents",
+        secondaryText = """
+            Bring your UI to life with smooth motion effects.
+            Eye-catching transitions that enhance the experience.
+            Animations that make your interface feel alive.
+        """.trimIndent(),
+        route = Screen.AnimatedCC,
+        component = { AnimatedCCAnimation(modifier = it) }
+    )
 )
