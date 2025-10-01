@@ -14,6 +14,7 @@ import androidx.compose.ui.unit.dp
 import com.naulian.composable.core.Screen
 import com.naulian.composable.core.component.ComposableTopAppBar
 import com.naulian.composable.core.component.ListItemText
+import com.naulian.composable.core.model.ComponentItem
 import com.naulian.neumorphic.NeumorphicDownHorizontalDivider
 
 sealed interface AccUIEvent {
@@ -22,32 +23,31 @@ sealed interface AccUIEvent {
 }
 
 private val animatedCCItems = listOf(
-    AnimatedCCItem(
+    ComponentItem(
         name = "Typing Text",
         contributor = "Shree Bhargav R K",
         route = Screen.TypingText
     ),
-    AnimatedCCItem(
+    ComponentItem(
         name = "Pulse Heart",
         contributor = "Shree Bhargav R K",
         route = Screen.PulseHeart
     ),
-    AnimatedCCItem(
+    ComponentItem(
         name = "Glitch Effect",
         contributor = "Shree Bhargav R K",
         route = Screen.GlitchEffect
     ),
-    AnimatedCCItem(
+    ComponentItem(
         name = "Analog Clock",
         contributor = "Naulian",
         route = Screen.Clock
     ),
-    AnimatedCCItem(
+    ComponentItem(
         name = "Animated Counter",
         contributor = "Eleazar Cole-Showers",
         route = Screen.Counter
     )
-
 )
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -77,16 +77,10 @@ fun AnimatedCCScreenUI(
                         .clickable { uiEvent(AccUIEvent.Navigate(it.route)) }
                         .padding(20.dp)
                 ) {
-                    ListItemText(title = it.name, contributor = it.contributor)
+                    ListItemText(title = it.primaryText, contributor = it.secondaryText)
                 }
                 NeumorphicDownHorizontalDivider()
             }
         }
     }
 }
-
-private data class AnimatedCCItem(
-    val name: String,
-    val contributor: String,
-    val route: Screen
-)
