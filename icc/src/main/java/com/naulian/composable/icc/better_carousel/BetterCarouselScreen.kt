@@ -14,6 +14,7 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import com.naulian.composable.core.LocalNavController
 import com.naulian.composable.core.component.CodeBlock
@@ -50,7 +51,7 @@ private fun BetterCarouselScreenUI(onBack: () -> Unit = {}) {
             item {
                 BetterCarousel(
                     colors = listOf(
-                        MaterialTheme.colorScheme.surface.copy(0.8f),
+                        Color.White.copy(0.8f),
                         MaterialTheme.colorScheme.primary.copy(0.5f),
                         MaterialTheme.colorScheme.secondary.copy(0.5f),
                         MaterialTheme.colorScheme.tertiary.copy(0.5f),

@@ -48,7 +48,7 @@ fun CodeBlock(
 
             Box(
                 modifier = Modifier
-                    .background(MaterialTheme.colorScheme.primaryContainer)
+                    .background(MaterialTheme.colorScheme.primary.copy(0.2f))
                     .constrainAs(name) {
                         start.linkTo(parent.start)
                         end.linkTo(parent.end)

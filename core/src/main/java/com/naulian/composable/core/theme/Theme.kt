@@ -12,6 +12,7 @@ import androidx.compose.material3.lightColorScheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.SideEffect
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalView
 import androidx.compose.ui.unit.dp
 import androidx.core.view.WindowCompat
@@ -34,7 +35,7 @@ private val DarkColorScheme = darkColorScheme(
     secondary = DarkYellow,
     tertiary = DarkRed,
 
-    surface = Black,
+    surface = Color(0xFF111111),
     onSurface = LightGray,
 )
 

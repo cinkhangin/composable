@@ -78,7 +78,7 @@ fun CarouselPreview() {
     ComposableTheme {
 
         val colors = listOf(
-            MaterialTheme.colorScheme.surface.copy(0.8f),
+            Color.White.copy(0.8f),
             MaterialTheme.colorScheme.primary.copy(0.5f),
             MaterialTheme.colorScheme.secondary.copy(0.5f),
             MaterialTheme.colorScheme.tertiary.copy(0.5f),
