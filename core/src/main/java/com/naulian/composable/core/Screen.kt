@@ -54,6 +54,9 @@ sealed interface Screen {
     @Serializable
     data object CylindricalButtons: Screen
 
+    @Serializable
+    data object ScratchableCardScreen : Screen
+
     // Animated Components
     @Serializable
     data object AnimatedCC : Screen 

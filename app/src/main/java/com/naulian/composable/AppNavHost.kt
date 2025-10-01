@@ -23,6 +23,7 @@ import com.naulian.composable.icc.cardCrousel.BetterCarouselScreen
 import com.naulian.composable.icc.cylindricalButton.CylindricalButtonsScreen
 import com.naulian.composable.icc.parallaxCards.ParallaxCardStackScreen
 import com.naulian.composable.icc.rating.RatingStarsScreen
+import com.naulian.composable.icc.scratchCard.ScratchableCardScreen
 import com.naulian.composable.icc.step_progress.ProgressScreen
 import com.naulian.composable.scc.StaticCCScreen
 import com.naulian.composable.scc.cafeReceipt.CafeReceiptScreen
@@ -124,6 +125,9 @@ fun AppNavHost() {
             }
             composable<Screen.CylindricalButtons> {
                 CylindricalButtonsScreen()
+            }
+            composable<Screen.ScratchableCardScreen> {
+                ScratchableCardScreen()
             }
 
             // Animated Components
