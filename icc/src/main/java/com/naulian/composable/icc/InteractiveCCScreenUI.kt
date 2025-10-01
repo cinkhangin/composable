@@ -1,8 +1,5 @@
 package com.naulian.composable.icc
 
-import androidx.compose.foundation.clickable
-import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
@@ -10,10 +7,10 @@ import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.unit.dp
 import com.naulian.composable.core.Screen
 import com.naulian.composable.core.component.ComposableTopAppBar
-import com.naulian.composable.core.component.ListItemText
+import com.naulian.composable.core.component.ItemUI
+import com.naulian.composable.core.model.ComponentItem
 import com.naulian.modify.ExperimentalModifyApi
 import com.naulian.neumorphic.NeumorphicDownHorizontalDivider
 
@@ -23,40 +20,53 @@ sealed interface IccUIEvent {
 }
 
 private val iccItemList = listOf(
-    InteractiveCCItem(
+    ComponentItem(
         name = "Rating Stars",
         contributor = "Naulian",
-        route = Screen.RatingStars
+        route = Screen.RatingStars,
+        component = { RatingComponent(modifier = it) }
     ),
-    InteractiveCCItem(
+    ComponentItem(
         name = "Parallax Card Stack",
         contributor = "Aryan Jaiswal",
-        route = Screen.ParallaxCardStack
+        route = Screen.ParallaxCardStack,
+        component = { GlassCardComponent(modifier = it) }
     ),
-    InteractiveCCItem(
+    ComponentItem(
         name = "Better Carousel",
         contributor = "Aryan Jaiswal",
-        route = Screen.BetterCarousel
+        route = Screen.BetterCarousel,
+        component = { GlassCardComponent(modifier = it) }
     ),
-    InteractiveCCItem(
+    ComponentItem(
         name = "Steps Progress",
         contributor = "Aryan Singh",
-        route = Screen.StepsProgress
+        route = Screen.StepsProgress,
+        component = { GlassCardComponent(modifier = it) }
     ),
-    InteractiveCCItem(
+    ComponentItem(
         name = "Calender Top Bar",
         contributor = "Zain ul Abdin",
-        route = Screen.CalenderTopBar
+        route = Screen.CalenderTopBar,
+        component = { GlassCardComponent(modifier = it) }
     ),
-    InteractiveCCItem(
+    ComponentItem(
         name = "Cylindrical 3D Buttons",
         contributor = "Romit Sharma",
-        route = Screen.CylindricalButtons
+        route = Screen.CylindricalButtons,
+        component = { GlassCardComponent(modifier = it) }
     ),
-    InteractiveCCItem(
+    ComponentItem(
         name = "Physics Button",
         contributor = "Eleazar Cole-Showers",
-        route = Screen.PhysicsButton
+        route = Screen.PhysicsButton,
+        component = { GlassCardComponent(modifier = it) }
+    ),
+    ComponentItem(
+        name = "Audio Player",
+        contributor = "Samarth",
+        route = Screen.AudioPlayer,
+        component = { GlassCardComponent(modifier = it) }
     )
 )
 
@@ -81,22 +91,9 @@ fun InteractiveCCScreenUI(
             }
 
             items(items = iccItemList) {
-                Box(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .clickable { uiEvent(IccUIEvent.Navigate(it.route)) }
-                        .padding(20.dp)
-                ) {
-                    ListItemText(title = it.name, contributor = it.contributor)
-                }
+                ItemUI(it, onClick = { uiEvent(IccUIEvent.Navigate(it.route)) })
                 NeumorphicDownHorizontalDivider()
             }
         }
     }
 }
-
-private data class InteractiveCCItem(
-    val name: String,
-    val contributor: String,
-    val route: Screen
-)

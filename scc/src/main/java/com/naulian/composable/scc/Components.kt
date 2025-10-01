@@ -4,7 +4,6 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.BoxScope
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxHeight
@@ -29,6 +28,7 @@ import androidx.compose.ui.graphics.shadow.Shadow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.DpOffset
 import androidx.compose.ui.unit.dp
+import com.naulian.composable.core.component.BackgroundBox
 import com.naulian.composable.core.theme.ComposablePreview
 import com.naulian.composable.scc.cafe_receipt.ReceiptShape
 import com.naulian.composable.scc.cornered_box.CorneredBox
@@ -40,25 +40,6 @@ private val defaultShape = RoundedCornerShape(10)
 
 private val defaultBackground @Composable get() = MaterialTheme.colorScheme.primary.copy(0.2f)
 private val defaultSurface @Composable get() = MaterialTheme.colorScheme.surface.copy(0.3f)
-
-@Composable
-fun BackgroundBox(
-    modifier: Modifier = Modifier,
-    contentAlignment: Alignment = Alignment.TopStart,
-    content: @Composable BoxScope.() -> Unit
-) {
-    Box(
-        modifier = modifier
-            .fillMaxSize()
-            .background(
-                color = defaultBackground,
-                shape = defaultShape
-            )
-            .padding(12.dp),
-        contentAlignment = contentAlignment,
-        content = content
-    )
-}
 
 @Composable
 fun NeumorphismComponent(modifier: Modifier = Modifier) {

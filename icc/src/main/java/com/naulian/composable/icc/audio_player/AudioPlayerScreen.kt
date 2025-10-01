@@ -1,4 +1,4 @@
-package com.naulian.composable.scc.audio_progress
+package com.naulian.composable.icc.audio_player
 
 import android.content.Context
 import android.media.MediaPlayer
@@ -48,14 +48,13 @@ import androidx.core.content.ContextCompat.createAttributionContext
 import com.naulian.composable.core.LocalNavController
 import com.naulian.composable.core.component.CodeBlock
 import com.naulian.composable.core.component.ComposableTopAppBar
-import com.naulian.composable.scc.R
+import com.naulian.composable.icc.R
 import com.naulian.modify.White
 import com.naulian.neumorphic.ComposableTheme
 import kotlinx.coroutines.delay
 import kotlin.math.cos
 import kotlin.math.min
 import kotlin.math.sin
-
 
 @Composable
 fun AudioPlayerScreen() {

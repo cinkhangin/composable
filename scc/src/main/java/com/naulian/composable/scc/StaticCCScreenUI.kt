@@ -13,7 +13,6 @@ import com.naulian.composable.core.Screen
 import com.naulian.composable.core.component.ComposableTopAppBar
 import com.naulian.composable.core.component.ItemUI
 import com.naulian.composable.core.model.ComponentItem
-import com.naulian.composable.scc.depth_card.DepthCard
 import com.naulian.modify.ExperimentalModifyApi
 
 sealed interface SccUIEvent {
@@ -63,12 +62,6 @@ private val sccItemList = listOf(
         contributor = "Prashant Panwar",
         route = Screen.CafeReceipt,
         component = { ReceiptComponent(modifier = it) }
-    ),
-    ComponentItem(
-        name = "Audio Player",
-        contributor = "Samarth",
-        route = Screen.AudioPlayer,
-        component = { NeumorphismComponent(modifier = it) }
     )
 )
 

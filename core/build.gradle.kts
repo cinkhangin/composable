@@ -55,6 +55,9 @@ dependencies {
     implementation(libs.androidx.constraintlayout.compose)
     implementation(libs.androidx.navigation.compose)
 
+    //use api so it is available in all modules that include this core module
+    api(libs.androidx.compose.material.icons.extended)
+
     //test
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)

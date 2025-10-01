@@ -27,7 +27,7 @@ import com.naulian.composable.icc.physicsbutton.PhysicsButtonScreen
 import com.naulian.composable.icc.rating.RatingStarsScreen
 import com.naulian.composable.icc.step_progress.ProgressScreen
 import com.naulian.composable.scc.StaticCCScreen
-import com.naulian.composable.scc.audio_progress.AudioPlayerScreen
+import com.naulian.composable.icc.audio_player.AudioPlayerScreen
 import com.naulian.composable.scc.cafe_receipt.CafeReceiptScreen
 import com.naulian.composable.scc.cornered_box.CorneredBoxScreen
 import com.naulian.composable.scc.depth_card.DepthCardScreen
