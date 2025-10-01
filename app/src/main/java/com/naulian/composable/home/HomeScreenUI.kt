@@ -4,7 +4,6 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
-import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.ExperimentalMaterial3ExpressiveApi
 import androidx.compose.material3.HorizontalDivider
@@ -34,8 +33,6 @@ fun HomeScreenUI(
     uiState: HomeUIState = HomeUIState(),
     uiEvent: (HomeUIEvent) -> Unit = {}
 ) {
-    val listState = rememberLazyListState()
-
     Scaffold(
         topBar = {
             ComposableTopAppBar(
@@ -48,7 +45,6 @@ fun HomeScreenUI(
             modifier = Modifier
                 .fillMaxSize()
                 .padding(scaffoldPadding),
-            state = listState
         ) {
             item {
                 HorizontalDivider()

@@ -41,7 +41,7 @@ fun CorneredBox(
     shape: Shape = RoundedCornerShape(10.dp),
     contentAlignment: Alignment = Alignment.TopStart,
     onClick: (() -> Unit)? = null,
-    content: @Composable BoxScope.() -> Unit
+    content: @Composable BoxScope.() -> Unit = {}
 ) {
     Box(
         modifier = modifier
