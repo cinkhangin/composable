@@ -1,4 +1,4 @@
-package com.naulian.composable.icc.calenderTopBar
+package com.naulian.composable.icc.calender_topbar
 
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable

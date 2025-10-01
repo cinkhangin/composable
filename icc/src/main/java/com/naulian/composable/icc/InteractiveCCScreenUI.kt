@@ -27,16 +27,16 @@ private val iccItemList = listOf(
         component = { RatingComponent(modifier = it) }
     ),
     ComponentItem(
-        name = "Parallax Card Stack",
+        name = "Stackable Item",
         contributor = "Aryan Jaiswal",
         route = Screen.ParallaxCardStack,
-        component = { GlassCardComponent(modifier = it) }
+        component = { StackableItemComponent(modifier = it) }
     ),
     ComponentItem(
         name = "Better Carousel",
         contributor = "Aryan Jaiswal",
         route = Screen.BetterCarousel,
-        component = { GlassCardComponent(modifier = it) }
+        component = { BetterCarouselComponent(modifier = it) }
     ),
     ComponentItem(
         name = "Steps Progress",

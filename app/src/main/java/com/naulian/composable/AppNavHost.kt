@@ -19,10 +19,10 @@ import com.naulian.composable.core.LocalNavController
 import com.naulian.composable.core.Screen
 import com.naulian.composable.home.HomeScreen
 import com.naulian.composable.icc.InteractiveCCScreen
-import com.naulian.composable.icc.calenderTopBar.CalenderTopBarScreen
-import com.naulian.composable.icc.cardCrousel.BetterCarouselScreen
+import com.naulian.composable.icc.calender_topbar.CalenderTopBarScreen
+import com.naulian.composable.icc.better_carousel.BetterCarouselScreen
 import com.naulian.composable.icc.cylindricalButton.CylindricalButtonsScreen
-import com.naulian.composable.icc.parallaxCards.ParallaxCardStackScreen
+import com.naulian.composable.icc.stackable_item.StackableItemScreen
 import com.naulian.composable.icc.physicsbutton.PhysicsButtonScreen
 import com.naulian.composable.icc.rating.RatingStarsScreen
 import com.naulian.composable.icc.step_progress.ProgressScreen
@@ -115,7 +115,7 @@ fun AppNavHost() {
                 RatingStarsScreen()
             }
             composable<Screen.ParallaxCardStack> {
-                ParallaxCardStackScreen()
+                StackableItemScreen()
             }
             composable<Screen.BetterCarousel> {
                 BetterCarouselScreen()
