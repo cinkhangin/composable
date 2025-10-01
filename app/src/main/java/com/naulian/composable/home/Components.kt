@@ -44,7 +44,7 @@ fun StaticCC(modifier: Modifier = Modifier) {
             modifier = Modifier
                 .fillMaxSize()
                 .background(
-                    color = MaterialTheme.colorScheme.surface.copy(alpha = 0.5f),
+                    color = MaterialTheme.colorScheme.primary.copy(alpha = 0.2f),
                     shape = RoundedCornerShape(10)
                 )
         )
@@ -105,7 +105,7 @@ fun AnimatedCCAnimation(modifier: Modifier = Modifier) {
                 .scale(scale)
                 .rotate(rotation)
                 .background(
-                    color = MaterialTheme.colorScheme.surface.copy(alpha = 0.5f),
+                    color = MaterialTheme.colorScheme.primary.copy(alpha = 0.2f),
                     shape = RoundedCornerShape(10)
                 )
         )
@@ -162,7 +162,7 @@ fun InteractiveCCAnimation(modifier: Modifier = Modifier) {
                 .fillMaxSize()
                 .scale(boxScale)
                 .background(
-                    color = MaterialTheme.colorScheme.surface.copy(alpha = 0.5f),
+                    color = MaterialTheme.colorScheme.primary.copy(alpha = 0.2f),
                     shape = RoundedCornerShape(10)
                 )
         )
@@ -208,7 +208,7 @@ fun InteractiveCCAnimation(modifier: Modifier = Modifier) {
                 .scale(cursorScale),
             painter = painterResource(R.drawable.ic_cursor),
             contentDescription = "Cursor Icon",
-            tint = MaterialTheme.colorScheme.primary
+            tint = MaterialTheme.colorScheme.onBackground
         )
     }
 }

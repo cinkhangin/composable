@@ -58,13 +58,11 @@ fun HomeScreenUI(
             modifier = Modifier
                 .fillMaxSize()
                 .padding(scaffoldPadding),
-            state = listState,
-            verticalArrangement = Arrangement.spacedBy(10.dp),
+            state = listState
         ) {
             item {
                 HorizontalDivider()
             }
-
 
             items(items = uiState.menuItem) {
                 ConstraintLayout(
@@ -143,31 +141,19 @@ data class HomeScreenItem(
 val homeScreenList = listOf(
     HomeScreenItem(
         primaryText = "Static Composable\nComponents",
-        secondaryText = """
-            Essential building blocks with clean, consistent design.
-            Ready-to-use UI elements for structure and layout.
-            Simple, reliable, and visually balanced components.
-        """.trimIndent(),
+        secondaryText = "Simple, ready-to-use UI pieces that keep your layout clean and consistent.",
         route = Screen.StaticCC,
         component = { StaticCC(modifier = it) }
     ),
     HomeScreenItem(
         primaryText = "Interactive Composable\nComponents",
-        secondaryText = """
-            Engage users with dynamic, responsive elements.
-            Click, type, or drag—designed for real interaction.
-            Smart components that adapt to user input.
-        """.trimIndent(),
+        secondaryText = "UI elements that respond, react, and adapt when you click, type, or drag.",
         route = Screen.InteractiveCC,
         component = { InteractiveCCAnimation(modifier = it) }
     ),
     HomeScreenItem(
         primaryText = "Animated Composable\nComponents",
-        secondaryText = """
-            Bring your UI to life with smooth motion effects.
-            Eye-catching transitions that enhance the experience.
-            Animations that make your interface feel alive.
-        """.trimIndent(),
+        secondaryText = "Smooth, playful motion effects that make your interface feel alive.",
         route = Screen.AnimatedCC,
         component = { AnimatedCCAnimation(modifier = it) }
     )
