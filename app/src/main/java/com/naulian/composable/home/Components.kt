@@ -15,9 +15,13 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.ExperimentalMaterial3ExpressiveApi
 import androidx.compose.material3.Icon
+import androidx.compose.material3.MaterialShapes
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.toShape
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -26,6 +30,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.rotate
 import androidx.compose.ui.draw.scale
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.onGloballyPositioned
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
@@ -38,9 +43,10 @@ import com.naulian.composable.core.theme.ComposablePreview
 private val defaultShape = RoundedCornerShape(10)
 
 private val defaultBackground @Composable get() = MaterialTheme.colorScheme.primary.copy(0.2f)
-private val defaultSurface @Composable get() = MaterialTheme.colorScheme.surface.copy(0.3f)
+private val defaultSurface = Color.White.copy(0.4f)
 
 
+@OptIn(ExperimentalMaterial3ExpressiveApi::class)
 @Composable
 fun StaticCC(modifier: Modifier = Modifier) {
     BackgroundBox(modifier = modifier) {
@@ -48,8 +54,8 @@ fun StaticCC(modifier: Modifier = Modifier) {
             modifier = Modifier
                 .fillMaxSize()
                 .background(
-                    color = MaterialTheme.colorScheme.surface.copy(alpha = 0.3f),
-                    shape = RoundedCornerShape(10)
+                    color = defaultSurface,
+                    shape = MaterialShapes.Flower.toShape()
                 )
         )
     }
@@ -132,10 +138,6 @@ fun InteractiveCCAnimation(modifier: Modifier = Modifier) {
                 val size = coordinates.size
                 center = IntOffset(size.width / 2, size.height / 2)
             }
-            .background(
-                color = defaultSurface,
-                shape = defaultShape
-            )
     ) {
 
         val boxScale by infiniteTransition.animateFloat(
@@ -159,7 +161,7 @@ fun InteractiveCCAnimation(modifier: Modifier = Modifier) {
                 .scale(boxScale)
                 .background(
                     color = defaultSurface,
-                    shape = defaultShape
+                    shape = CircleShape
                 )
         )
 
@@ -204,7 +206,7 @@ fun InteractiveCCAnimation(modifier: Modifier = Modifier) {
                 .scale(cursorScale),
             painter = painterResource(R.drawable.ic_cursor),
             contentDescription = "Cursor Icon",
-            tint = MaterialTheme.colorScheme.surface
+            tint = Color.White
         )
     }
 }

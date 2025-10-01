@@ -17,7 +17,7 @@ import androidx.compose.ui.unit.dp
 @Composable
 fun BackgroundBox(
     modifier: Modifier = Modifier,
-    color: Color = MaterialTheme.colorScheme.primary.copy(0.2f),
+    color: Color = MaterialTheme.colorScheme.primary.copy(0.3f),
     shape: Shape = RoundedCornerShape(10),
     contentAlignment: Alignment = Alignment.Center,
     content: @Composable BoxScope.() -> Unit
