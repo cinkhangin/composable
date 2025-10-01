@@ -86,5 +86,6 @@ sealed interface Screen {
     @Serializable
     data object Bubbles : Screen
 
-
+    @Serializable
+    data object AudioPlayer : Screen
 }

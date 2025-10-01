@@ -4,6 +4,8 @@ plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.compose)
+    alias(libs.plugins.google.ksp)
+    alias(libs.plugins.google.hilt)
 }
 
 android {
@@ -53,6 +55,7 @@ dependencies {
     implementation(libs.androidx.activity.compose)
     implementation(libs.androidx.constraintlayout.compose)
     implementation(libs.androidx.navigation.compose)
+    implementation(libs.androidx.compose.material.icons.extended)
 
     //test
     testImplementation(libs.junit)
@@ -71,4 +74,8 @@ dependencies {
     implementation(libs.naulian.neumorphic)
 
     implementation(project(":core"))
+
+    implementation(libs.google.hilt.android)
+    ksp(libs.google.hilt.compiler)
+    implementation(libs.androidx.hilt.navigation.compose)
 }
