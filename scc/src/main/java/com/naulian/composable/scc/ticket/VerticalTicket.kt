@@ -34,6 +34,7 @@ import com.naulian.composable.core.theme.ComposableTheme
 @Composable
 fun Ticket(
     modifier: Modifier = Modifier,
+    color: Color = MaterialTheme.colorScheme.surface,
     topContent: @Composable BoxScope.() -> Unit = {},
     bottomContent: @Composable BoxScope.() -> Unit = {},
     dashLine : @Composable () -> Unit = {
@@ -49,10 +50,7 @@ fun Ticket(
     )
     Column(
         modifier = modifier
-            .background(
-                color = MaterialTheme.colorScheme.surface,
-                shape = ticketShape
-            )
+            .background(color = color, shape = ticketShape)
             .clip(shape = ticketShape)
     ) {
         Box(

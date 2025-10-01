@@ -43,7 +43,6 @@ fun DepthCard(color: Color, image: Int, modifier: Modifier) {
                 contentScale = ContentScale.Crop
             )
         }
-
     }
 }
 

@@ -35,7 +35,7 @@ import kotlin.math.min
  * cornerRadius: left/right corner radius
  * samplingStepPx: sampling resolution in px
  */
-class WaveReceiptShape(
+class ReceiptShape(
     private val amplitude: Float = 12f,
     private val cycles: Int = 10,
     private val cornerRadius: Float = 12f,
@@ -144,7 +144,7 @@ fun ReceiptShapePreview() {
                     .height(600.dp)
                     .fillMaxWidth()
                     .align(Alignment.Center)
-                    .background(Color.White, shape = WaveReceiptShape(cycles = 20))
+                    .background(Color.White, shape = ReceiptShape(cycles = 20))
             )
         }
     }

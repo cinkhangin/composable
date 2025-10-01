@@ -71,7 +71,7 @@ fun CafeReceiptScreenUI(
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.spacedBy(24.dp),
         ) {
-            WaveReceipt()
+            Receipt()
 
             CodeBlock(
                 source = cafeReceiptSource,
@@ -82,10 +82,10 @@ fun CafeReceiptScreenUI(
 }
 
 @Composable
-fun WaveReceipt(
+fun Receipt(
     modifier: Modifier = Modifier
 ) {
-    val receiptShape = WaveReceiptShape(amplitude = 20f)
+    val receiptShape = ReceiptShape(amplitude = 20f)
     Column(
         modifier = modifier
             .padding(32.dp)
