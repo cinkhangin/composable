@@ -6,6 +6,9 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
+import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -16,6 +19,25 @@ import androidx.constraintlayout.compose.ConstraintLayout
 import androidx.constraintlayout.compose.Dimension
 import com.naulian.composable.core.model.Item
 import com.naulian.modify.SemiBold
+
+@Composable
+fun LazyItemList(items: List<Item>, onClickItem: (Item) -> Unit, modifier: Modifier = Modifier) {
+    LazyColumn(
+        modifier = modifier
+    ) {
+        item {
+            HorizontalDivider()
+        }
+
+        items(items = items) {
+            ItemUI(
+                item = it,
+                onClick = { onClickItem(it) }
+            )
+            HorizontalDivider()
+        }
+    }
+}
 
 @Composable
 fun ItemUI(item: Item, onClick: () -> Unit, modifier: Modifier = Modifier) {

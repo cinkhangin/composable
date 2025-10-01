@@ -2,16 +2,13 @@ package com.naulian.composable.scc
 
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import com.naulian.composable.core.Screen
 import com.naulian.composable.core.component.ComposableTopAppBar
-import com.naulian.composable.core.component.ItemUI
+import com.naulian.composable.core.component.LazyItemList
 import com.naulian.composable.core.model.ComponentItem
 import com.naulian.modify.ExperimentalModifyApi
 
@@ -78,19 +75,11 @@ fun StaticCCScreenUI(
             )
         }
     ) { scaffoldPadding ->
-        LazyColumn(
-            modifier = Modifier
-                .fillMaxSize()
+        LazyItemList(
+            items = sccItemList,
+            onClickItem = { uiEvent(SccUIEvent.Navigate(it.route)) },
+            modifier = Modifier.fillMaxSize()
                 .padding(scaffoldPadding)
-        ) {
-            item {
-                HorizontalDivider()
-            }
-
-            items(items = sccItemList) {
-                ItemUI(item = it, onClick = { uiEvent(SccUIEvent.Navigate(it.route)) })
-                HorizontalDivider()
-            }
-        }
+        )
     }
 }

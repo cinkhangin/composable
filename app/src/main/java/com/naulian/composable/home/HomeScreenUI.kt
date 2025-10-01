@@ -2,18 +2,15 @@ package com.naulian.composable.home
 
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.ExperimentalMaterial3ExpressiveApi
-import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import com.naulian.composable.core.Screen
 import com.naulian.composable.core.component.ComposableTopAppBar
-import com.naulian.composable.core.component.ItemUI
+import com.naulian.composable.core.component.LazyItemList
 import com.naulian.composable.core.model.Item
 import com.naulian.composable.core.theme.ComposableTheme
 import com.naulian.modify.ExperimentalModifyApi
@@ -23,14 +20,9 @@ sealed interface HomeUIEvent {
     data class Navigate(val route: Screen) : HomeUIEvent
 }
 
-data class HomeUIState(
-    val item: List<Item> = homeScreenList
-)
-
 @OptIn(ExperimentalMaterial3Api::class, ExperimentalModifyApi::class)
 @Composable
 fun HomeScreenUI(
-    uiState: HomeUIState = HomeUIState(),
     uiEvent: (HomeUIEvent) -> Unit = {}
 ) {
     Scaffold(
@@ -41,23 +33,12 @@ fun HomeScreenUI(
             )
         }
     ) { scaffoldPadding ->
-        LazyColumn(
-            modifier = Modifier
-                .fillMaxSize()
-                .padding(scaffoldPadding),
-        ) {
-            item {
-                HorizontalDivider()
-            }
-
-            items(items = uiState.item) {
-                ItemUI(
-                    item = it,
-                    onClick = { uiEvent(HomeUIEvent.Navigate(it.route)) }
-                )
-                HorizontalDivider()
-            }
-        }
+        LazyItemList(
+            items = homeScreenList,
+            onClickItem = { uiEvent(HomeUIEvent.Navigate(it.route)) },
+            modifier = Modifier.fillMaxSize()
+                .padding(scaffoldPadding)
+        )
     }
 }
 
