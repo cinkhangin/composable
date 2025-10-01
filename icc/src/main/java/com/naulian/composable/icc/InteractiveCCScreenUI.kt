@@ -42,31 +42,31 @@ private val iccItemList = listOf(
         name = "Steps Progress",
         contributor = "Aryan Singh",
         route = Screen.StepsProgress,
-        component = { GlassCardComponent(modifier = it) }
+        component = { EmptyComponent(modifier = it) }
     ),
     ComponentItem(
         name = "Calender Top Bar",
         contributor = "Zain ul Abdin",
         route = Screen.CalenderTopBar,
-        component = { GlassCardComponent(modifier = it) }
+        component = { EmptyComponent(modifier = it) }
     ),
     ComponentItem(
         name = "Cylindrical 3D Buttons",
         contributor = "Romit Sharma",
         route = Screen.CylindricalButtons,
-        component = { GlassCardComponent(modifier = it) }
+        component = { EmptyComponent(modifier = it) }
     ),
     ComponentItem(
         name = "Physics Button",
         contributor = "Eleazar Cole-Showers",
         route = Screen.PhysicsButton,
-        component = { GlassCardComponent(modifier = it) }
+        component = { EmptyComponent(modifier = it) }
     ),
     ComponentItem(
         name = "Audio Player",
         contributor = "Samarth",
         route = Screen.AudioPlayer,
-        component = { GlassCardComponent(modifier = it) }
+        component = { EmptyComponent(modifier = it) }
     )
 )
 

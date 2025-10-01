@@ -47,7 +47,7 @@ private val defaultSurface @Composable get() = MaterialTheme.colorScheme.surface
 
 
 @Composable
-fun GlassCardComponent(modifier: Modifier = Modifier) {
+fun EmptyComponent(modifier: Modifier = Modifier) {
     BackgroundBox(modifier = modifier) {
 
     }
@@ -57,7 +57,7 @@ fun GlassCardComponent(modifier: Modifier = Modifier) {
 @Composable
 private fun GlassCardComponentPreview() {
     ComposablePreview {
-        GlassCardComponent(
+        EmptyComponent(
             modifier = Modifier
                 .size(120.dp)
         )
