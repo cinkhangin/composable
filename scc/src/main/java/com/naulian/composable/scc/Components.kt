@@ -12,7 +12,6 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -29,46 +28,34 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.DpOffset
 import androidx.compose.ui.unit.dp
 import com.naulian.composable.core.component.BackgroundBox
+import com.naulian.composable.core.component.defaultContainerColor
+import com.naulian.composable.core.component.defaultShape
+import com.naulian.composable.core.component.defaultSurfaceColor
 import com.naulian.composable.core.theme.ComposablePreview
 import com.naulian.composable.scc.cafe_receipt.ReceiptShape
 import com.naulian.composable.scc.cornered_box.CorneredBox
 import com.naulian.composable.scc.grid_background.gridBackground
 import com.naulian.composable.scc.ticket.Ticket
 import com.naulian.modify.HorizontalDottedLine
+import com.naulian.neumorphic.NeumorphicTheme
+import com.naulian.neumorphic.neumorphicUp
 
-private val defaultShape = RoundedCornerShape(10)
-
-private val defaultBackground @Composable get() = MaterialTheme.colorScheme.primary.copy(0.2f)
-private val defaultSurface @Composable get() = MaterialTheme.colorScheme.surface.copy(0.3f)
 
 @Composable
 fun NeumorphismComponent(modifier: Modifier = Modifier) {
     BackgroundBox(modifier = modifier) {
         val shadowPadding = remember { 6.dp }
-        Box(
-            modifier = Modifier
-                .fillMaxSize()
-                .background(
-                    color = MaterialTheme.colorScheme.surface.copy(0.2f),
-                    shape = defaultShape
-                )
-                .innerShadow(
-                    shape = defaultShape,
-                    shadow = Shadow(
-                        radius = shadowPadding,
-                        color = MaterialTheme.colorScheme.surfaceBright,
-                        offset = DpOffset(x = shadowPadding, y = shadowPadding)
+        NeumorphicTheme {
+            Box(
+                modifier = Modifier
+                    .fillMaxSize()
+                    .neumorphicUp(
+                        shape = defaultShape,
+                        shadowPadding = shadowPadding,
+                        color = defaultSurfaceColor
                     )
-                )
-                .innerShadow(
-                    shape = defaultShape,
-                    shadow = Shadow(
-                        radius = shadowPadding,
-                        color = MaterialTheme.colorScheme.surfaceDim.copy(0.1f),
-                        offset = DpOffset(x = -shadowPadding, y = -shadowPadding)
-                    )
-                )
-        )
+            )
+        }
     }
 }
 
@@ -89,8 +76,8 @@ fun GridBgComponent(modifier: Modifier = Modifier) {
         modifier = modifier
             .fillMaxSize()
             .gridBackground(
-                color = defaultBackground,
-                lineColor = MaterialTheme.colorScheme.surface,
+                color = defaultContainerColor,
+                lineColor = defaultSurfaceColor.copy(0.8f),
                 shape = defaultShape
             )
     )
@@ -113,9 +100,10 @@ fun CorneredBoxComponent(modifier: Modifier = Modifier) {
         modifier = modifier
             .fillMaxSize()
             .background(
-                color = defaultBackground,
+                color = defaultContainerColor,
                 shape = defaultShape
-            )
+            ),
+        cornerColor = defaultSurfaceColor
     )
 }
 
@@ -137,7 +125,7 @@ fun TicketComponent(modifier: Modifier = Modifier) {
             modifier = Modifier.fillMaxSize(),
             cutoutFraction = 0.7f,
             cutoutRadius = 6.dp,
-            color = MaterialTheme.colorScheme.surface.copy(0.5f),
+            color = defaultSurfaceColor,
             dashLine = {
                 HorizontalDottedLine(
                     thickness = 0.5.dp,
@@ -149,7 +137,7 @@ fun TicketComponent(modifier: Modifier = Modifier) {
                     modifier = Modifier
                         .padding(4.dp)
                         .fillMaxSize()
-                        .background(MaterialTheme.colorScheme.surface, defaultShape)
+                        .background(defaultSurfaceColor.copy(0.6f), defaultShape)
                         .clip(defaultShape)
                 )
             },
@@ -179,15 +167,15 @@ fun GlassCardComponent(modifier: Modifier = Modifier) {
                     width = 0.5.dp,
                     brush = Brush.linearGradient(
                         colors = listOf(
-                            MaterialTheme.colorScheme.surface,
+                            defaultSurfaceColor.copy(1f),
                             Color.Transparent,
-                            MaterialTheme.colorScheme.surface
+                            defaultSurfaceColor.copy(1f)
                         )
                     ),
                     shape = defaultShape
                 )
                 .background(
-                    color = defaultSurface,
+                    color = defaultSurfaceColor,
                     shape = defaultShape
                 )
         )
@@ -217,7 +205,7 @@ fun DepthCardComponent(modifier: Modifier = Modifier) {
                 .fillMaxHeight(0.7f)
                 .background(
                     shape = defaultShape,
-                    color = defaultSurface
+                    color = defaultSurfaceColor
                 ),
             contentAlignment = Alignment.Center
         ) {
@@ -230,12 +218,12 @@ fun DepthCardComponent(modifier: Modifier = Modifier) {
                         shape = defaultShape,
                         shadow = Shadow(
                             radius = 10.dp,
-                            color = MaterialTheme.colorScheme.onBackground.copy(0.3f),
+                            color = Color.Black.copy(0.3f),
                             offset = DpOffset(x = 0.dp, y = 0.dp)
                         )
                     )
                     .background(
-                        color = MaterialTheme.colorScheme.surface.copy(0.7f),
+                        color = defaultSurfaceColor.copy(0.7f),
                         shape = defaultShape
                     ),
             ) {}
@@ -264,7 +252,7 @@ fun ReceiptComponent(modifier: Modifier = Modifier) {
                 .fillMaxSize()
                 .background(
                     shape = ReceiptShape(),
-                    color = MaterialTheme.colorScheme.surface.copy(0.7f)
+                    color = defaultSurfaceColor.copy(0.6f)
                 )
                 .padding(horizontal = 8.dp, vertical = 12.dp),
             verticalArrangement = Arrangement.spacedBy(
@@ -272,6 +260,8 @@ fun ReceiptComponent(modifier: Modifier = Modifier) {
                 alignment = Alignment.CenterVertically
             )
         ) {
+
+            val textColor = Color.Black.copy(0.6f)
             Row(
                 modifier = Modifier.fillMaxWidth(),
                 horizontalArrangement = Arrangement.SpaceBetween
@@ -279,12 +269,12 @@ fun ReceiptComponent(modifier: Modifier = Modifier) {
                 Text(
                     "Coffee",
                     style = MaterialTheme.typography.labelSmall,
-                    color = MaterialTheme.colorScheme.onSurface.copy(0.7f)
+                    color = textColor
                 )
                 Text(
                     "$2.00",
                     style = MaterialTheme.typography.labelSmall,
-                    color = MaterialTheme.colorScheme.onSurface.copy(0.7f)
+                    color = textColor
                 )
             }
 
@@ -295,17 +285,17 @@ fun ReceiptComponent(modifier: Modifier = Modifier) {
                 Text(
                     "Cake",
                     style = MaterialTheme.typography.labelSmall,
-                    color = MaterialTheme.colorScheme.onSurface.copy(0.7f)
+                    color = textColor
                 )
                 Text(
                     "$3.50",
                     style = MaterialTheme.typography.labelSmall,
-                    color = MaterialTheme.colorScheme.onSurface.copy(0.7f)
+                    color = textColor
                 )
             }
 
             HorizontalDottedLine(
-                color = MaterialTheme.colorScheme.onSurface.copy(0.7f)
+                color = textColor
             )
 
             Row(
@@ -315,12 +305,12 @@ fun ReceiptComponent(modifier: Modifier = Modifier) {
                 Text(
                     "Total",
                     style = MaterialTheme.typography.labelSmall,
-                    color = MaterialTheme.colorScheme.onSurface.copy(0.7f)
+                    color = textColor
                 )
                 Text(
                     "$5.50",
                     style = MaterialTheme.typography.labelSmall,
-                    color = MaterialTheme.colorScheme.onSurface.copy(0.7f)
+                    color = textColor
                 )
             }
         }

@@ -19,7 +19,6 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.foundation.pager.rememberPagerState
-import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
@@ -30,21 +29,19 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.scale
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.naulian.composable.core.component.BackgroundBox
+import com.naulian.composable.core.component.defaultShape
+import com.naulian.composable.core.component.defaultSurfaceColor
 import com.naulian.composable.core.theme.ComposablePreview
 import com.naulian.composable.icc.better_carousel.BetterCarousel
 import com.naulian.composable.icc.stackable_item.stackingEffect
+import com.naulian.modify.White
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
-
-private val defaultShape = RoundedCornerShape(10)
-
-private val defaultBackground @Composable get() = MaterialTheme.colorScheme.primary.copy(0.2f)
-private val defaultSurface @Composable get() = MaterialTheme.colorScheme.surface.copy(0.3f)
-
 
 @Composable
 fun EmptyComponent(modifier: Modifier = Modifier) {
@@ -114,8 +111,8 @@ fun RatingComponent(modifier: Modifier = Modifier) {
                         .scale(boxesScale[index].value),
                     painter = painterResource(if (index < animatedRating) R.drawable.ic_star_filled else R.drawable.ic_star_outlined),
                     contentDescription = null,
-                    tint = if (index < animatedRating) MaterialTheme.colorScheme.surface.copy(0.7f)
-                    else MaterialTheme.colorScheme.surface
+                    tint = if (index < animatedRating) defaultSurfaceColor.copy(0.6f)
+                    else defaultSurfaceColor
                 )
             }
         }
@@ -138,13 +135,13 @@ fun StackableItemComponent(modifier: Modifier = Modifier) {
     BackgroundBox(modifier = modifier) {
         val scrollState = rememberLazyListState()
         val colors = listOf(
-            MaterialTheme.colorScheme.surface.copy(0.8f),
+            Color.White.copy(0.6f),
             MaterialTheme.colorScheme.primary.copy(0.5f),
-            MaterialTheme.colorScheme.surface.copy(0.8f),
+            Color.White.copy(0.6f),
             MaterialTheme.colorScheme.primary.copy(0.5f),
-            MaterialTheme.colorScheme.surface.copy(0.8f),
+            Color.White.copy(0.6f),
             MaterialTheme.colorScheme.primary.copy(0.5f),
-            MaterialTheme.colorScheme.surface.copy(0.8f),
+            Color.White.copy(0.6f),
             MaterialTheme.colorScheme.primary.copy(0.5f),
         )
 
@@ -180,7 +177,7 @@ fun StackableItemComponent(modifier: Modifier = Modifier) {
                         .stackingEffect(scrollState, index)
                         .background(
                             color = color,
-                            shape = RoundedCornerShape(10)
+                            shape = defaultShape
                         )
                 )
             }
@@ -240,9 +237,9 @@ fun BetterCarouselComponent(modifier: Modifier = Modifier) {
         BetterCarousel(
             pagerState = pagerState,
             colors = listOf(
-                MaterialTheme.colorScheme.surface.copy(0.8f),
+                defaultSurfaceColor.copy(0.6f),
                 MaterialTheme.colorScheme.primary.copy(0.5f),
-                MaterialTheme.colorScheme.surface.copy(0.8f),
+                defaultSurfaceColor.copy(0.6f),
                 MaterialTheme.colorScheme.primary.copy(0.5f),
             ),
             modifier = Modifier.fillMaxSize(),
@@ -253,7 +250,7 @@ fun BetterCarouselComponent(modifier: Modifier = Modifier) {
                     modifier = Modifier
                         .background(
                             color = it.copy(0.2f),
-                            shape = RoundedCornerShape(10)
+                            shape = defaultShape
                         )
                         .padding(2.dp)
                 ) {
@@ -262,7 +259,7 @@ fun BetterCarouselComponent(modifier: Modifier = Modifier) {
                             .fillMaxSize()
                             .background(
                                 color = it,
-                                shape = RoundedCornerShape(10)
+                                shape = defaultShape
                             )
                     )
                 }

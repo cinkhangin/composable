@@ -14,11 +14,16 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.unit.dp
 
+val defaultShape = RoundedCornerShape(10)
+
+val defaultContainerColor @Composable get() = MaterialTheme.colorScheme.primary.copy(0.3f)
+val defaultSurfaceColor = Color.White.copy(0.4f)
+
 @Composable
 fun BackgroundBox(
     modifier: Modifier = Modifier,
-    color: Color = MaterialTheme.colorScheme.primary.copy(0.3f),
-    shape: Shape = RoundedCornerShape(10),
+    color: Color = defaultContainerColor,
+    shape: Shape = defaultShape,
     contentAlignment: Alignment = Alignment.Center,
     content: @Composable BoxScope.() -> Unit
 ) {
