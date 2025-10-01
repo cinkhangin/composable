@@ -29,6 +29,7 @@ hilt = "2.57.1"
 threetenabp = "1.4.9"
 vanniktech = "0.34.0"
 protoliteWellKnownTypes = "18.0.1"
+ui = "1.9.2"
 
 
 [libraries]
@@ -67,6 +68,7 @@ naulian-neumorphic = { module = "com.naulian:neumorphic", version.ref = "neumorp
 
 protolite-well-known-types = { group = "com.google.firebase", name = "protolite-well-known-types", version.ref = "protoliteWellKnownTypes" }
 threetenabp = { module = "com.jakewharton.threetenabp:threetenabp", version.ref = "threetenabp" }
+androidx-ui = { group = "androidx.compose.ui", name = "ui", version.ref = "ui" }
 
 
 [plugins]

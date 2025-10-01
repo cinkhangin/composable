@@ -46,6 +46,11 @@ private val animatedCCItems = listOf(
         name = "Animated Counter",
         contributor = "Eleazar Cole-Showers",
         route = Screen.Counter
+    ),
+    AnimatedCCItem(
+        name = "Bubble Rise",
+        contributor = "Eleazar Cole-Showers",
+        route = Screen.Bubbles
     )
 
 )
