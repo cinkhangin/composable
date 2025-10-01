@@ -43,7 +43,7 @@ private val sccItemList = listOf(
         name = "Movie Ticket",
         contributor = "Prashant Panwar",
         route = Screen.MovieTicket,
-        component = { NeumorphismComponent(modifier = it) }
+        component = { TicketComponent(modifier = it) }
     ),
     ComponentItem(
         name = "Glass Card",

@@ -1,4 +1,4 @@
-package com.naulian.composable.scc.shapes
+package com.naulian.composable.scc.ticket
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -48,7 +48,7 @@ fun MovieTicketScreenUI(onBack: () -> Unit = {}) {
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.spacedBy(24.dp),
         ) {
-            TicketUI()
+            MovieTicket()
 
             CodeBlock(
                 source = verticalShapeTicketSource,

@@ -1,4 +1,4 @@
-package com.naulian.composable.scc.cafeReceipt
+package com.naulian.composable.scc.cafe_receipt
 
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.Image
@@ -37,7 +37,6 @@ import com.naulian.composable.core.LocalNavController
 import com.naulian.composable.core.component.CodeBlock
 import com.naulian.composable.core.component.ComposableTopAppBar
 import com.naulian.composable.scc.R
-import com.naulian.composable.scc.shapes.verticalTicketShapeCode
 import com.naulian.modify.White
 import com.naulian.neumorphic.ComposableTheme
 

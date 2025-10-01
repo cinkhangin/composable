@@ -1,4 +1,4 @@
-package com.naulian.composable.scc.depthCards
+package com.naulian.composable.scc.depth_card
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background

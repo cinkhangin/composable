@@ -4,7 +4,6 @@ import androidx.compose.animation.core.FastOutSlowInEasing
 import androidx.compose.animation.core.LinearEasing
 import androidx.compose.animation.core.RepeatMode
 import androidx.compose.animation.core.animateFloat
-import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.animation.core.infiniteRepeatable
 import androidx.compose.animation.core.rememberInfiniteTransition
 import androidx.compose.animation.core.tween
@@ -14,8 +13,6 @@ import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -40,7 +37,6 @@ import androidx.compose.ui.draw.blur
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.drawBehind
 import androidx.compose.ui.geometry.Offset
-import androidx.compose.ui.geometry.Size
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Shape
@@ -168,7 +164,6 @@ fun GlassCard(
     value: String? = null,
     width: Dp,
     height: Dp,
-    showProgressBar: Boolean = false,
     content: @Composable (() -> Unit)? = null
 ) {
 
@@ -222,10 +217,6 @@ fun GlassCard(
                         fontWeight = FontWeight.Bold
                     )
                 }
-                if (showProgressBar) {
-                    Spacer(Modifier.height(12.dp))
-                    LiquidProgressBar(progress = 0.85f)
-                }
             }
         }
     }
@@ -273,84 +264,6 @@ fun Modifier.liquidGlassEffect(
         .then(if (blurRadius > 0.dp) Modifier.blur(blurRadius) else Modifier)
 }
 
-
-@Composable
-fun LiquidProgressBar(progress: Float) {
-    val animatedProgress by animateFloatAsState(
-        targetValue = progress,
-        animationSpec = tween(1000, easing = FastOutSlowInEasing)
-    )
-
-    Box(
-        modifier = Modifier
-            .fillMaxWidth()
-            .height(12.dp)
-            .clip(RoundedCornerShape(6.dp))
-            .background(Color.White.copy(alpha = 0.15f))
-    ) {
-
-        Box(
-            modifier = Modifier
-                .fillMaxWidth(animatedProgress)
-                .fillMaxHeight()
-                .clip(RoundedCornerShape(6.dp))
-                .drawBehind {
-
-                    drawRect(
-                        brush = Brush.linearGradient(
-                            colors = listOf(
-                                Color(0xFF6DD5FA).copy(alpha = 0.9f),
-                                Color(0xFF2980B9).copy(alpha = 0.9f),
-                                Color(0xFF6DD5FA).copy(alpha = 0.9f)
-                            ),
-                            start = Offset(0f, 0f),
-                            end = Offset(
-                                size.width * 2,
-                                size.height * 2
-                            )
-                        )
-                    )
-
-
-                    drawCircle(
-                        color = Color.White.copy(alpha = 0.3f),
-                        radius = size.height * 0.4f,
-                        center = Offset(
-                            size.width * 0.8f,
-                            size.height * 0.3f
-                        )
-                    )
-                }
-        )
-
-
-        val infiniteTransition = rememberInfiniteTransition()
-        val ripple by infiniteTransition.animateFloat(
-            initialValue = 0f,
-            targetValue = 1f,
-            animationSpec = infiniteRepeatable(
-                animation = tween(2000, easing = LinearEasing)
-            )
-        )
-
-        Box(
-            modifier = Modifier
-                .fillMaxWidth(animatedProgress)
-                .fillMaxHeight()
-                .drawBehind {
-
-                    drawRect(
-                        color = Color.White.copy(alpha = 0.2f),
-                        topLeft = Offset(
-                            size.width * ripple - 20f,
-                            0f
-                        ),
-                        size = Size(40f, size.height)
-                    )
-                }
-        )
-    }
-}
 
 @Composable
 fun AnimatedParticles(particleCount: Int) {

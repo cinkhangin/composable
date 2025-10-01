@@ -2,7 +2,7 @@
 // WaveReceiptShape.kt
 // A Jetpack Compose Shape that draws a receipt with sinusoid (wave-like cut) edges
 // at the top and/or bottom, similar to typical printed receipt designs.
-package com.naulian.composable.scc.cafeReceipt
+package com.naulian.composable.scc.cafe_receipt
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box

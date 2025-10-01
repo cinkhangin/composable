@@ -1,4 +1,4 @@
-package com.naulian.composable.scc.shapes
+package com.naulian.composable.scc.ticket
 
 import androidx.compose.ui.geometry.CornerRadius
 import androidx.compose.ui.geometry.Rect
@@ -12,14 +12,11 @@ import androidx.compose.ui.unit.Density
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.LayoutDirection
 import androidx.compose.ui.unit.dp
+import kotlin.math.min
 
 class VerticalTicketShape(
-    private val cornerRadius: Dp = 16.dp,
+    private val cornerRadiusPercent: Int = 10,
     private val cutoutRadius: Dp = 16.dp,
-    /**
-     * Fraction of the height where the cutout center will be placed.
-     * Example: 0.5f = middle, 0.25f = upper quarter.
-     */
     private val cutoutHeightFraction: Float = 0.80f
 ) : Shape {
 
@@ -29,7 +26,7 @@ class VerticalTicketShape(
         density: Density
     ): Outline {
         with(density) {
-            val cornerRadiusPx = cornerRadius.toPx()
+            val cornerRadiusPx = min(size.width, size.height) * (cornerRadiusPercent/100f)
             val cutoutRadiusPx = cutoutRadius.toPx()
 
             // Base ticket rectangle with rounded corners
