@@ -236,7 +236,7 @@ fun ContentItem(
         ) {
             Text(
                 text = date.formattedDate, // day "Mon", "Tue"
-                color = selectedTextColor,
+                color = if(date.isSelected) selectedTextColor else unselectedTextColor,
                 fontSize = 10.sp,
                 modifier = Modifier.align(Alignment.CenterHorizontally),
             )

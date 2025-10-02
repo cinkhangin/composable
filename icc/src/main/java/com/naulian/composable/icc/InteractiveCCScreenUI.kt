@@ -40,7 +40,7 @@ private val iccItemList = listOf(
         name = "Steps Progress",
         contributor = "Aryan Singh",
         route = Screen.StepsProgress,
-        component = { EmptyComponent(modifier = it) }
+        component = { StepsComponent(modifier = it) }
     ),
     ComponentItem(
         name = "Calender Top Bar",
@@ -49,7 +49,7 @@ private val iccItemList = listOf(
         component = { EmptyComponent(modifier = it) }
     ),
     ComponentItem(
-        name = "Cylindrical 3D Buttons",
+        name = "Raised Button",
         contributor = "Romit Sharma",
         route = Screen.CylindricalButtons,
         component = { EmptyComponent(modifier = it) }

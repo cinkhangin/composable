@@ -2,6 +2,7 @@ package com.naulian.composable.icc
 
 import androidx.compose.animation.core.Animatable
 import androidx.compose.animation.core.Spring
+import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.animation.core.spring
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.background
@@ -19,21 +20,28 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.foundation.pager.rememberPagerState
+import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Check
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
+import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.rotate
 import androidx.compose.ui.draw.scale
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.naulian.composable.core.component.BackgroundBox
+import com.naulian.composable.core.component.defaultContainerColor
 import com.naulian.composable.core.component.defaultShape
 import com.naulian.composable.core.component.defaultSurfaceColor
 import com.naulian.composable.core.theme.ComposablePreview
@@ -273,6 +281,55 @@ fun BetterCarouselComponent(modifier: Modifier = Modifier) {
 private fun BetterCarouselComponentPreview() {
     ComposablePreview {
         BetterCarouselComponent(
+            modifier = Modifier
+                .size(120.dp)
+        )
+    }
+}
+
+
+@Composable
+fun StepsComponent(modifier: Modifier = Modifier) {
+    BackgroundBox(modifier = modifier) {
+        var targetScale by remember { mutableStateOf(1f) }
+
+        LaunchedEffect(targetScale) {
+            delay(1000)
+            targetScale = 1f - targetScale
+        }
+
+        val scale by animateFloatAsState(
+            targetValue = targetScale,
+            animationSpec = tween(
+                durationMillis = 2000
+            )
+        )
+
+        Box(
+            modifier = Modifier.fillMaxSize()
+                .background(
+                    color = defaultSurfaceColor,
+                    shape = CircleShape
+                ).padding(12.dp),
+            contentAlignment = Alignment.Center
+        ) {
+            Icon(
+                imageVector = Icons.Default.Check,
+                contentDescription = "Check",
+                modifier = Modifier
+                    .size(100.dp)
+                    .scale(scale),
+                tint = defaultContainerColor.copy(0.5f)
+            )
+        }
+    }
+}
+
+@Preview
+@Composable
+private fun StepsComponentPreview() {
+    ComposablePreview {
+        StepsComponent(
             modifier = Modifier
                 .size(120.dp)
         )

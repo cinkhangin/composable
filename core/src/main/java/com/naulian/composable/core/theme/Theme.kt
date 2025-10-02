@@ -28,6 +28,7 @@ private val DarkColorScheme = darkColorScheme(
     primary = DarkGreen,
     onPrimary = White,
     onPrimaryContainer = White,
+    primaryFixedDim = DarkGreen,
 
     background = DarkBackground,
     onBackground = White,
@@ -43,6 +44,7 @@ private val LightColorScheme = lightColorScheme(
     primary = Green,
     onPrimary = White,
     onPrimaryContainer = Black,
+    primaryFixedDim = DarkGreen,
 
     background = LightBackground,
     onBackground = DarkGray,

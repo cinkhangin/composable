@@ -21,7 +21,7 @@ import com.naulian.composable.home.HomeScreen
 import com.naulian.composable.icc.InteractiveCCScreen
 import com.naulian.composable.icc.calender_topbar.CalenderTopBarScreen
 import com.naulian.composable.icc.better_carousel.BetterCarouselScreen
-import com.naulian.composable.icc.cylindricalButton.CylindricalButtonsScreen
+import com.naulian.composable.icc.raised_button.RaisedButtonScreen
 import com.naulian.composable.icc.stackable_item.StackableItemScreen
 import com.naulian.composable.icc.physicsbutton.PhysicsButtonScreen
 import com.naulian.composable.icc.rating.RatingStarsScreen
@@ -130,7 +130,7 @@ fun AppNavHost() {
                 CalenderTopBarScreen()
             }
             composable<Screen.CylindricalButtons> {
-                CylindricalButtonsScreen()
+                RaisedButtonScreen()
             }
             composable<Screen.PhysicsButton> {
                 PhysicsButtonScreen()
