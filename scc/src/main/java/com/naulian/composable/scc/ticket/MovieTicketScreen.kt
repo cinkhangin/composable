@@ -3,6 +3,8 @@ package com.naulian.composable.scc.ticket
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
@@ -12,10 +14,12 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.naulian.composable.core.LocalNavController
 import com.naulian.composable.core.component.CodeBlock
 import com.naulian.composable.core.component.ComposableTopAppBar
+import com.naulian.composable.core.theme.ComposableTheme
 
 @Composable
 fun MovieTicketScreen() {
@@ -48,12 +52,24 @@ fun MovieTicketScreenUI(onBack: () -> Unit = {}) {
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.spacedBy(24.dp),
         ) {
-            MovieTicket()
+            MovieTicket(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .height(400.dp)
+            )
 
             CodeBlock(
                 source = verticalShapeTicketSource,
                 language = "kotlin"
             )
         }
+    }
+}
+
+@Preview
+@Composable
+private fun MovieTicketScreenUIPreview() {
+    ComposableTheme {
+        MovieTicketScreenUI { }
     }
 }
