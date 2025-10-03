@@ -28,6 +28,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
+import com.naulian.anhance.str
 import com.naulian.composable.core.R
 import com.naulian.composable.core.theme.ComposableTheme
 
@@ -37,11 +38,11 @@ fun Ticket(
     color: Color = MaterialTheme.colorScheme.surface,
     topContent: @Composable BoxScope.() -> Unit = {},
     bottomContent: @Composable BoxScope.() -> Unit = {},
-    dashLine : @Composable () -> Unit = {
+    dashLine: @Composable () -> Unit = {
         DottedDivider()
     },
     cutoutFraction: Float = 0.7f,
-    cutoutRadius : Dp = 10.dp,
+    cutoutRadius: Dp = 10.dp,
 ) {
     val ticketShape = VerticalTicketShape(
         cornerRadiusPercent = 10,
@@ -152,21 +153,24 @@ fun MovieTicket(
 }
 
 @Composable
-fun RandomBarcode(modifier: Modifier = Modifier) {
-    val bars = List(40) { (4..16).random() } // random widths
-    val gap = 4f
+fun RandomBarcode(
+    modifier: Modifier = Modifier,
+    color: Color = MaterialTheme.colorScheme.onSurface,
+    count: Int = 35
+) {
+    val bars = List(count) { (1..4).random() * 4 to (1..4).random() * 4 } // random widths
 
     Canvas(modifier = modifier) {
-        val totalBarsWidth = bars.sumOf { it } + gap * (bars.size - 1)
+        val totalBarsWidth = bars.sumOf { it.first + it.second }
         var x = (size.width - totalBarsWidth) / 2f // center offset
 
-        bars.forEach { barWidth ->
+        bars.forEach { bar ->
             drawRect(
-                color = Color.Black,
+                color = color,
                 topLeft = Offset(x, 0f),
-                size = Size(barWidth.toFloat(), size.height)
+                size = Size(bar.first.toFloat(), size.height)
             )
-            x += barWidth + gap
+            x += bar.first + bar.second //second is the gap
         }
     }
 }
@@ -177,17 +181,17 @@ fun DottedDivider(
     modifier: Modifier = Modifier,
     dashLength: Dp = 12.dp,
     gap: Dp = 8.dp,
-    lineHeight: Dp = 1.dp,
-    lineColor: Color = Color.Gray,
-    strokeWidth: Dp = 2.dp
+    lineColor: Color = MaterialTheme.colorScheme.onSurface,
+    strokeWidth: Dp = 2.dp,
 ) {
     Canvas(
         modifier = modifier
             .fillMaxWidth()
-            .height(lineHeight)
+            .height(strokeWidth)
     ) {
         val dashLength = dashLength.toPx()
         val gap = gap.toPx()
+
         var x = 0f
         val y = size.height / 2
         while (x < size.width) {
