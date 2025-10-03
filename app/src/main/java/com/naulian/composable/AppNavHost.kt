@@ -21,6 +21,7 @@ import com.naulian.composable.icc.InteractiveCCScreen
 import com.naulian.composable.icc.calenderTopBar.CalenderTopBarScreen
 import com.naulian.composable.icc.cardCrousel.BetterCarouselScreen
 import com.naulian.composable.icc.cylindricalButton.CylindricalButtonsScreen
+import com.naulian.composable.icc.heartButton.HeartButtonScreen
 import com.naulian.composable.icc.parallaxCards.ParallaxCardStackScreen
 import com.naulian.composable.icc.rating.RatingStarsScreen
 import com.naulian.composable.icc.step_progress.ProgressScreen
@@ -97,6 +98,10 @@ fun AppNavHost() {
 
             composable<Screen.CafeReceipt> {
                 CafeReceiptScreen()
+            }
+
+            composable<Screen.HeartButton> {
+                HeartButtonScreen()
             }
 
 

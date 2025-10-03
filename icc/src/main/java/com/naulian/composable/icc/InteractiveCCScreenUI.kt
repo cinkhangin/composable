@@ -52,6 +52,11 @@ private val iccItemList = listOf(
         name = "Cylindrical 3D Buttons",
         contributor = "Romit Sharma",
         route = Screen.CylindricalButtons
+    ),
+    InteractiveCCItem(
+        name = "Heart Button",
+        contributor = "Mansi Kothari",
+        route = Screen.HeartButton
     )
 )
 
