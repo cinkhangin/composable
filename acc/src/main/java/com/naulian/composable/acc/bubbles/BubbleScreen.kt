@@ -1,22 +1,73 @@
 package com.naulian.composable.acc.bubbles
 
-import androidx.compose.animation.core.LinearEasing
-import androidx.compose.animation.core.RepeatMode
-import androidx.compose.animation.core.animateFloat
-import androidx.compose.animation.core.infiniteRepeatable
-import androidx.compose.animation.core.rememberInfiniteTransition
-import androidx.compose.animation.core.tween
-import androidx.compose.foundation.Canvas
-import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.geometry.Offset
-import androidx.compose.ui.graphics.Color
-import kotlin.random.Random
+import androidx.compose.ui.unit.dp
+import com.naulian.composable.core.LocalNavController
+import com.naulian.composable.core.component.CodeBlock
+import com.naulian.composable.core.component.ComposableTopAppBar
 
+@Composable
+fun BubbleScreen() {
+    val navController = LocalNavController.current
+
+    BubbleScreenUI(
+        onBack = { navController.navigateUp() }
+    )
+}
+
+@Composable
+fun BubbleScreenUI(onBack: () -> Unit = {}) {
+    val code = remember { bubbleRiseCode }
+
+    Scaffold(
+        topBar = {
+            ComposableTopAppBar(
+                title = "Bubble Rise",
+                onBack = onBack
+            )
+        }
+    ) { paddingValues ->
+        LazyColumn(
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(paddingValues)
+                .padding(16.dp),
+            verticalArrangement = Arrangement.spacedBy(40.dp)
+        ) {
+            item {
+                Column(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .height(400.dp), // limit height for demo
+                    horizontalAlignment = Alignment.CenterHorizontally
+                ) {
+                    BubbleRise(modifier = Modifier.fillMaxSize())
+                }
+            }
+
+            item {
+                CodeBlock(
+                    source = code,
+                    language = "kotlin",
+                    modifier = Modifier.padding(16.dp)
+                )
+            }
+        }
+    }
+}
+
+val bubbleRiseCode = """
 @Composable
 fun BubbleRise(
     modifier: Modifier = Modifier,
@@ -25,10 +76,10 @@ fun BubbleRise(
     val bubbles = remember {
         List(bubbleCount) {
             listOf(
-                Random.nextFloat(),
-                Random.nextInt(8, 24).toFloat(),
-                Random.nextInt(5000, 9000).toFloat(),
-                Random.nextLong(0, 4000).toFloat()
+                Random.nextFloat(),                     
+                Random.nextInt(8, 24).toFloat(),      
+                Random.nextInt(5000, 9000).toFloat(),    
+                Random.nextLong(0, 4000).toFloat()       
             )
         }
     }
@@ -92,3 +143,5 @@ fun RisingBubble(
         )
     }
 }
+
+""".trimIndent()

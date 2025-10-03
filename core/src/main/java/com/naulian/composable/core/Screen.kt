@@ -84,7 +84,7 @@ sealed interface Screen {
     data object CafeReceipt : Screen
 
     @Serializable
-    data object Counter : Screen
+    data object Bubble : Screen
 
     @Serializable
     data object AudioPlayer : Screen

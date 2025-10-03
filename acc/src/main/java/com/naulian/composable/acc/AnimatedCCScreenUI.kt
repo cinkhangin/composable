@@ -44,7 +44,7 @@ private val accItemList = listOf(
     ComponentItem(
         name = "Bubble Rise",
         contributor = "Eleazar Cole-Showers",
-        route = Screen.Counter,
+        route = Screen.Bubble,
         component = { EmptyComponent(it) }
     )
 )
