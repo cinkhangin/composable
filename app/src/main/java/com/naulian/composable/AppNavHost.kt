@@ -10,6 +10,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.naulian.composable.acc.AnimatedCCScreen
+import com.naulian.composable.acc.bubbles.BubbleRiseScreen
 import com.naulian.composable.acc.clock.ClockScreen
 import com.naulian.composable.acc.counter.CounterScreen
 import com.naulian.composable.acc.glitch.GlitchScreen
@@ -154,8 +155,8 @@ fun AppNavHost() {
             composable<Screen.Clock> {
                 ClockScreen()
             }
-            composable<Screen.Counter> {
-                CounterScreen()
+            composable<Screen.Bubble> {
+                BubbleRiseScreen()
             }
         }
     }
