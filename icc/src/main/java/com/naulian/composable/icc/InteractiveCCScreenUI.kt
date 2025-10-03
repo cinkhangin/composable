@@ -65,6 +65,12 @@ private val iccItemList = listOf(
         contributor = "Samarth",
         route = Screen.AudioPlayer,
         component = { EmptyComponent(modifier = it) }
+    ),
+    ComponentItem(
+        name = "Heart Button",
+        contributor = "Mansi Kothari",
+        route = Screen.HeartButton,
+        component = { EmptyComponent(modifier = it) }
     )
 )
 
