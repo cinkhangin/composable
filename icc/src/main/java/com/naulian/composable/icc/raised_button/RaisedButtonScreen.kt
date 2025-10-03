@@ -8,10 +8,15 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
@@ -56,7 +61,7 @@ fun RaisedButtonScreenUI(onBack: () -> Unit) {
                 RaisedButton(
                     onClick = {},
                     modifier = Modifier,
-                    shape = CircleShape,
+                    shape = RoundedCornerShape(28.dp),
                     height = 56.dp
                 ) {
                     Text(text = "Click")
@@ -64,7 +69,7 @@ fun RaisedButtonScreenUI(onBack: () -> Unit) {
 
                 RaisedButton(
                     modifier = Modifier.fillMaxWidth(),
-                    shape = CircleShape,
+                    shape = RoundedCornerShape(28.dp),
                     height = 56.dp,
                     onClick = {},
                 ) {
@@ -104,7 +109,14 @@ fun RaisedButtonScreenUI(onBack: () -> Unit) {
                 verticalAlignment = Alignment.CenterVertically
             ) {
                 // Large emergency-style button
+
+                var isPressed by remember { mutableStateOf(false) }
+
                 RaisedToggleButton(
+                    isPressed = isPressed,
+                    onPressed = {
+                        isPressed = it
+                    },
                     modifier = Modifier.weight(1f)
                         .fillMaxWidth(),
                     height = 56.dp
@@ -113,6 +125,10 @@ fun RaisedButtonScreenUI(onBack: () -> Unit) {
                 }
 
                 RaisedToggleButton(
+                    isPressed = !isPressed,
+                    onPressed = {
+                        isPressed = !it
+                    },
                     modifier = Modifier.weight(1f)
                         .fillMaxWidth(),
                     height = 56.dp

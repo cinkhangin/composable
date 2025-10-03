@@ -3,6 +3,7 @@ package com.naulian.composable.core.component
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.BoxScope
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -24,6 +25,7 @@ fun BackgroundBox(
     modifier: Modifier = Modifier,
     color: Color = defaultContainerColor,
     shape: Shape = defaultShape,
+    contentPadding : PaddingValues = PaddingValues(12.dp),
     contentAlignment: Alignment = Alignment.Center,
     content: @Composable BoxScope.() -> Unit
 ) {
@@ -31,7 +33,7 @@ fun BackgroundBox(
         modifier = modifier
             .fillMaxSize()
             .background(color = color, shape = shape)
-            .padding(12.dp),
+            .padding(contentPadding),
         contentAlignment = contentAlignment,
         content = content
     )

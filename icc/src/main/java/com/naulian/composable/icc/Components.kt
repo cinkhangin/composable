@@ -7,16 +7,22 @@ import androidx.compose.animation.core.spring
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.background
 import androidx.compose.foundation.gestures.animateScrollBy
+import androidx.compose.foundation.interaction.MutableInteractionSource
+import androidx.compose.foundation.interaction.PressInteraction
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.aspectRatio
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.LazyRow
+import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.foundation.pager.rememberPagerState
@@ -25,17 +31,20 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Check
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.rotate
 import androidx.compose.ui.draw.scale
+import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
@@ -46,10 +55,13 @@ import com.naulian.composable.core.component.defaultShape
 import com.naulian.composable.core.component.defaultSurfaceColor
 import com.naulian.composable.core.theme.ComposablePreview
 import com.naulian.composable.icc.better_carousel.BetterCarousel
+import com.naulian.composable.icc.raised_button.RaisedButton
+import com.naulian.composable.icc.raised_button.RaisedToggleButton
 import com.naulian.composable.icc.stackable_item.stackingEffect
 import com.naulian.modify.White
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
+import java.util.Locale
 
 @Composable
 fun EmptyComponent(modifier: Modifier = Modifier) {
@@ -306,11 +318,13 @@ fun StepsComponent(modifier: Modifier = Modifier) {
         )
 
         Box(
-            modifier = Modifier.fillMaxSize()
+            modifier = Modifier
+                .fillMaxSize()
                 .background(
                     color = defaultSurfaceColor,
                     shape = CircleShape
-                ).padding(12.dp),
+                )
+                .padding(12.dp),
             contentAlignment = Alignment.Center
         ) {
             Icon(
@@ -330,6 +344,114 @@ fun StepsComponent(modifier: Modifier = Modifier) {
 private fun StepsComponentPreview() {
     ComposablePreview {
         StepsComponent(
+            modifier = Modifier
+                .size(120.dp)
+        )
+    }
+}
+
+@Composable
+fun CalendarBarComponent(modifier: Modifier = Modifier) {
+    BackgroundBox(modifier = modifier, contentPadding = PaddingValues(0.dp)) {
+        val scrollState = rememberLazyListState()
+
+        LaunchedEffect(Unit) {
+            while (true) {
+                delay(500)
+                scrollState.animateScrollBy(
+                    value = 500f,
+                    animationSpec = spring(stiffness = Spring.StiffnessVeryLow)
+                )
+                delay(500)
+                scrollState.animateScrollBy(
+                    value = -500f,
+                    animationSpec = spring(stiffness = Spring.StiffnessVeryLow)
+                )
+            }
+        }
+
+        LazyRow(
+            modifier = Modifier
+                .fillMaxSize(),
+            state = scrollState,
+            horizontalArrangement = Arrangement.spacedBy(10.dp),
+            contentPadding = PaddingValues(12.dp)
+        ) {
+            items(
+                items = listOf(
+                    "Sun" to 4,
+                    "Mon" to 5,
+                    "Tue" to 6,
+                    "Wed" to 7,
+                    "Thu" to 8,
+                    "Fri" to 9,
+                    "Sat" to 10,
+                )
+            ) { item ->
+                Column(
+                    modifier = Modifier
+                        .fillMaxHeight()
+                        .aspectRatio(1f / 2f)
+                        .background(
+                            color = defaultSurfaceColor,
+                            shape = CircleShape
+                        ),
+                    verticalArrangement = Arrangement.SpaceEvenly,
+                    horizontalAlignment = Alignment.CenterHorizontally
+                ) {
+
+                    Text(text = item.first)
+                    Text(
+                        text = String.format(Locale.getDefault(), "%02d", item.second),
+                        style = MaterialTheme.typography.titleLarge
+                    )
+                }
+            }
+        }
+    }
+}
+
+@Preview
+@Composable
+private fun CalendarBarComponentPreview() {
+    ComposablePreview {
+        CalendarBarComponent(
+            modifier = Modifier
+                .size(120.dp)
+        )
+    }
+}
+
+@Composable
+fun RaisedButtonComponent(modifier: Modifier = Modifier) {
+    BackgroundBox(modifier = modifier) {
+
+        var isPressed by remember { mutableStateOf(false) }
+
+        LaunchedEffect(isPressed) {
+            delay(1000)
+            isPressed = !isPressed
+        }
+
+        RaisedToggleButton(
+            modifier = Modifier,
+            isPressed = isPressed,
+            onPressed = { isPressed = it },
+            color = defaultSurfaceColor.copy(0.5f),
+            colorDark = defaultSurfaceColor,
+            shape = CircleShape,
+            height = 56.dp
+        ) {
+            Text(text = "Click")
+        }
+    }
+}
+
+@Preview
+@Composable
+private fun RaisedButtonComponentPreview() {
+    ComposablePreview {
+        RaisedButtonComponent(
             modifier = Modifier
                 .size(120.dp)
         )

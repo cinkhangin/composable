@@ -4,7 +4,7 @@ import androidx.compose.animation.core.animateDpAsState
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.gestures.detectTapGestures
+import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Row
@@ -26,7 +26,6 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
@@ -41,10 +40,12 @@ fun RaisedButton(
     colorDark: Color = MaterialTheme.colorScheme.primaryFixedDim,
     contentColor: Color = MaterialTheme.colorScheme.onPrimary,
     shape: RoundedCornerShape = RoundedCornerShape(10.dp),
+    interactionSource: MutableInteractionSource = remember { MutableInteractionSource() },
     content: @Composable RowScope.() -> Unit
 ) {
 
     var isPressed by remember { mutableStateOf(false) }
+    val performClick = remember { { isPressed = true; onClick() } }
 
     val animatedDepth by animateDpAsState(
         targetValue = if (isPressed) elevation / 3 else elevation,
@@ -89,7 +90,8 @@ fun RaisedButton(
                     .widthIn(min = height)
                     .height(height)
                     .background(color = color, shape = shape)
-                    .clickable { onClick(); isPressed = true },
+                    .clip(shape)
+                    .clickable(interactionSource = interactionSource) { performClick() },
                 horizontalArrangement = Arrangement.spacedBy(
                     space = 12.dp,
                     alignment = Alignment.CenterHorizontally
@@ -104,14 +106,16 @@ fun RaisedButton(
 @Composable
 fun RaisedToggleButton(
     modifier: Modifier = Modifier,
+    isPressed : Boolean = false,
+    onPressed : (Boolean) -> Unit,
     elevation: Dp = 10.dp,
     height: Dp = 48.dp,
+    color: Color = MaterialTheme.colorScheme.primary,
+    colorDark: Color = MaterialTheme.colorScheme.primaryFixedDim,
+    contentColor: Color = MaterialTheme.colorScheme.onPrimary,
     shape: RoundedCornerShape = RoundedCornerShape(10.dp),
     content: @Composable RowScope.() -> Unit
 ) {
-
-    var isPressed by remember { mutableStateOf(false) }
-
     val animatedDepth by animateDpAsState(
         targetValue = if (isPressed) elevation / 3 else elevation,
         animationSpec = tween(durationMillis = 150),
@@ -133,14 +137,11 @@ fun RaisedToggleButton(
                 .offset(y = animatedButtonOffset)
                 .widthIn(min = height)
                 .height(height + animatedDepth)
-                .background(
-                    color = MaterialTheme.colorScheme.primaryFixedDim,
-                    shape = shape
-                )
+                .background(color = colorDark, shape = shape)
         )
 
         ProvideContentColorTextStyle(
-            contentColor = MaterialTheme.colorScheme.onPrimary,
+            contentColor = contentColor,
             textStyle = MaterialTheme.typography.labelLarge,
         ) {
             Row(
@@ -148,12 +149,9 @@ fun RaisedToggleButton(
                     .offset(y = animatedButtonOffset)
                     .widthIn(min = height)
                     .height(height)
-                    .background(
-                        color = MaterialTheme.colorScheme.primary,
-                        shape = shape
-                    )
+                    .background(color = color, shape = shape)
                     .clip(shape)
-                    .clickable { isPressed = !isPressed },
+                    .clickable { onPressed(!isPressed) },
                 horizontalArrangement = Arrangement.spacedBy(
                     space = 12.dp,
                     alignment = Alignment.CenterHorizontally

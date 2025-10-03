@@ -46,13 +46,13 @@ private val iccItemList = listOf(
         name = "Calender Top Bar",
         contributor = "Zain ul Abdin",
         route = Screen.CalenderTopBar,
-        component = { EmptyComponent(modifier = it) }
+        component = { CalendarBarComponent(modifier = it) }
     ),
     ComponentItem(
         name = "Raised Button",
         contributor = "Romit Sharma",
         route = Screen.CylindricalButtons,
-        component = { EmptyComponent(modifier = it) }
+        component = { RaisedButtonComponent(modifier = it) }
     ),
     ComponentItem(
         name = "Physics Button",

@@ -44,7 +44,7 @@ fun Modifier.gridBackground(
 
     clipPath(path) {
         //draw vertical lines
-        for (i in 1..lineCountX.toInt()) {
+        for (i in 1..lineCountX.toInt() ) {
             drawLine(
                 color = lineColor,
                 start = Offset(i * spacingPx, 0f),
