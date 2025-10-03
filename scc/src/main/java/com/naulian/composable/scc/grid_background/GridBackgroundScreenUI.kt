@@ -64,7 +64,7 @@ private fun GridBackgroundScreenUI(onBack: () -> Unit = {}) {
                         .fillMaxWidth()
                         .aspectRatio(1f)
                         .gridBackground(
-                            color = MaterialTheme.colorScheme.tertiary,
+                            color = MaterialTheme.colorScheme.surface,
                             lineColor = MaterialTheme.colorScheme.surfaceDim,
                             shape = RoundedCornerShape(20.dp)
                         )

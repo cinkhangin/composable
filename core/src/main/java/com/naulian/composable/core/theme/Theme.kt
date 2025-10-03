@@ -36,8 +36,9 @@ private val DarkColorScheme = darkColorScheme(
     secondary = DarkYellow,
     tertiary = DarkRed,
 
-    surface = Color(0xFF1E1E27),
+    surface = DarkestGray,
     onSurface = LightGray,
+    surfaceDim = Black
 )
 
 private val LightColorScheme = lightColorScheme(
@@ -54,6 +55,7 @@ private val LightColorScheme = lightColorScheme(
 
     surface = White,
     onSurface = DarkGray,
+    surfaceDim = LightGray
 )
 
 @Composable

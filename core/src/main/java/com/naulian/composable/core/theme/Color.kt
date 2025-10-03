@@ -10,6 +10,8 @@ val DarkerGreen = Color(0xFF008437)
 val Yellow = Color(0xFFFFD600)
 val DarkYellow = Color(0xFFFFAB00)
 
+val DarkestGray = Color(0xFF1E1E27)
+
 val Red = Color(0xFFD50000)
 val DarkRed = Color(0xFF930000)
 

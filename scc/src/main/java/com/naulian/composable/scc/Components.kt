@@ -72,15 +72,18 @@ private fun NeumorphismComponentPreview() {
 
 @Composable
 fun GridBgComponent(modifier: Modifier = Modifier) {
-    Box(
-        modifier = modifier
-            .fillMaxSize()
-            .gridBackground(
-                color = defaultContainerColor,
-                lineColor = defaultSurfaceColor.copy(0.8f),
-                shape = defaultShape
-            )
-    )
+    BackgroundBox(modifier = modifier) {
+        Box(
+            modifier = Modifier
+                .fillMaxSize()
+                .gridBackground(
+                    color = defaultSurfaceColor,
+                    lineColor = defaultSurfaceColor.copy(0.8f),
+                    spacing = 16.dp,
+                    shape = defaultShape
+                )
+        )
+    }
 }
 
 @Preview
@@ -96,15 +99,17 @@ private fun GridBgComponentPreview() {
 
 @Composable
 fun CorneredBoxComponent(modifier: Modifier = Modifier) {
-    CorneredBox(
-        modifier = modifier
-            .fillMaxSize()
-            .background(
-                color = defaultContainerColor,
-                shape = defaultShape
-            ),
-        cornerColor = defaultSurfaceColor
-    )
+    BackgroundBox(modifier = modifier) {
+        CorneredBox(
+            modifier = Modifier
+                .fillMaxSize()
+                .background(
+                    color = defaultSurfaceColor,
+                    shape = defaultShape
+                ),
+            cornerColor = defaultSurfaceColor.copy(0.8f)
+        )
+    }
 }
 
 @Preview
