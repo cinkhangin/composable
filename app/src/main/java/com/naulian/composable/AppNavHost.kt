@@ -19,15 +19,16 @@ import com.naulian.composable.core.LocalNavController
 import com.naulian.composable.core.Screen
 import com.naulian.composable.home.HomeScreen
 import com.naulian.composable.icc.InteractiveCCScreen
-import com.naulian.composable.icc.audio_player.AudioPlayerScreen
-import com.naulian.composable.icc.better_carousel.BetterCarouselScreen
 import com.naulian.composable.icc.calender_topbar.CalenderTopBarScreen
-import com.naulian.composable.icc.physicsbutton.PhysicsButtonScreen
+import com.naulian.composable.icc.better_carousel.BetterCarouselScreen
 import com.naulian.composable.icc.raised_button.RaisedButtonScreen
-import com.naulian.composable.icc.rating.RatingStarsScreen
 import com.naulian.composable.icc.stackable_item.StackableItemScreen
+import com.naulian.composable.icc.physicsbutton.PhysicsButtonScreen
+import com.naulian.composable.icc.rating.RatingStarsScreen
 import com.naulian.composable.icc.step_progress.ProgressScreen
 import com.naulian.composable.scc.StaticCCScreen
+import com.naulian.composable.icc.audio_player.AudioPlayerScreen
+import com.naulian.composable.icc.heart_button.HeartButtonScreen
 import com.naulian.composable.scc.cafe_receipt.CafeReceiptScreen
 import com.naulian.composable.scc.cornered_box.CorneredBoxScreen
 import com.naulian.composable.scc.depth_card.DepthCardScreen
@@ -136,6 +137,10 @@ fun AppNavHost() {
                 PhysicsButtonScreen()
             }
 
+            composable<Screen.HeartButton> {
+                HeartButtonScreen()
+            }
+
             // Animated Components
             composable<Screen.AnimatedCC> {
                 AnimatedCCScreen()
@@ -154,7 +159,7 @@ fun AppNavHost() {
             composable<Screen.Clock> {
                 ClockScreen()
             }
-            composable<Screen.Bubble> {
+            composable<Screen.Counter> {
                 CounterScreen()
             }
         }
