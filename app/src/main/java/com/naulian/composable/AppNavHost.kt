@@ -124,9 +124,7 @@ fun AppNavHost() {
             composable<Screen.StepsProgress> {
                 ProgressScreen()
             }
-            composable<Screen.BottomBar> {
-                BottomBarScreen()
-            }
+
             composable<Screen.CalenderTopBar> {
                 CalenderTopBarScreen()
             }
@@ -164,9 +162,4 @@ fun AppNavHost() {
             }
         }
     }
-}
-
-@Composable
-fun BottomBarScreen() {
-    TODO("Not yet implemented")
 }
