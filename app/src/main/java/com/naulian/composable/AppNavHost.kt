@@ -10,7 +10,6 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.naulian.composable.acc.AnimatedCCScreen
-import com.naulian.composable.acc.bubbles.BubbleRiseScreen
 import com.naulian.composable.acc.clock.ClockScreen
 import com.naulian.composable.acc.counter.CounterScreen
 import com.naulian.composable.acc.glitch.GlitchScreen
@@ -20,15 +19,15 @@ import com.naulian.composable.core.LocalNavController
 import com.naulian.composable.core.Screen
 import com.naulian.composable.home.HomeScreen
 import com.naulian.composable.icc.InteractiveCCScreen
-import com.naulian.composable.icc.calender_topbar.CalenderTopBarScreen
+import com.naulian.composable.icc.audio_player.AudioPlayerScreen
 import com.naulian.composable.icc.better_carousel.BetterCarouselScreen
-import com.naulian.composable.icc.raised_button.RaisedButtonScreen
-import com.naulian.composable.icc.stackable_item.StackableItemScreen
+import com.naulian.composable.icc.calender_topbar.CalenderTopBarScreen
 import com.naulian.composable.icc.physicsbutton.PhysicsButtonScreen
+import com.naulian.composable.icc.raised_button.RaisedButtonScreen
 import com.naulian.composable.icc.rating.RatingStarsScreen
+import com.naulian.composable.icc.stackable_item.StackableItemScreen
 import com.naulian.composable.icc.step_progress.ProgressScreen
 import com.naulian.composable.scc.StaticCCScreen
-import com.naulian.composable.icc.audio_player.AudioPlayerScreen
 import com.naulian.composable.scc.cafe_receipt.CafeReceiptScreen
 import com.naulian.composable.scc.cornered_box.CorneredBoxScreen
 import com.naulian.composable.scc.depth_card.DepthCardScreen
@@ -156,7 +155,7 @@ fun AppNavHost() {
                 ClockScreen()
             }
             composable<Screen.Bubble> {
-                BubbleRiseScreen()
+                CounterScreen()
             }
         }
     }
