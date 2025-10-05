@@ -46,6 +46,12 @@ private val accItemList = listOf(
         contributor = "Eleazar Cole-Showers",
         route = Screen.Counter,
         component = { EmptyComponent(it) }
+    ),
+    ComponentItem(
+        name = "Radar Effect",
+        contributor = "Samarth",
+        route = Screen.RadarEffect,
+        component = { EmptyComponent(it) }
     )
 )
 

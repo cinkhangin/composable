@@ -14,6 +14,7 @@ import com.naulian.composable.acc.clock.ClockScreen
 import com.naulian.composable.acc.counter.CounterScreen
 import com.naulian.composable.acc.glitch.GlitchScreen
 import com.naulian.composable.acc.pulse.PulseScreen
+import com.naulian.composable.acc.radar.RadarScreen
 import com.naulian.composable.acc.typing.TypingTextScreen
 import com.naulian.composable.core.LocalNavController
 import com.naulian.composable.core.Screen
@@ -156,6 +157,9 @@ fun AppNavHost() {
             }
             composable<Screen.Counter> {
                 CounterScreen()
+            }
+            composable<Screen.RadarEffect> {
+                RadarScreen()
             }
         }
     }

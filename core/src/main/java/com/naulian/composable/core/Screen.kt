@@ -85,4 +85,7 @@ sealed interface Screen {
 
     @Serializable
     data object AudioPlayer : Screen
+
+    @Serializable
+    data object RadarEffect: Screen
 }
