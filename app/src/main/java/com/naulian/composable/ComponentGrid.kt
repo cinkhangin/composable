@@ -19,12 +19,11 @@ import com.naulian.composable.icc.iccItemList
 import com.naulian.composable.scc.sccItemList
 
 
-@Preview(device = "spec:width=1280dp,height=800dp,dpi=240")
+@Preview(device = "id:Nexus 9")
 @Composable
 private fun ComponentGridPreview() {
     ComposablePreview(
-        modifier = Modifier
-            .fillMaxSize()
+        modifier = Modifier.fillMaxSize()
     ) {
         LazyVerticalGrid(
             modifier = Modifier.fillMaxSize(),
