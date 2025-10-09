@@ -49,7 +49,7 @@ fun PhysicsButtonScreenUI(onBack: () -> Unit = {}) {
                     modifier = Modifier.fillMaxWidth(),
                     horizontalAlignment = Alignment.CenterHorizontally
                 ) {
-                    PhysicsButton(
+                    PhysicButton(
                         text = "Press Me!",
                         onClick = {}
                     )

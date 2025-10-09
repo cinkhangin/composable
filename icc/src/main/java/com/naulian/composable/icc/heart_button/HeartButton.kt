@@ -15,6 +15,7 @@ import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.material3.Icon
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
@@ -43,6 +44,9 @@ fun HeartButton(
     isInitiallyLiked: Boolean = false,
     burstCount: Int = 6,
     burstDuration: Int = 800,
+    particleColors: List<Color> = listOf(Color.Red),
+    activeColor: Color = Color.Red,
+    defaultColor: Color = MaterialTheme.colorScheme.primary,
     onLikeChanged: (Boolean) -> Unit = {}
 ) {
     var isLiked by remember { mutableStateOf(isInitiallyLiked) }
@@ -58,8 +62,8 @@ fun HeartButton(
     // Burst heart state
     var burstHeart by remember { mutableStateOf(emptyList<BurstHeart>()) }
 
-    if (triggerBurst) {
-        LaunchedEffect(triggerBurst) {
+    LaunchedEffect(triggerBurst) {
+        if (triggerBurst) {
             burstHeart = List(burstCount) {
                 BurstHeart(
                     angle = Random.nextFloat() * 360f,
@@ -108,7 +112,7 @@ fun HeartButton(
             Icon(
                 painter = painterResource(id = R.drawable.heart_filled),
                 contentDescription = "Burst Heart",
-                tint = Color.Red,
+                tint = particleColors.random(),
                 modifier = Modifier
                     .offset { IntOffset(x.toInt(), y.toInt()) }
                     .alpha(alpha.value)
@@ -120,7 +124,7 @@ fun HeartButton(
         Icon(
             painter = painterResource(id = if (isLiked) R.drawable.heart_filled else R.drawable.heart_unfilled),
             contentDescription = "heart",
-            tint = if (isLiked) Color.Red else Color.Gray,
+            tint = if (isLiked) activeColor else defaultColor,
             modifier = Modifier
                 .scale(scale)
                 .padding(8.dp)
@@ -141,7 +145,7 @@ fun HeartButton(
     }
 }
 
-private data class BurstHeart(
+data class BurstHeart(
     val angle: Float,
     val distance: Float
 )

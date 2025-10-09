@@ -58,19 +58,19 @@ private val iccItemList = listOf(
         name = "Physics Button",
         contributor = "Eleazar Cole-Showers",
         route = Screen.PhysicsButton,
-        component = { EmptyComponent(modifier = it) }
+        component = { PhysicsButtonComponent(modifier = it) }
     ),
     ComponentItem(
         name = "Audio Player",
         contributor = "Samarth",
         route = Screen.AudioPlayer,
-        component = { EmptyComponent(modifier = it) }
+        component = { AudioPlayerComponent(modifier = it) }
     ),
     ComponentItem(
         name = "Heart Button",
         contributor = "Mansi Kothari",
         route = Screen.HeartButton,
-        component = { EmptyComponent(modifier = it) }
+        component = { HeartButtonComponent(modifier = it) }
     )
 )
 

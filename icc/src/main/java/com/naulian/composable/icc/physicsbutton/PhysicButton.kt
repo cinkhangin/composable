@@ -19,7 +19,7 @@ import androidx.compose.ui.unit.dp
 import kotlinx.coroutines.delay
 
 @Composable
-fun PhysicsButton(
+fun PhysicButton(
     text: String,
     onClick: () -> Unit,
     modifier: Modifier = Modifier
