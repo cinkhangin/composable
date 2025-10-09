@@ -19,6 +19,7 @@ import androidx.compose.ui.graphics.StrokeCap
 import androidx.compose.ui.graphics.drawscope.DrawScope
 import androidx.compose.ui.graphics.drawscope.rotate
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import com.naulian.neumorphic.ComposableTheme
 import kotlinx.coroutines.delay
@@ -33,7 +34,10 @@ fun Clock(
     modifier: Modifier = Modifier,
     hourColor: Color = MaterialTheme.colorScheme.primary,
     minuteColor: Color = MaterialTheme.colorScheme.onBackground,
-    secondColor : Color = MaterialTheme.colorScheme.onBackground,
+    secondColor: Color = MaterialTheme.colorScheme.onBackground,
+    hourHandThickness: Dp = 8.dp,
+    minuteHandThickness: Dp = 6.dp,
+    secondHandThickness: Dp = 4.dp
 ) {
     var currentTime by remember { mutableStateOf(Calendar.getInstance()) }
 
@@ -69,7 +73,7 @@ fun Clock(
                         color = hourColor.copy(alpha = 0.6f),
                         start = Offset(center.x, center.y - radius * 0.9f),
                         end = Offset(center.x, center.y - radius * 0.8f),
-                        strokeWidth = 4.dp.toPx(),
+                        strokeWidth = hourHandThickness.toPx(),
                         cap = StrokeCap.Round
                     )
                 }
@@ -84,7 +88,7 @@ fun Clock(
                             color = minuteColor.copy(alpha = 0.4f),
                             start = Offset(center.x, center.y - radius * 0.9f),
                             end = Offset(center.x, center.y - radius * 0.85f),
-                            strokeWidth = 2.dp.toPx(),
+                            strokeWidth = minuteHandThickness.toPx(),
                             cap = StrokeCap.Round
                         )
                     }
@@ -92,13 +96,13 @@ fun Clock(
             }
 
             // Draw hour hand
-            drawHand(center, hourAngle, radius * 0.5f, hourColor, 8.dp.toPx())
+            drawHand(center, hourAngle, radius * 0.5f, hourColor, hourHandThickness.toPx())
             // Draw minute hand
-            drawHand(center, minuteAngle, radius * 0.65f, minuteColor, 6.dp.toPx())
+            drawHand(center, minuteAngle, radius * 0.65f, minuteColor, minuteHandThickness.toPx())
             // Draw second hand
-            drawHand(center, secondAngle, radius * 0.8f, secondColor, 4.dp.toPx())
+            drawHand(center, secondAngle, radius * 0.8f, secondColor, secondHandThickness.toPx())
             // Center dot
-            drawCircle(color = secondColor, radius = 8.dp.toPx(), center = center)
+            drawCircle(color = secondColor, radius = hourHandThickness.toPx(), center = center)
         }
     }
 }

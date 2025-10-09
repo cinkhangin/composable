@@ -9,6 +9,8 @@ import androidx.compose.animation.core.tween
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.material3.MaterialShapes
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
@@ -20,7 +22,8 @@ import kotlin.random.Random
 @Composable
 fun BubbleRise(
     modifier: Modifier = Modifier,
-    bubbleCount: Int = 12
+    bubbleCount: Int = 12,
+    color : Color = MaterialTheme.colorScheme.primary
 ) {
     val bubbles = remember {
         List(bubbleCount) {
@@ -39,7 +42,8 @@ fun BubbleRise(
                 x = bubble[0],
                 radius = bubble[1],
                 durationMillis = bubble[2].toInt(),
-                delayMillis = bubble[3].toInt()
+                delayMillis = bubble[3].toInt(),
+                color = color
             )
         }
     }
@@ -50,7 +54,8 @@ fun RisingBubble(
     x: Float,
     radius: Float,
     durationMillis: Int,
-    delayMillis: Int
+    delayMillis: Int,
+    color : Color = MaterialTheme.colorScheme.primary
 ) {
     val infiniteTransition = rememberInfiniteTransition(label = "bubbleRise")
 
@@ -86,7 +91,7 @@ fun RisingBubble(
         val xPos = this.size.width * x
         val yPos = this.size.height * yAnim
         drawCircle(
-            color = Color(0xFF9C27B0).copy(alpha = alphaAnim),
+            color = color.copy(alpha = alphaAnim),
             radius = radius,
             center = Offset(xPos, yPos)
         )

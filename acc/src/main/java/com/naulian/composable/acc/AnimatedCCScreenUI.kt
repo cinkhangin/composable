@@ -6,6 +6,7 @@ import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import com.naulian.composable.acc.pulse.PulseAnimation
 import com.naulian.composable.core.Screen
 import com.naulian.composable.core.component.ComposableTopAppBar
 import com.naulian.composable.core.component.LazyItemList
@@ -16,36 +17,36 @@ sealed interface AccUIEvent {
     data class Navigate(val route: Screen) : AccUIEvent
 }
 
-private val accItemList = listOf(
+val accItemList = listOf(
     ComponentItem(
         name = "Typing Text",
         contributor = "Shree Bhargav R K",
         route = Screen.TypingText,
-        component = { EmptyComponent(it) }
+        component = { TypingTextComponent(it) }
     ),
     ComponentItem(
-        name = "Pulse Heart",
+        name = "Pulse Animation",
         contributor = "Shree Bhargav R K",
         route = Screen.PulseHeart,
-        component = { EmptyComponent(it) }
+        component = { PulseComponent(it) }
     ),
     ComponentItem(
         name = "Glitch Effect",
         contributor = "Shree Bhargav R K",
         route = Screen.GlitchEffect,
-        component = { EmptyComponent(it) }
+        component = { GlitchEffectComponent(it) }
     ),
     ComponentItem(
         name = "Analog Clock",
         contributor = "Naulian",
         route = Screen.Clock,
-        component = { EmptyComponent(it) }
+        component = { ClockComponent(it) }
     ),
     ComponentItem(
         name = "Bubble Rise",
         contributor = "Eleazar Cole-Showers",
         route = Screen.Bubble,
-        component = { EmptyComponent(it) }
+        component = { BubblesComponent(it) }
     )
 )
 

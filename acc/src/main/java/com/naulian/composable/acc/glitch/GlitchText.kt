@@ -10,6 +10,7 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.offset
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -21,7 +22,12 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
 @Composable
-fun GlitchEffect(modifier: Modifier = Modifier) {
+fun GlitchText(
+    modifier: Modifier = Modifier,
+    text: String = "GLITCH EFFECT",
+    glitchColors : Pair<Color, Color> = Color.Red to Color.Blue,
+    color : Color = MaterialTheme.colorScheme.onBackground
+) {
     val infiniteTransition = rememberInfiniteTransition()
     val offset by infiniteTransition.animateFloat(
         initialValue = 0f,
@@ -39,8 +45,8 @@ fun GlitchEffect(modifier: Modifier = Modifier) {
         contentAlignment = Alignment.Center
     ) {
         Text(
-            "GLITCH EFFECT",
-            color = Color.Red,
+            text = text,
+            color = glitchColors.first,
             fontSize = 24.sp,
             fontWeight = FontWeight.Bold,
             modifier = Modifier.offset(
@@ -49,8 +55,8 @@ fun GlitchEffect(modifier: Modifier = Modifier) {
             )
         )
         Text(
-            "GLITCH EFFECT",
-            color = Color.Blue,
+            text = text,
+            color = glitchColors.second,
             fontSize = 24.sp,
             fontWeight = FontWeight.Bold,
             modifier = Modifier.offset(
@@ -60,8 +66,8 @@ fun GlitchEffect(modifier: Modifier = Modifier) {
         )
 
         Text(
-            "GLITCH EFFECT",
-            color = Color.White,
+            text = text,
+            color = color,
             fontSize = 24.sp,
             fontWeight = FontWeight.Bold
         )

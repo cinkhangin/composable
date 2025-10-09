@@ -17,7 +17,7 @@ sealed interface SccUIEvent {
     data class Navigate(val route: Screen) : SccUIEvent
 }
 
-private val sccItemList = listOf(
+val sccItemList = listOf(
     ComponentItem(
         name = "Neumorphism",
         contributor = "Naulian",

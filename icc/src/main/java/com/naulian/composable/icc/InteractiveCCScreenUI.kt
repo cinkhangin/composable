@@ -17,7 +17,7 @@ sealed interface IccUIEvent {
     data class Navigate(val route: Screen) : IccUIEvent
 }
 
-private val iccItemList = listOf(
+val iccItemList = listOf(
     ComponentItem(
         name = "Rating Stars",
         contributor = "Naulian",

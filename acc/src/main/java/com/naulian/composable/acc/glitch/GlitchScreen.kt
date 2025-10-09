@@ -49,7 +49,7 @@ private fun GlitchScreenUI(onBack: () -> Unit = {}) {
         ) {
 
             item {
-                GlitchEffect()
+                GlitchText()
             }
 
             item {

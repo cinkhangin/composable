@@ -11,12 +11,14 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.size
 import androidx.compose.material3.ExperimentalMaterial3ExpressiveApi
 import androidx.compose.material3.MaterialShapes
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.toShape
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.scale
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.naulian.modify.White
@@ -24,7 +26,11 @@ import com.naulian.neumorphic.ComposableTheme
 
 @OptIn(ExperimentalMaterial3ExpressiveApi::class)
 @Composable
-fun PulseAnimation(modifier: Modifier = Modifier) {
+fun PulseAnimation(
+    modifier: Modifier = Modifier,
+    color: Color = MaterialTheme.colorScheme.primary,
+    shape: Shape = MaterialShapes.Heart.toShape()
+) {
     val infiniteTransition = rememberInfiniteTransition()
     val pulse by infiniteTransition.animateFloat(
         initialValue = 1f,
@@ -42,11 +48,10 @@ fun PulseAnimation(modifier: Modifier = Modifier) {
 
     Box(
         modifier = modifier
-            .size(100.dp)
             .scale(pulse)
             .background(
-                shape = MaterialShapes.Heart.toShape(),
-                color = Color(0xFFEF002F),
+                shape = shape,
+                color = color,
             )
     )
 }
@@ -60,7 +65,7 @@ private fun PulsingHeartPreview() {
                 .size(300.dp)
                 .background(White)
         ) {
-            PulseAnimation()
+            PulseAnimation(modifier = Modifier.size(100.dp))
         }
     }
 }

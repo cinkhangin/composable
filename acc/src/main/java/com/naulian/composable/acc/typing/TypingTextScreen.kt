@@ -30,6 +30,7 @@ import com.naulian.composable.core.LocalNavController
 import com.naulian.composable.core.component.CodeBlock
 import com.naulian.composable.core.component.ComposableTopAppBar
 import com.naulian.modify.columnItem
+import kotlinx.coroutines.Delay
 import kotlinx.coroutines.delay
 
 @Composable
@@ -137,20 +138,22 @@ fun TypingText(
     softWrap: Boolean = true,
     maxLines: Int = Int.MAX_VALUE,
     minLines: Int = 1,
+    delay: Long = 80,
     onTextLayout: ((TextLayoutResult) -> Unit)? = null,
     style: TextStyle = LocalTextStyle.current
 ) {
     var textIndex by remember { mutableIntStateOf(0) }
+
     LaunchedEffect(Unit) {
         while (true) {
             textIndex++
-            delay(80)
+            delay(delay)
         }
     }
 
     Text(
         modifier = modifier,
-        text = text.take(textIndex % text.length),
+        text = text.take(textIndex % (text.length + 1)),
         fontStyle = fontStyle,
         fontSize = fontSize,
         fontWeight = fontWeight,
