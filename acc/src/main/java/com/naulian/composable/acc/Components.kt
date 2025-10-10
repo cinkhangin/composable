@@ -8,6 +8,7 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.toShape
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.scale
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -15,6 +16,7 @@ import com.naulian.composable.acc.bubbles.BubbleRise
 import com.naulian.composable.acc.clock.Clock
 import com.naulian.composable.acc.glitch.GlitchText
 import com.naulian.composable.acc.pulse.PulseAnimation
+import com.naulian.composable.acc.radar.RadarAnimation
 import com.naulian.composable.acc.typing.TypingText
 import com.naulian.composable.core.component.BackgroundBox
 import com.naulian.composable.core.component.defaultSurfaceColor
@@ -145,6 +147,24 @@ fun BubblesComponent(modifier: Modifier = Modifier) {
 private fun BubblesComponentPreview() {
     ComposablePreview {
         BubblesComponent(
+            modifier = Modifier
+                .size(120.dp)
+        )
+    }
+}
+
+@Composable
+fun RadarEffectComponent(modifier: Modifier = Modifier) {
+    BackgroundBox(modifier = modifier) {
+        RadarAnimation()
+    }
+}
+
+@Preview
+@Composable
+private fun RadarEffectComponentPreview() {
+    ComposablePreview {
+        RadarEffectComponent(
             modifier = Modifier
                 .size(120.dp)
         )
