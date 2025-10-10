@@ -14,6 +14,7 @@ import com.naulian.composable.acc.bubbles.BubbleScreen
 import com.naulian.composable.acc.clock.ClockScreen
 import com.naulian.composable.acc.glitch.GlitchScreen
 import com.naulian.composable.acc.pulse.PulseScreen
+import com.naulian.composable.acc.radar.RadarScreen
 import com.naulian.composable.acc.typing.TypingTextScreen
 import com.naulian.composable.core.LocalNavController
 import com.naulian.composable.core.Screen
@@ -159,6 +160,9 @@ fun AppNavHost() {
             }
             composable<Screen.Bubble> {
                 BubbleScreen()
+            }
+            composable<Screen.RadarEffect> {
+                RadarScreen()
             }
         }
     }
