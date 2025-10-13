@@ -2,7 +2,7 @@
 activityCompose = "1.11.0"
 anhance = "2025.08.00"
 appcompat = "1.7.1"
-composeBom = "2025.09.01"
+composeBom = "2025.10.00"
 constraintlayout = "1.1.1"
 coilCompose = "3.3.0"
 coreKtx = "1.17.0"
@@ -18,7 +18,7 @@ serialization = "1.9.0"
 material = "1.13.0"
 modify = "0.7.0"
 
-material3 = "1.5.0-alpha04"
+material3 = "1.5.0-alpha06"
 
 # plugin
 kotlin = "2.2.20"
