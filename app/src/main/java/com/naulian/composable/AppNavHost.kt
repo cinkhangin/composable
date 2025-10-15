@@ -29,6 +29,7 @@ import com.naulian.composable.icc.step_progress.ProgressScreen
 import com.naulian.composable.scc.StaticCCScreen
 import com.naulian.composable.icc.audio_player.AudioPlayerScreen
 import com.naulian.composable.icc.heart_button.HeartButtonScreen
+import com.naulian.composable.acc.vinyl_disk.VinylDiskScreen
 import com.naulian.composable.scc.cafe_receipt.CafeReceiptScreen
 import com.naulian.composable.scc.cornered_box.CorneredBoxScreen
 import com.naulian.composable.scc.depth_card.DepthCardScreen
@@ -137,6 +138,9 @@ fun AppNavHost() {
 
             composable<Screen.HeartButton> {
                 HeartButtonScreen()
+            }
+            composable<Screen.VinylDisk> {
+                VinylDiskScreen()
             }
 
             // Animated Components

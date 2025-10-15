@@ -6,7 +6,7 @@ import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import com.naulian.composable.acc.pulse.PulseAnimation
+import com.naulian.composable.acc.vinyl_disk.VinylDiskRotating
 import com.naulian.composable.core.Screen
 import com.naulian.composable.core.component.ComposableTopAppBar
 import com.naulian.composable.core.component.LazyItemList
@@ -47,6 +47,12 @@ val accItemList = listOf(
         contributor = "Eleazar Cole-Showers",
         route = Screen.Bubble,
         component = { BubblesComponent(it) }
+    ),
+    ComponentItem(
+        name = "Vinyl Disk",
+        contributor = "Donizete Vida",
+        route = Screen.VinylDisk,
+        component = { VinylComponent(modifier = it) }
     )
 )
 
