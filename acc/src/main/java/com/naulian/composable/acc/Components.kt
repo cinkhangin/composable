@@ -4,11 +4,9 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.size
 import androidx.compose.material3.ExperimentalMaterial3ExpressiveApi
 import androidx.compose.material3.MaterialShapes
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.toShape
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.scale
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -18,7 +16,9 @@ import com.naulian.composable.acc.glitch.GlitchText
 import com.naulian.composable.acc.pulse.PulseAnimation
 import com.naulian.composable.acc.radar.RadarAnimation
 import com.naulian.composable.acc.typing.TypingText
+import com.naulian.composable.acc.vinyl_disk.VinylDiskRotating
 import com.naulian.composable.core.component.BackgroundBox
+import com.naulian.composable.core.component.defaultContainerColor
 import com.naulian.composable.core.component.defaultSurfaceColor
 import com.naulian.composable.core.theme.ComposablePreview
 
@@ -167,6 +167,32 @@ private fun RadarEffectComponentPreview() {
         RadarEffectComponent(
             modifier = Modifier
                 .size(120.dp)
+        )
+    }
+}
+
+@Composable
+fun VinylComponent(modifier: Modifier = Modifier) {
+    BackgroundBox(modifier) {
+        VinylDiskRotating(
+            Modifier.fillMaxSize(),
+            diskColor = defaultSurfaceColor.copy(alpha = .85f),
+            needleColors = listOf(
+                defaultContainerColor.copy(alpha = .3f),
+                defaultContainerColor.copy(alpha = .6f),
+                defaultContainerColor.copy(alpha = .9f)
+            )
+        )
+    }
+}
+
+@Preview
+@Composable
+private fun VinylComponentPreview() {
+    ComposablePreview {
+        VinylComponent(
+            modifier = Modifier
+                .size(120.dp),
         )
     }
 }
