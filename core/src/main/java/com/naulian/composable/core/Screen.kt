@@ -60,6 +60,9 @@ sealed interface Screen {
     @Serializable
     data object HeartButton: Screen
 
+    @Serializable
+    data object VinylDisk: Screen
+
     // Animated Components
     @Serializable
     data object AnimatedCC : Screen 
