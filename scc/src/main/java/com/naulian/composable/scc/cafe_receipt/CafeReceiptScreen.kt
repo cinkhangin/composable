@@ -36,9 +36,9 @@ import androidx.compose.ui.unit.dp
 import com.naulian.composable.core.LocalNavController
 import com.naulian.composable.core.component.CodeBlock
 import com.naulian.composable.core.component.ComposableTopAppBar
+import com.naulian.composable.core.theme.ComposableTheme
 import com.naulian.composable.scc.R
 import com.naulian.modify.White
-import com.naulian.neumorphic.ComposableTheme
 
 @Composable
 fun CafeReceiptScreen() {
