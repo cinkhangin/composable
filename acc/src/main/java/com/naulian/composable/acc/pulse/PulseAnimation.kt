@@ -21,8 +21,8 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.naulian.composable.core.theme.ComposableTheme
 import com.naulian.modify.White
-import com.naulian.neumorphic.ComposableTheme
 
 @OptIn(ExperimentalMaterial3ExpressiveApi::class)
 @Composable
