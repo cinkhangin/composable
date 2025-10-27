@@ -63,10 +63,10 @@ import com.naulian.composable.core.component.defaultContainerColor
 import com.naulian.composable.core.component.defaultShape
 import com.naulian.composable.core.component.defaultSurfaceColor
 import com.naulian.composable.core.theme.ComposablePreview
-import com.naulian.composable.icc.better_carousel.BetterCarousel
-import com.naulian.composable.icc.heart_button.BurstHeart
-import com.naulian.composable.icc.raised_button.RaisedToggleButton
-import com.naulian.composable.icc.stackable_item.stackingEffect
+import com.naulian.composable.icc.component.BetterCarousel
+import com.naulian.composable.icc.component.BurstHeart
+import com.naulian.composable.icc.component.RaisedToggleButton
+import com.naulian.composable.icc.component.stackingEffect
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import java.util.Locale
