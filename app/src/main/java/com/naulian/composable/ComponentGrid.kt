@@ -41,7 +41,7 @@ private fun ComponentGridPreview() {
                 Box(modifier = Modifier
                     .fillMaxSize()
                     .aspectRatio(1f)) {
-                    it.component(Modifier.fillMaxSize())
+                    it.previewComponent(Modifier.fillMaxSize())
                 }
             }
 
@@ -55,7 +55,7 @@ private fun ComponentGridPreview() {
                 Box(modifier = Modifier
                     .fillMaxSize()
                     .aspectRatio(1f)) {
-                    it.component(Modifier.fillMaxSize())
+                    it.previewComponent(Modifier.fillMaxSize())
                 }
             }
 
@@ -69,7 +69,7 @@ private fun ComponentGridPreview() {
                 Box(modifier = Modifier
                     .fillMaxSize()
                     .aspectRatio(1f)) {
-                    it.component(Modifier.fillMaxSize())
+                    it.previewComponent(Modifier.fillMaxSize())
                 }
             }
         }

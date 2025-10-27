@@ -21,7 +21,26 @@ import com.naulian.composable.core.model.Item
 import com.naulian.modify.SemiBold
 
 @Composable
-fun LazyItemList(items: List<Item>, onClickItem: (Item) -> Unit, modifier: Modifier = Modifier) {
+fun ComponentItemList(items: List<ComposableComponent>, onClickItem: (id : String) -> Unit, modifier: Modifier = Modifier) {
+    LazyColumn(
+        modifier = modifier
+    ) {
+        item {
+            HorizontalDivider()
+        }
+
+        items(items = items) {
+            ComponentItemUI(
+                item = it,
+                onClick = { onClickItem(it.id) }
+            )
+            HorizontalDivider()
+        }
+    }
+}
+
+@Composable
+fun LazyItemList(items: List<Item>, onClickItem: (item: Item) -> Unit, modifier: Modifier = Modifier) {
     LazyColumn(
         modifier = modifier
     ) {
@@ -82,6 +101,57 @@ fun ItemUI(item: Item, onClick: () -> Unit, modifier: Modifier = Modifier) {
 
             Text(
                 text = item.secondaryText,
+                style = MaterialTheme.typography.bodyMedium,
+                color = MaterialTheme.colorScheme.onSurface,
+                overflow = TextOverflow.Ellipsis
+            )
+        }
+    }
+}
+
+@Composable
+fun ComponentItemUI(item: ComposableComponent, onClick: () -> Unit, modifier: Modifier = Modifier) {
+    ConstraintLayout(
+        modifier = modifier
+            .fillMaxWidth()
+            .padding(20.dp)
+            .clickable { onClick() }
+    ) {
+        val (texts, graphic) = createRefs()
+
+        item.previewComponent(
+            Modifier
+                .size(120.dp)
+                .constrainAs(graphic) {
+                    end.linkTo(parent.end)
+                    top.linkTo(parent.top)
+                    bottom.linkTo(parent.bottom)
+                }
+        )
+
+        Column(
+            modifier = Modifier
+                .constrainAs(texts) {
+                    start.linkTo(parent.start)
+                    top.linkTo(parent.top)
+                    bottom.linkTo(parent.bottom)
+                    end.linkTo(graphic.start)
+
+                    width = Dimension.fillToConstraints
+                    height = Dimension.fillToConstraints
+                }
+                .padding(end = 20.dp),
+            verticalArrangement = Arrangement.spacedBy(8.dp)
+        ) {
+            Text(
+                text = item.name,
+                style = MaterialTheme.typography.titleMedium.SemiBold,
+                color = MaterialTheme.colorScheme.onSurface,
+                overflow = TextOverflow.Ellipsis
+            )
+
+            Text(
+                text = "Contributed by ${item.contributor}",
                 style = MaterialTheme.typography.bodyMedium,
                 color = MaterialTheme.colorScheme.onSurface,
                 overflow = TextOverflow.Ellipsis

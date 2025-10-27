@@ -9,40 +9,31 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import androidx.navigation.toRoute
 import com.naulian.composable.acc.AnimatedCCScreen
-import com.naulian.composable.acc.bubbles.BubbleScreen
-import com.naulian.composable.acc.clock.ClockScreen
-import com.naulian.composable.acc.glitch.GlitchScreen
-import com.naulian.composable.acc.pulse.PulseScreen
-import com.naulian.composable.acc.radar.RadarScreen
-import com.naulian.composable.acc.typing.TypingTextScreen
+import com.naulian.composable.acc.accItemList
 import com.naulian.composable.core.LocalNavController
 import com.naulian.composable.core.Screen
 import com.naulian.composable.home.HomeScreen
 import com.naulian.composable.icc.InteractiveCCScreen
-import com.naulian.composable.icc.calender_topbar.CalenderTopBarScreen
-import com.naulian.composable.icc.better_carousel.BetterCarouselScreen
-import com.naulian.composable.icc.raised_button.RaisedButtonScreen
-import com.naulian.composable.icc.stackable_item.StackableItemScreen
-import com.naulian.composable.icc.physicsbutton.PhysicsButtonScreen
-import com.naulian.composable.icc.rating.RatingStarsScreen
-import com.naulian.composable.icc.step_progress.ProgressScreen
 import com.naulian.composable.scc.StaticCCScreen
-import com.naulian.composable.icc.audio_player.AudioPlayerScreen
-import com.naulian.composable.icc.heart_button.HeartButtonScreen
-import com.naulian.composable.acc.vinyl_disk.VinylDiskScreen
-import com.naulian.composable.scc.cafe_receipt.CafeReceiptScreen
-import com.naulian.composable.scc.cornered_box.CorneredBoxScreen
-import com.naulian.composable.scc.depth_card.DepthCardScreen
-import com.naulian.composable.scc.glass.GlassCardScreen
-import com.naulian.composable.scc.grid_background.GridBackgroundScreen
-import com.naulian.composable.scc.neumorphic.NeumorphicScreen
-import com.naulian.composable.scc.ticket.MovieTicketScreen
+import com.naulian.composable.core.LocalComponents
+import com.naulian.composable.core.component.ComposableScreen
+import com.naulian.composable.core.componentBuilder
+import com.naulian.composable.core.unaryPlus
+import com.naulian.composable.icc.iccItemList
+import com.naulian.composable.scc.sccItemList
 
 @Composable
 fun AppNavHost() {
     CompositionLocalProvider(
-        LocalNavController provides rememberNavController()
+        LocalNavController provides rememberNavController(),
+        LocalComponents provides componentBuilder {
+            +sccItemList
+            +accItemList
+            +iccItemList
+        }
+
     ) {
         val navController = LocalNavController.current as NavHostController
         NavHost(
@@ -82,91 +73,18 @@ fun AppNavHost() {
             composable<Screen.StaticCC> {
                 StaticCCScreen()
             }
-            composable<Screen.Neumorphism> {
-                NeumorphicScreen()
-            }
-            composable<Screen.GridBackground> {
-                GridBackgroundScreen()
-            }
-            composable<Screen.CorneredBox> {
-                CorneredBoxScreen()
-            }
-            composable<Screen.GlassCard> {
-                GlassCardScreen()
-            }
-            composable<Screen.MovieTicket> {
-                MovieTicketScreen()
-            }
-            composable<Screen.DepthCard> {
-                DepthCardScreen()
-            }
-
-            composable<Screen.CafeReceipt> {
-                CafeReceiptScreen()
-            }
-
-            composable<Screen.AudioPlayer> {
-                AudioPlayerScreen()
-            }
-
-
             // Interactive Components
             composable<Screen.InteractiveCC> {
                 InteractiveCCScreen()
             }
-            composable<Screen.RatingStars> {
-                RatingStarsScreen()
-            }
-            composable<Screen.ParallaxCardStack> {
-                StackableItemScreen()
-            }
-            composable<Screen.BetterCarousel> {
-                BetterCarouselScreen()
-            }
-            composable<Screen.StepsProgress> {
-                ProgressScreen()
-            }
-
-            composable<Screen.CalenderTopBar> {
-                CalenderTopBarScreen()
-            }
-            composable<Screen.CylindricalButtons> {
-                RaisedButtonScreen()
-            }
-            composable<Screen.PhysicsButton> {
-                PhysicsButtonScreen()
-            }
-
-            composable<Screen.HeartButton> {
-                HeartButtonScreen()
-            }
-            composable<Screen.VinylDisk> {
-                VinylDiskScreen()
-            }
-
             // Animated Components
             composable<Screen.AnimatedCC> {
                 AnimatedCCScreen()
             }
 
-            //Animated Composable Components
-            composable<Screen.TypingText> {
-                TypingTextScreen()
-            }
-            composable<Screen.PulseHeart> {
-                PulseScreen()
-            }
-            composable<Screen.GlitchEffect> {
-                GlitchScreen()
-            }
-            composable<Screen.Clock> {
-                ClockScreen()
-            }
-            composable<Screen.Bubble> {
-                BubbleScreen()
-            }
-            composable<Screen.RadarEffect> {
-                RadarScreen()
+            composable<Screen.ComposableScreen> {
+                val route = it.toRoute<Screen.ComposableScreen>()
+                ComposableScreen(componentId = route.id)
             }
         }
     }

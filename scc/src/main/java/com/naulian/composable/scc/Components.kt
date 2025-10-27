@@ -20,7 +20,6 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.dropShadow
-import androidx.compose.ui.draw.innerShadow
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.shadow.Shadow
@@ -28,14 +27,13 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.DpOffset
 import androidx.compose.ui.unit.dp
 import com.naulian.composable.core.component.BackgroundBox
-import com.naulian.composable.core.component.defaultContainerColor
 import com.naulian.composable.core.component.defaultShape
 import com.naulian.composable.core.component.defaultSurfaceColor
 import com.naulian.composable.core.theme.ComposablePreview
-import com.naulian.composable.scc.cafe_receipt.ReceiptShape
-import com.naulian.composable.scc.cornered_box.CorneredBox
-import com.naulian.composable.scc.grid_background.gridBackground
-import com.naulian.composable.scc.ticket.Ticket
+import com.naulian.composable.scc.component.ReceiptShape
+import com.naulian.composable.scc.component.CorneredBox
+import com.naulian.composable.scc.component.gridBackground
+import com.naulian.composable.scc.component.Ticket
 import com.naulian.modify.HorizontalDottedLine
 import com.naulian.neumorphic.NeumorphicTheme
 import com.naulian.neumorphic.neumorphicUp
