@@ -74,4 +74,7 @@ dependencies {
     implementation(libs.naulian.modify) //compose utils and extension
     implementation(libs.naulian.neumorphic)
     implementation(libs.naulian.glow)
+
+    api("androidx.navigation3:navigation3-runtime:1.0.0")
+    api("androidx.navigation3:navigation3-ui:1.0.0")
 }

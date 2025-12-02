@@ -23,6 +23,7 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.snapshots.SnapshotStateList
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.geometry.Offset
@@ -32,41 +33,42 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation3.runtime.EntryProviderScope
 import com.naulian.anhance.Lorem
-import com.naulian.composable.core.LocalNavController
 import com.naulian.composable.core.Screen
 import com.naulian.composable.core.component.ComposableComponent
-import com.naulian.composable.scc.component.Receipt
-import com.naulian.composable.scc.component.cafeReceiptCode
-import com.naulian.composable.scc.component.CorneredBox
-import com.naulian.composable.scc.component.corneredBoxCode
-import com.naulian.composable.scc.component.DepthCard
-import com.naulian.composable.scc.component.depthCardCode
 import com.naulian.composable.scc.component.AnimatedParticles
+import com.naulian.composable.scc.component.CorneredBox
+import com.naulian.composable.scc.component.DepthCard
 import com.naulian.composable.scc.component.GlassCard
 import com.naulian.composable.scc.component.GlassCardCode
-import com.naulian.composable.scc.component.gridBackground
-import com.naulian.composable.scc.component.gridBackgroundCode
+import com.naulian.composable.scc.component.MovieTicket
 import com.naulian.composable.scc.component.NeuMorphicDown
 import com.naulian.composable.scc.component.NeuMorphicUP
+import com.naulian.composable.scc.component.Receipt
+import com.naulian.composable.scc.component.cafeReceiptCode
+import com.naulian.composable.scc.component.corneredBoxCode
+import com.naulian.composable.scc.component.depthCardCode
+import com.naulian.composable.scc.component.gridBackground
+import com.naulian.composable.scc.component.gridBackgroundCode
 import com.naulian.composable.scc.component.neumorphicCode
-import com.naulian.composable.scc.component.MovieTicket
 import com.naulian.composable.scc.component.verticalTicketShapeCode
 import com.naulian.modify.Gray
 import kotlin.math.absoluteValue
 import kotlin.math.cos
 import kotlin.math.sin
 
-@Composable
-fun StaticCCScreen() {
-    val navController = LocalNavController.current
 
-    StaticCCScreenUI{
-        when(it){
-            SccUIEvent.Back -> navController.navigateUp()
-            is SccUIEvent.Navigate -> navController.navigate(
-                route = Screen.ComposableScreen(it.id)
-            )
+@Composable
+fun EntryProviderScope<Screen>.StaticCCScreen(backStack: SnapshotStateList<Screen>) {
+    entry<Screen.StaticCC> {
+        StaticCCScreenUI {
+            when (it) {
+                SccUIEvent.Back -> backStack.removeLastOrNull()
+                is SccUIEvent.Navigate -> backStack.add(
+                    Screen.ComposableScreen(it.id)
+                )
+            }
         }
     }
 }
@@ -79,7 +81,9 @@ val sccItemList = listOf(
         previewComponent = { NeumorphismComponent(modifier = it) },
         demoComponent = {
             Row(
-                modifier = Modifier.padding(top = 20.dp).fillMaxWidth(),
+                modifier = Modifier
+                    .padding(top = 20.dp)
+                    .fillMaxWidth(),
                 horizontalArrangement = Arrangement.spacedBy(12.dp)
             ) {
                 NeuMorphicUP(
@@ -139,7 +143,12 @@ val sccItemList = listOf(
                     .padding(20.dp)
             ) {
                 // Add Ellipsis for preventing overflow on some devices
-                Text(text = Lorem.short, fontSize = 64.sp, color = Gray, overflow = TextOverflow.Ellipsis)
+                Text(
+                    text = Lorem.short,
+                    fontSize = 64.sp,
+                    color = Gray,
+                    overflow = TextOverflow.Ellipsis
+                )
             }
         },
         sourceCode = gridBackgroundCode

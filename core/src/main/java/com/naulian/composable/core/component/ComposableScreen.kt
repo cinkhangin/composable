@@ -10,22 +10,25 @@ import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.snapshots.SnapshotStateList
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import androidx.navigation3.runtime.EntryProviderScope
 import com.naulian.composable.core.LocalComponents
-import com.naulian.composable.core.LocalNavController
+import com.naulian.composable.core.Screen
 import com.naulian.modify.If
 
 @Composable
-fun ComposableScreen(componentId: String) {
-    val navController = LocalNavController.current
-    val components = LocalComponents.current
+fun EntryProviderScope<Screen>.ComposableScreen(backStack: SnapshotStateList<Screen>) {
+    entry<Screen.ComposableScreen> { key ->
 
-    ComposableScreenUI(
-        component = components[componentId] ?: return,
-        onBack = navController::navigateUp
-    )
+        val components = LocalComponents.current
+        ComposableScreenUI(
+            component = components[key.id] ?: ComposableComponent(),
+            onBack = { backStack.removeLastOrNull() }
+        )
+    }
 }
 
 @OptIn(ExperimentalMaterial3Api::class)
