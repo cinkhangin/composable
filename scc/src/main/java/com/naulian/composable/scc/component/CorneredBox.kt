@@ -1,7 +1,6 @@
 package com.naulian.composable.scc.component
 
 import androidx.compose.foundation.background
-import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.BoxScope
 import androidx.compose.foundation.layout.PaddingValues
@@ -40,7 +39,6 @@ fun CorneredBox(
     cornerSize: Dp = 20.dp,
     shape: Shape = RoundedCornerShape(10.dp),
     contentAlignment: Alignment = Alignment.TopStart,
-    onClick: (() -> Unit)? = null,
     content: @Composable BoxScope.() -> Unit = {}
 ) {
     Box(
@@ -137,7 +135,6 @@ fun CorneredBox(
                     restoreToCount(checkPoint)
                 }
             }
-            .clickable(onClick != null) { onClick?.invoke() }
             .padding(contentPadding),
         contentAlignment = contentAlignment,
         content = content
@@ -160,7 +157,6 @@ private fun CorneredBoxPreview() {
                     .height(200.dp),
                 cornerColor = Gray,
                 containerColor = DarkGray,
-                onClick = {}
             ) {}
         }
     }

@@ -8,17 +8,5 @@ sealed interface Screen {
     data object Home : Screen // General
 
     @Serializable
-    data class ComposableScreen(val id : String) : Screen
-
-    // Static Components
-    @Serializable
-    data object StaticCC : Screen
-
-    // Interactive Components
-    @Serializable
-    data object InteractiveCC : Screen
-
-    // Animated Components
-    @Serializable
-    data object AnimatedCC : Screen
+    data class Demo(val id : String) : Screen
 }

@@ -21,9 +21,7 @@ import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
-import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.snapshots.SnapshotStateList
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.geometry.Offset
@@ -33,9 +31,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.navigation3.runtime.EntryProviderScope
 import com.naulian.anhance.Lorem
-import com.naulian.composable.core.Screen
 import com.naulian.composable.core.component.ComposableComponent
 import com.naulian.composable.scc.component.AnimatedParticles
 import com.naulian.composable.scc.component.CorneredBox
@@ -57,21 +53,6 @@ import com.naulian.modify.Gray
 import kotlin.math.absoluteValue
 import kotlin.math.cos
 import kotlin.math.sin
-
-
-@Composable
-fun EntryProviderScope<Screen>.StaticCCScreen(backStack: SnapshotStateList<Screen>) {
-    entry<Screen.StaticCC> {
-        StaticCCScreenUI {
-            when (it) {
-                SccUIEvent.Back -> backStack.removeLastOrNull()
-                is SccUIEvent.Navigate -> backStack.add(
-                    Screen.ComposableScreen(it.id)
-                )
-            }
-        }
-    }
-}
 
 val sccItemList = listOf(
     ComposableComponent(
@@ -163,7 +144,6 @@ val sccItemList = listOf(
                 modifier = Modifier
                     .fillMaxWidth(),
                 cornerColor = Gray,
-                onClick = {},
                 contentPadding = PaddingValues(12.dp),
                 contentAlignment = Alignment.Center
             ) {

@@ -6,13 +6,10 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.size
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.snapshots.SnapshotStateList
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
-import androidx.navigation3.runtime.EntryProviderScope
 import com.naulian.composable.acc.component.BubbleRise
 import com.naulian.composable.acc.component.Clock
 import com.naulian.composable.acc.component.GlitchText
@@ -27,22 +24,7 @@ import com.naulian.composable.acc.component.glitchCode
 import com.naulian.composable.acc.component.pulseCode
 import com.naulian.composable.acc.component.typingCode
 import com.naulian.composable.acc.component.vinylDiskCode
-import com.naulian.composable.core.Screen
 import com.naulian.composable.core.component.ComposableComponent
-
-@Composable
-fun EntryProviderScope<Screen>.AnimatedCCScreen(backStack: SnapshotStateList<Screen>) {
-    entry<Screen.AnimatedCC> {
-        AnimatedCCScreenUI {
-            when (it) {
-                AccUIEvent.Back -> backStack.removeLastOrNull()
-                is AccUIEvent.Navigate -> backStack.add(
-                    Screen.ComposableScreen(it.id)
-                )
-            }
-        }
-    }
-}
 
 val accItemList = listOf(
     ComposableComponent(
