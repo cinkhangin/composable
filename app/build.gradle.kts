@@ -106,7 +106,4 @@ dependencies {
     implementation(libs.threetenabp)
 
     implementation(project(":core"))
-    implementation(project(":scc"))
-    implementation(project(":icc"))
-    implementation(project(":acc"))
 }

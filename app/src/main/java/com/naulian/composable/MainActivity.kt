@@ -15,7 +15,7 @@ class MainActivity : ComponentActivity() {
 
         setContent {
             ComposableTheme {
-                AppNavHost()
+                Navigation()
             }
         }
     }

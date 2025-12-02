@@ -10,11 +10,8 @@
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$" />
-            <option value="$PROJECT_DIR$/acc" />
             <option value="$PROJECT_DIR$/app" />
             <option value="$PROJECT_DIR$/core" />
-            <option value="$PROJECT_DIR$/icc" />
-            <option value="$PROJECT_DIR$/scc" />
           </set>
         </option>
       </GradleProjectSettings>

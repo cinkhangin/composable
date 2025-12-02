@@ -13,10 +13,10 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.naulian.composable.acc.accItemList
+import com.naulian.composable.component.accItemList
 import com.naulian.composable.core.theme.ComposablePreview
-import com.naulian.composable.icc.iccItemList
-import com.naulian.composable.scc.sccItemList
+import com.naulian.composable.component.iccItemList
+import com.naulian.composable.component.sccItemList
 
 
 @Preview(device = "id:Nexus 9")

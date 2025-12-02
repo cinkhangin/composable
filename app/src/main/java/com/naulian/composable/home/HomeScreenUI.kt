@@ -2,10 +2,13 @@ package com.naulian.composable.home
 
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.GridItemSpan
@@ -24,14 +27,13 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.naulian.composable.R
-import com.naulian.composable.acc.accItemList
+import com.naulian.composable.component.accItemList
 import com.naulian.composable.core.Screen
 import com.naulian.composable.core.theme.ComposableTheme
-import com.naulian.composable.icc.iccItemList
-import com.naulian.composable.scc.sccItemList
+import com.naulian.composable.component.iccItemList
+import com.naulian.composable.component.sccItemList
 import com.naulian.modify.ExperimentalModifyApi
 import com.naulian.modify.SemiBold
-
 
 sealed interface HomeUIEvent {
     data class Navigate(val route: Screen) : HomeUIEvent
@@ -74,7 +76,7 @@ fun HomeScreenUI(
                 Text("Static Components")
             }
 
-            items(count = sccItemList.size) {
+            items(count = sccItemList.size, key = { sccItemList[it].id }) {
                 sccItemList[it].previewComponent(
                     Modifier
                         .fillMaxWidth()
@@ -92,10 +94,13 @@ fun HomeScreenUI(
             item(
                 span = { GridItemSpan(maxLineSpan) }
             ) {
-                Text("Interactive Components")
+                Column {
+                    Spacer(modifier = Modifier.height(20.dp))
+                    Text("Interactive Components")
+                }
             }
 
-            items(count = iccItemList.size) {
+            items(count = iccItemList.size, key = { iccItemList[it].id }) {
                 iccItemList[it].previewComponent(
                     Modifier
                         .fillMaxWidth()
@@ -113,10 +118,13 @@ fun HomeScreenUI(
             item(
                 span = { GridItemSpan(maxLineSpan) }
             ) {
-                Text("Animated Components")
+                Column {
+                    Spacer(modifier = Modifier.height(20.dp))
+                    Text("Animated Components")
+                }
             }
 
-            items(count = accItemList.size) {
+            items(count = accItemList.size, key = { accItemList[it].id }) {
                 accItemList[it].previewComponent(
                     Modifier
                         .fillMaxWidth()
