@@ -30,10 +30,10 @@ import com.naulian.composable.core.component.BackgroundBox
 import com.naulian.composable.core.component.defaultShape
 import com.naulian.composable.core.component.defaultSurfaceColor
 import com.naulian.composable.core.theme.ComposablePreview
-import com.naulian.composable.scc.component.ReceiptShape
 import com.naulian.composable.scc.component.CorneredBox
-import com.naulian.composable.scc.component.gridBackground
+import com.naulian.composable.scc.component.ReceiptShape
 import com.naulian.composable.scc.component.Ticket
+import com.naulian.composable.scc.component.gridBackground
 import com.naulian.modify.HorizontalDottedLine
 import com.naulian.neumorphic.NeumorphicTheme
 import com.naulian.neumorphic.neumorphicUp

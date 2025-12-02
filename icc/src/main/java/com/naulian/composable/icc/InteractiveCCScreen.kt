@@ -28,6 +28,7 @@ import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
+import androidx.compose.runtime.snapshots.SnapshotStateList
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -35,41 +36,41 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.core.content.ContextCompat.createAttributionContext
-import com.naulian.composable.core.LocalNavController
+import androidx.navigation3.runtime.EntryProviderScope
 import com.naulian.composable.core.Screen
 import com.naulian.composable.core.component.CodeBlock
 import com.naulian.composable.core.component.ComposableComponent
 import com.naulian.composable.icc.component.AudioPlayer
-import com.naulian.composable.icc.component.audioPlayerCode
 import com.naulian.composable.icc.component.BetterCarousel
-import com.naulian.composable.icc.component.betterCarouselCode
 import com.naulian.composable.icc.component.CalenderTopBar
-import com.naulian.composable.icc.component.calenderTopBarCode
 import com.naulian.composable.icc.component.HeartButton
-import com.naulian.composable.icc.component.heartButtonCode
 import com.naulian.composable.icc.component.PhysicButton
-import com.naulian.composable.icc.component.physicsButtonCode
 import com.naulian.composable.icc.component.RaisedButton
 import com.naulian.composable.icc.component.RaisedToggleButton
-import com.naulian.composable.icc.component.raisedButtonCode
 import com.naulian.composable.icc.component.RatingStars
-import com.naulian.composable.icc.component.ratingStarsCode
 import com.naulian.composable.icc.component.StackableItem
+import com.naulian.composable.icc.component.StepProgressImpl
+import com.naulian.composable.icc.component.audioPlayerCode
+import com.naulian.composable.icc.component.betterCarouselCode
+import com.naulian.composable.icc.component.calenderTopBarCode
+import com.naulian.composable.icc.component.heartButtonCode
+import com.naulian.composable.icc.component.physicsButtonCode
+import com.naulian.composable.icc.component.raisedButtonCode
+import com.naulian.composable.icc.component.ratingStarsCode
 import com.naulian.composable.icc.component.stackableItemCode
 import com.naulian.composable.icc.component.stackingEffect
-import com.naulian.composable.icc.component.StepProgressImpl
 import kotlinx.coroutines.delay
 
 @Composable
-fun InteractiveCCScreen() {
-    val navController = LocalNavController.current
-
-    InteractiveCCScreenUI {
-        when (it) {
-            IccUIEvent.Back -> navController.navigateUp()
-            is IccUIEvent.Navigate -> navController.navigate(
-                route = Screen.ComposableScreen(it.id)
-            )
+fun EntryProviderScope<Screen>.InteractiveCCScreen(backStack: SnapshotStateList<Screen>) {
+    entry<Screen.InteractiveCC> {
+        InteractiveCCScreenUI {
+            when (it) {
+                IccUIEvent.Back -> backStack.removeLastOrNull()
+                is IccUIEvent.Navigate -> backStack.add(
+                   Screen.ComposableScreen(it.id)
+                )
+            }
         }
     }
 }
@@ -198,7 +199,7 @@ val iccItemList = listOf(
         previewComponent = { CalendarBarComponent(modifier = it) },
         demoComponent = {
             CalenderTopBar(
-                onDateSelected = { selectedDate ->
+                onDateSelected = {
                     // do opp like filtering etc
                 },
                 onBack = {}
