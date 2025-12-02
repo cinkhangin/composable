@@ -1,4 +1,4 @@
-package com.naulian.composable.acc.component
+package com.naulian.composable.component.acc
 
 import androidx.compose.material3.LocalTextStyle
 import androidx.compose.material3.Text

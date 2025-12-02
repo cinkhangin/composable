@@ -1,4 +1,4 @@
-package com.naulian.composable.acc.component
+package com.naulian.composable.component.acc
 
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.layout.Box

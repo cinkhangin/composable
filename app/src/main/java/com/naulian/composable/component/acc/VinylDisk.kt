@@ -1,4 +1,4 @@
-package com.naulian.composable.acc.component
+package com.naulian.composable.component.acc
 
 import android.graphics.BlurMaskFilter
 import androidx.compose.animation.core.LinearEasing

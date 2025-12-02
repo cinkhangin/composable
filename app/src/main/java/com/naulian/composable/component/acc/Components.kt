@@ -10,13 +10,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.naulian.composable.acc.component.BubbleRise
-import com.naulian.composable.acc.component.Clock
-import com.naulian.composable.acc.component.GlitchText
-import com.naulian.composable.acc.component.PulseAnimation
-import com.naulian.composable.acc.component.RadarAnimation
-import com.naulian.composable.acc.component.TypingText
-import com.naulian.composable.acc.component.VinylDiskRotating
 import com.naulian.composable.core.component.BackgroundBox
 import com.naulian.composable.core.component.defaultContainerColor
 import com.naulian.composable.core.component.defaultSurfaceColor
