@@ -29,6 +29,8 @@ hilt = "2.57.2"
 threetenabp = "1.4.9"
 vanniktech = "0.35.0"
 protoliteWellKnownTypes = "18.0.1"
+material3WindowSizeClass = "1.4.0"
+adaptive = "1.2.0"
 
 
 [libraries]
@@ -68,6 +70,8 @@ naulian-neumorphic = { module = "com.naulian:neumorphic", version.ref = "neumorp
 
 protolite-well-known-types = { group = "com.google.firebase", name = "protolite-well-known-types", version.ref = "protoliteWellKnownTypes" }
 threetenabp = { module = "com.jakewharton.threetenabp:threetenabp", version.ref = "threetenabp" }
+androidx-compose-material3-window-size-class1 = { group = "androidx.compose.material3", name = "material3-window-size-class", version.ref = "material3WindowSizeClass" }
+androidx-compose-adaptive = { group = "androidx.compose.material3.adaptive", name = "adaptive", version.ref = "adaptive" }
 
 
 [plugins]

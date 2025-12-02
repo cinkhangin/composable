@@ -20,7 +20,6 @@ import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
-import androidx.compose.runtime.Composable
 import androidx.compose.runtime.DisposableEffect
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
@@ -28,7 +27,6 @@ import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
-import androidx.compose.runtime.snapshots.SnapshotStateList
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -36,8 +34,6 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.core.content.ContextCompat.createAttributionContext
-import androidx.navigation3.runtime.EntryProviderScope
-import com.naulian.composable.core.Screen
 import com.naulian.composable.core.component.CodeBlock
 import com.naulian.composable.core.component.ComposableComponent
 import com.naulian.composable.icc.component.AudioPlayer
@@ -60,20 +56,6 @@ import com.naulian.composable.icc.component.ratingStarsCode
 import com.naulian.composable.icc.component.stackableItemCode
 import com.naulian.composable.icc.component.stackingEffect
 import kotlinx.coroutines.delay
-
-@Composable
-fun EntryProviderScope<Screen>.InteractiveCCScreen(backStack: SnapshotStateList<Screen>) {
-    entry<Screen.InteractiveCC> {
-        InteractiveCCScreenUI {
-            when (it) {
-                IccUIEvent.Back -> backStack.removeLastOrNull()
-                is IccUIEvent.Navigate -> backStack.add(
-                   Screen.ComposableScreen(it.id)
-                )
-            }
-        }
-    }
-}
 
 
 val iccItemList = listOf(

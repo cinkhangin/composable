@@ -15,17 +15,20 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.navigation3.runtime.EntryProviderScope
+import com.naulian.composable.core.ListDemoScene
+import com.naulian.composable.core.LocalBackButtonVisibility
 import com.naulian.composable.core.LocalComponents
 import com.naulian.composable.core.Screen
 import com.naulian.modify.If
 
 @Composable
-fun EntryProviderScope<Screen>.ComposableScreen(backStack: SnapshotStateList<Screen>) {
-    entry<Screen.ComposableScreen> { key ->
-
+fun EntryProviderScope<Screen>.DemoScreen(backStack: SnapshotStateList<Screen>) {
+    entry<Screen.Demo>(
+        metadata = ListDemoScene.demoPane()
+    ) { key ->
         val components = LocalComponents.current
-        ComposableScreenUI(
-            component = components[key.id] ?: ComposableComponent(),
+        DemoScreenUI(
+            component = components[key.id] ?: components.values.first(),
             onBack = { backStack.removeLastOrNull() }
         )
     }
@@ -33,15 +36,18 @@ fun EntryProviderScope<Screen>.ComposableScreen(backStack: SnapshotStateList<Scr
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-private fun ComposableScreenUI(
+private fun DemoScreenUI(
     component: ComposableComponent = ComposableComponent(),
     onBack: () -> Unit = {}
 ) {
+    val enableBack = LocalBackButtonVisibility.current
+
     Scaffold(
         topBar = {
-            ComposableTopAppBar(
-                title = component.name,
-                onBack = onBack
+            DemoTopAppBar(
+                component = component,
+                onBack = onBack,
+                enableBack = enableBack
             )
         }
     ) { scaffoldPadding ->

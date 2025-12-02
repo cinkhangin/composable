@@ -77,4 +77,7 @@ dependencies {
 
     api("androidx.navigation3:navigation3-runtime:1.0.0")
     api("androidx.navigation3:navigation3-ui:1.0.0")
+
+    api(libs.androidx.compose.material3.window.size.class1)
+    api(libs.androidx.compose.adaptive)
 }

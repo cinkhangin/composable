@@ -16,8 +16,13 @@ import androidx.compose.foundation.pager.rememberPagerState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
+import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
+import androidx.compose.material3.TopAppBar
+import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
@@ -28,12 +33,16 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.naulian.composable.core.component.ComposableTopAppBar
+import com.naulian.composable.core.LocalBackButtonVisibility
 import com.naulian.composable.core.util.toFriendlyDateString
+import com.naulian.modify.HugeIcons
+import com.naulian.modify.SemiBold
 import java.time.DayOfWeek
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
@@ -91,15 +100,38 @@ fun CalenderTopBar(
 }
 
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun Header(data: CalendarUiModel, onBack: () -> Unit = {}) {
+fun Header(data: CalendarUiModel, onBack: () -> Unit) {
     Column(
         horizontalAlignment = Alignment.Start,
         verticalArrangement = Arrangement.spacedBy(7.dp)
     ) {
-        ComposableTopAppBar(
-            title = data.selectedDate.date.toFriendlyDateString(),
-            onBack = onBack
+        val enableBack = LocalBackButtonVisibility.current
+        TopAppBar(
+            modifier = Modifier,
+            navigationIcon = {
+                if (enableBack) {
+                    IconButton(onClick = onBack) {
+                        Icon(
+                            painter = painterResource(HugeIcons.Back),
+                            contentDescription = "Back Icon"
+                        )
+                    }
+                }
+            },
+            title = {
+                Text(
+                    text = data.selectedDate.date.toFriendlyDateString(),
+                    style = MaterialTheme.typography.titleMedium.SemiBold,
+                    color = MaterialTheme.colorScheme.onSurface,
+                    overflow = TextOverflow.Ellipsis
+                )
+
+            },
+            colors = TopAppBarDefaults.topAppBarColors(
+                containerColor = Color.Transparent
+            )
         )
     }
 }
@@ -218,9 +250,10 @@ fun ContentItem(
             .clip(RoundedCornerShape(24.dp))
             .border(
                 width = 1.dp,
-                color = if(date.isSelected) selectedContainerColor else borderColor,
+                color = if (date.isSelected) selectedContainerColor else borderColor,
                 shape = RoundedCornerShape(24.dp)
-            ).clickable(enabled = enabled, onClick = onClick),
+            )
+            .clickable(enabled = enabled, onClick = onClick),
         colors = CardDefaults.cardColors(
             containerColor = if (date.isSelected) selectedContainerColor else Color.Transparent
         ),
@@ -236,7 +269,7 @@ fun ContentItem(
         ) {
             Text(
                 text = date.formattedDate, // day "Mon", "Tue"
-                color = if(date.isSelected) selectedTextColor else unselectedTextColor,
+                color = if (date.isSelected) selectedTextColor else unselectedTextColor,
                 fontSize = 10.sp,
                 modifier = Modifier.align(Alignment.CenterHorizontally),
             )
