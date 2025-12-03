@@ -35,9 +35,9 @@ fun Clock(
     hourColor: Color = MaterialTheme.colorScheme.primary,
     minuteColor: Color = MaterialTheme.colorScheme.onBackground,
     secondColor: Color = MaterialTheme.colorScheme.onBackground,
-    hourHandThickness: Dp = 8.dp,
-    minuteHandThickness: Dp = 6.dp,
-    secondHandThickness: Dp = 4.dp
+    hourHandThickness: Dp = 6.dp,
+    minuteHandThickness: Dp = 4.dp,
+    secondHandThickness: Dp = 2.dp
 ) {
     var currentTime by remember { mutableStateOf(Calendar.getInstance()) }
 

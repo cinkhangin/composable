@@ -1,12 +1,8 @@
 package com.naulian.composable.core
 
 import androidx.compose.runtime.compositionLocalOf
-import androidx.navigation.NavController
 import com.naulian.composable.core.component.ComposableComponent
 
-val LocalNavController = compositionLocalOf<NavController> {
-    error("NavController not present")
-}
 
 val LocalComponents = compositionLocalOf<Map<String, ComposableComponent>> {
     emptyMap()

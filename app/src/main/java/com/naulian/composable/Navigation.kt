@@ -16,7 +16,6 @@ import androidx.navigation3.ui.NavDisplay
 import androidx.window.core.layout.WindowSizeClass.Companion.WIDTH_DP_MEDIUM_LOWER_BOUND
 import com.naulian.composable.component.accItemList
 import com.naulian.composable.core.LocalComponents
-import com.naulian.composable.core.LocalNavController
 import com.naulian.composable.core.Screen
 import com.naulian.composable.core.component.DemoScreen
 import com.naulian.composable.core.componentBuilder
@@ -29,13 +28,11 @@ import com.naulian.composable.component.sccItemList
 @Composable
 fun Navigation() {
     CompositionLocalProvider(
-        LocalNavController provides rememberNavController(),
         LocalComponents provides componentBuilder {
             +sccItemList
             +accItemList
             +iccItemList
         }
-
     ) {
         val backStack = remember { mutableStateListOf<Screen>(Screen.Home) }
         val sceneStrategy = rememberListDetailSceneStrategy()

@@ -72,8 +72,6 @@ dependencies {
 
     implementation(libs.androidx.activity.compose)
     implementation(libs.androidx.constraintlayout.compose)
-    implementation(libs.androidx.navigation.compose)
-    implementation(libs.protolite.well.known.types)
 
     //test
     testImplementation(libs.junit)
@@ -101,9 +99,6 @@ dependencies {
     //coil
     implementation(libs.coil.compose)
     implementation(libs.coil.network.okhttp)
-
-    //threeTenABP
-    implementation(libs.threetenabp)
 
     implementation(project(":core"))
 }

@@ -12,11 +12,6 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.CircleShape
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Pause
-import androidx.compose.material.icons.filled.PlayArrow
-import androidx.compose.material.icons.filled.SkipNext
-import androidx.compose.material.icons.filled.SkipPrevious
 import androidx.compose.material3.Icon
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -27,8 +22,10 @@ import androidx.compose.ui.geometry.Size
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.StrokeCap
 import androidx.compose.ui.graphics.drawscope.Stroke
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
+import com.naulian.modify.HugeIcons
 import com.naulian.modify.White
 import kotlin.math.cos
 import kotlin.math.min
@@ -103,7 +100,7 @@ fun AudioPlayer(
             ) {
                 ControlsButton(onClick = { }) {
                     Icon(
-                        imageVector = Icons.Default.SkipPrevious,
+                        painter = painterResource(HugeIcons.Previous),
                         contentDescription = "Backward",
                         tint = Color.Gray
                     )
@@ -115,14 +112,14 @@ fun AudioPlayer(
                 ) {
                     if (isPlaying) {
                         Icon(
-                            imageVector = Icons.Default.Pause,
+                            painter = painterResource(HugeIcons.Pause),
                             contentDescription = "Pause",
                             tint = Color.Black,
                             modifier = Modifier.size(36.dp)
                         )
                     } else {
                         Icon(
-                            imageVector = Icons.Default.PlayArrow,
+                            painter = painterResource(HugeIcons.Play),
                             contentDescription = "Play",
                             tint = Color.Black,
                             modifier = Modifier.size(36.dp)
@@ -132,7 +129,7 @@ fun AudioPlayer(
 
                 ControlsButton(onClick = { }) {
                     Icon(
-                        imageVector = Icons.Default.SkipNext,
+                        painter = painterResource(HugeIcons.Next),
                         contentDescription = "Forward",
                         tint = Color.Gray
                     )

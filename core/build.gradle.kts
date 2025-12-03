@@ -53,10 +53,6 @@ dependencies {
 
     implementation(libs.androidx.activity.compose)
     implementation(libs.androidx.constraintlayout.compose)
-    implementation(libs.androidx.navigation.compose)
-
-    //use api so it is available in all modules that include this core module
-    api(libs.androidx.compose.material.icons.extended)
 
     //test
     testImplementation(libs.junit)
@@ -75,8 +71,8 @@ dependencies {
     implementation(libs.naulian.neumorphic)
     implementation(libs.naulian.glow)
 
-    api("androidx.navigation3:navigation3-runtime:1.0.0")
-    api("androidx.navigation3:navigation3-ui:1.0.0")
+    api(libs.androidx.navigation3.runtime)
+    api(libs.androidx.navigation3.ui)
 
     api(libs.androidx.compose.material3.window.size.class1)
     api(libs.androidx.compose.adaptive)

@@ -31,9 +31,6 @@ import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.foundation.pager.rememberPagerState
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Check
-import androidx.compose.material.icons.rounded.PlayArrow
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.CircularProgressIndicator
@@ -64,6 +61,7 @@ import com.naulian.composable.core.component.defaultContainerColor
 import com.naulian.composable.core.component.defaultShape
 import com.naulian.composable.core.component.defaultSurfaceColor
 import com.naulian.composable.core.theme.ComposablePreview
+import com.naulian.modify.HugeIcons
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import java.util.Locale
@@ -336,7 +334,7 @@ fun StepsComponent(modifier: Modifier = Modifier) {
             contentAlignment = Alignment.Center
         ) {
             Icon(
-                imageVector = Icons.Default.Check,
+                painter = painterResource(HugeIcons.Done),
                 contentDescription = "Check",
                 modifier = Modifier
                     .size(100.dp)
@@ -551,7 +549,7 @@ fun AudioPlayerComponent(modifier: Modifier = Modifier) {
 
         Icon(
             modifier = Modifier.size(32.dp),
-            imageVector = Icons.Rounded.PlayArrow,
+            painter = painterResource(HugeIcons.Play),
             contentDescription = null,
             tint = defaultSurfaceColor
         )
