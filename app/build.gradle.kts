@@ -1,3 +1,4 @@
+import com.android.build.api.dsl.ApplicationExtension
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 
 plugins {
@@ -11,7 +12,7 @@ plugins {
 
 val packageName = "com.naulian.composable"
 
-android {
+extensions.configure<ApplicationExtension>() {
     namespace = packageName
     compileSdk = 36
 
@@ -95,6 +96,7 @@ dependencies {
     implementation(libs.google.hilt.android)
     ksp(libs.google.hilt.compiler)
     implementation(libs.androidx.hilt.navigation.compose)
+    ksp(libs.kotlin.metadata.jvm)
 
     //coil
     implementation(libs.coil.compose)

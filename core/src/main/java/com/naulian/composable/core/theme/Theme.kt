@@ -23,7 +23,7 @@ import com.naulian.neumorphic.NeumorphicTheme
 import com.naulian.neumorphic.darkNeumorphicColorScheme
 import com.naulian.neumorphic.lightNeumorphicColorScheme
 
-private val DarkColorScheme = darkColorScheme(
+private val DarkGreenTheme = darkColorScheme(
     primary = DarkGreen,
     onPrimary = White,
     onPrimaryContainer = White,
@@ -40,7 +40,7 @@ private val DarkColorScheme = darkColorScheme(
     surfaceDim = Black
 )
 
-private val LightColorScheme = lightColorScheme(
+private val LightGreenTheme = lightColorScheme(
     primary = Green,
     onPrimary = White,
     onPrimaryContainer = Black,
@@ -63,8 +63,8 @@ fun ComposableTheme(
     content: @Composable () -> Unit
 ) {
     val colorScheme = when {
-        darkTheme -> DarkColorScheme
-        else -> LightColorScheme
+        darkTheme -> DarkGreenTheme
+        else -> LightGreenTheme
     }
 
     val neumorphicColorScheme = when {

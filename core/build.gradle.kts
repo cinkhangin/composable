@@ -1,3 +1,4 @@
+import com.android.build.api.dsl.LibraryExtension
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 
 plugins {
@@ -7,7 +8,7 @@ plugins {
     alias(libs.plugins.kotlin.serialization)
 }
 
-android {
+extensions.configure<LibraryExtension>() {
     namespace = "com.naulian.composable.core"
     compileSdk = 36
 

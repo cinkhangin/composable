@@ -1,8 +1,9 @@
 package com.naulian.composable.core
 
+import androidx.navigation3.runtime.NavKey
 import kotlinx.serialization.Serializable
 
-sealed interface Screen {
+sealed interface Screen : NavKey {
 
     @Serializable
     data object Home : Screen // General
