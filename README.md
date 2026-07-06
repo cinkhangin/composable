@@ -27,6 +27,19 @@ Composable is a beautifully simple Android showcase built with Jetpack Compose. 
 3. **Explore & Learn**:
    Browse the `app/src/main/java` directory to inspect Compose patterns in action.
 
+### Multiplatform App
+
+This repo now includes `:composeApp`, a Compose Multiplatform/Kotlin Multiplatform application target for Android, iOS, desktop, and web. The existing Android showcase remains in `:app`; shared UI can be migrated into `composeApp/src/commonMain` component by component.
+
+Useful Gradle tasks:
+
+```bash
+./gradlew :composeApp:compileDebugKotlinAndroid
+./gradlew :composeApp:compileKotlinIosSimulatorArm64
+./gradlew :composeApp:run
+./gradlew :composeApp:wasmJsBrowserDevelopmentRun
+```
+
 ---
 
 ### Why Use It?

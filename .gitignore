@@ -1,15 +1,28 @@
 *.iml
-.gradle
+/.gradle/
+/.kotlin/
+/kotlin-js-store/
 /local.properties
 /.idea/caches
+/.idea/artifacts
 /.idea/libraries
 /.idea/modules.xml
 /.idea/workspace.xml
 /.idea/navEditor.xml
 /.idea/assetWizardSettings.xml
 .DS_Store
-/build
+build/
+**/build/
 /captures
-.externalNativeBuild
-.cxx
+.externalNativeBuild/
+.cxx/
 local.properties
+
+# Generated Gradle/JVM toolchain metadata
+/gradle/gradle-daemon-jvm.properties
+
+# Android build artifacts
+*.apk
+*.ap_
+*.aab
+*.dex

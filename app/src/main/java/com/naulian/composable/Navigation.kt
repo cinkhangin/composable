@@ -48,7 +48,7 @@ fun Navigation() {
         NavDisplay(
             backStack = backStack,
             onBack = { backStack.removeLastOrNull() },
-            sceneStrategy = sceneStrategy,
+            sceneStrategies = listOf(sceneStrategy),
             entryProvider = entryProvider {
                 HomeScreen(backStack)
                 DemoScreen(backStack)
@@ -62,7 +62,7 @@ fun Navigation() {
                     animationSpec = tween(400)
                 )
             },
-            predictivePopTransitionSpec = {
+            predictivePopTransitionSpec = { _ ->
                 slideInHorizontally(
                     initialOffsetX = { -it },
                     animationSpec = tween(400)
