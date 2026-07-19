@@ -45,6 +45,7 @@ kotlin {
 
         androidMain.dependencies {
             implementation(libs.androidx.activity.compose)
+            implementation(libs.androidx.core.splashscreen)
         }
 
         val desktopMain by getting
@@ -63,11 +64,11 @@ android {
     compileSdk = 37
 
     defaultConfig {
-        applicationId = "com.naulian.composable.cmp"
+        applicationId = "com.naulian.composable"
         minSdk = 28
         targetSdk = 37
-        versionCode = 1
-        versionName = "0.1.0"
+        versionCode = 4
+        versionName = "0.6.0"
     }
 }
 

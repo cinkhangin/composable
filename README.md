@@ -1,10 +1,10 @@
 # Composable
 
-**An open-source Android app showcasing Jetpack Compose UI components and interactions for learning and inspiration.**
+**An open-source Compose Multiplatform app showcasing UI components and interactions for learning and inspiration.**
 
 ### Description
 
-Composable is a beautifully simple Android showcase built with Jetpack Compose. The idea is to gather cool UI components, and interactions in one place so it can serve as both inspiration and a learning resource for the Android community. Ideal for developers looking to explore UI ideas, learn Compose best practices, or jumpstart their own projects.
+Composable is a multiplatform showcase built with Compose. The shared catalog runs on Android, iOS, desktop, and web from one Kotlin codebase.
 
 ---
 
@@ -25,11 +25,11 @@ Composable is a beautifully simple Android showcase built with Jetpack Compose. 
    Simply import the project, sync Gradle, and run the app on your device or emulator.
 
 3. **Explore & Learn**:
-   Browse the `app/src/main/java` directory to inspect Compose patterns in action.
+   Browse `composeApp/src/commonMain/kotlin` to inspect the shared components.
 
 ### Multiplatform App
 
-This repo now includes `:composeApp`, a Compose Multiplatform/Kotlin Multiplatform application target for Android, iOS, desktop, and web. The existing Android showcase remains in `:app`; shared UI can be migrated into `composeApp/src/commonMain` component by component.
+`:composeApp` is the application module for Android, iOS, desktop, and web. Components and resources live in `commonMain`; platform source sets contain only platform-specific entry points and services.
 
 Useful Gradle tasks:
 

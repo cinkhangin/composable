@@ -16,12 +16,13 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.drawBehind
 import androidx.compose.ui.geometry.CornerRadius
 import androidx.compose.ui.geometry.Offset
+import androidx.compose.ui.geometry.toRect
 import androidx.compose.ui.graphics.BlendMode
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Outline
+import androidx.compose.ui.graphics.Paint
 import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.graphics.drawscope.Stroke
-import androidx.compose.ui.graphics.nativeCanvas
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import com.naulian.composable.core.theme.ComposableTheme
@@ -62,14 +63,13 @@ fun CorneredBox(
                 val horLineSize = size.width - cornerSize.toPx() * 2f
                 val verLineSize = size.height - cornerSize.toPx() * 2f
 
-                with(drawContext.canvas.nativeCanvas) {
-                    val checkPoint = saveLayer(null, null)
+                drawContext.canvas.saveLayer(size.toRect(), Paint())
 
-                    drawRoundRect(
-                        color = cornerColor,
-                        cornerRadius = CornerRadius(cornerRadius),
-                        style = Stroke(width = cornerStrokeWidth.toPx())
-                    )
+                drawRoundRect(
+                    color = cornerColor,
+                    cornerRadius = CornerRadius(cornerRadius),
+                    style = Stroke(width = cornerStrokeWidth.toPx())
+                )
 
                     //top
                     drawLine(
@@ -131,8 +131,7 @@ fun CorneredBox(
                         blendMode = BlendMode.Clear
                     )
 
-                    restoreToCount(checkPoint)
-                }
+                drawContext.canvas.restore()
             }
             .padding(contentPadding),
         contentAlignment = contentAlignment,
@@ -196,8 +195,7 @@ val corneredBoxCode by lazy {
                         val horLineSize = size.width - cornerSize.toPx() * 2f
                         val verLineSize = size.height - cornerSize.toPx() * 2f
         
-                        with(drawContext.canvas.nativeCanvas) {
-                            val checkPoint = saveLayer(null, null)
+                        drawContext.canvas.saveLayer(size.toRect(), Paint())
         
                             drawRoundRect(
                                 color = cornerColor,
@@ -265,8 +263,7 @@ val corneredBoxCode by lazy {
                                 blendMode = BlendMode.Clear
                             )
         
-                            restoreToCount(checkPoint)
-                        }
+                        drawContext.canvas.restore()
                     }
                     .clickable(onClick != null) { onClick?.invoke() },
                 contentAlignment = contentAlignment,

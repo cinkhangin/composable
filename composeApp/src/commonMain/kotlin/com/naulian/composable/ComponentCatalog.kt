@@ -19,6 +19,7 @@ import com.naulian.composable.component.acc.pulseCode
 import com.naulian.composable.component.acc.typingCode
 import com.naulian.composable.component.acc.vinylDiskCode
 import com.naulian.composable.component.icc.AudioPlayerComponent
+import com.naulian.composable.component.icc.AudioPlayerDemo
 import com.naulian.composable.component.icc.BetterCarouselComponent
 import com.naulian.composable.component.icc.CalendarBarComponent
 import com.naulian.composable.component.icc.HeartButtonComponent
@@ -68,6 +69,7 @@ private fun originalComponent(
     contributor: String,
     sourceCode: String,
     previewHeight: Dp = 220.dp,
+    demo: (@Composable () -> Unit)? = null,
     preview: @Composable (Modifier) -> Unit
 ) = SharedComponent(
     id = id,
@@ -76,6 +78,7 @@ private fun originalComponent(
     description = "Original Android component by $contributor, now rendered from commonMain.",
     previewHeight = previewHeight,
     sourceCode = sourceCode,
+    demo = demo,
     preview = preview
 )
 
@@ -95,7 +98,14 @@ val componentCatalog = listOf(
     originalComponent("calender-top-bar", "Calender Top Bar", "Interactive Compose Component", "Zain ul Abdin", calenderTopBarCode) { CalendarBarComponent(it) },
     originalComponent("raised-button", "Raised Button", "Interactive Compose Component", "Romit Sharma", raisedButtonCode) { RaisedButtonComponent(it) },
     originalComponent("physics-button", "Physics Button", "Interactive Compose Component", "Eleazar Cole-Showers", physicsButtonCode) { PhysicsButtonComponent(it) },
-    originalComponent("audio-player", "Audio Player", "Interactive Compose Component", "Samarth", audioPlayerCode) { AudioPlayerComponent(it) },
+    originalComponent(
+        "audio-player",
+        "Audio Player",
+        "Interactive Compose Component",
+        "Samarth",
+        audioPlayerCode,
+        demo = { AudioPlayerDemo() }
+    ) { AudioPlayerComponent(it) },
     originalComponent("heart-button", "Heart Button", "Interactive Compose Component", "Mansi Kothari", heartButtonCode) { HeartButtonComponent(it) },
 
     originalComponent("neumorphism", "Neumorphism", "Static Compose Component", "Naulian", neumorphicCode) { NeumorphismComponent(it) },

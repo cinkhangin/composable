@@ -276,7 +276,7 @@ fun ContentItem(
             )
 
             Text(
-                text = date.date.dayOfMonth.toString(),
+                text = date.date.day.toString(),
                 color = if (date.isSelected) selectedTextColor else unselectedTextColor,
                 fontWeight = FontWeight.ExtraBold,
                 fontSize = 12.sp,
@@ -587,7 +587,7 @@ val calenderTopBarCode by lazy {
                         )
 
                         Text(
-                            text = date.date.dayOfMonth.toString(),
+                            text = date.date.day.toString(),
                             color = selectedTextColor,
                             fontWeight = FontWeight.ExtraBold,
                             fontSize = 12.sp,
@@ -603,7 +603,7 @@ val calenderTopBarCode by lazy {
                             modifier = Modifier.align(Alignment.CenterHorizontally),
                         )
                         Text(
-                            text = date.date.dayOfMonth.toString(), // date "15", "16"
+                            text = date.date.day.toString(), // date "15", "16"
                             color = unselectedTextColor,
                             fontSize = 12.sp,
                             modifier = Modifier.align(Alignment.CenterHorizontally),

@@ -14,6 +14,6 @@ fun LocalDate.toFriendlyDateString(): String {
         today -> "Today"
         today + DatePeriod(days = 1) -> "Tomorrow"
         today - DatePeriod(days = 1) -> "Yesterday"
-        else -> "${month.name.take(3).lowercase().replaceFirstChar { it.uppercase() }} ${dayOfMonth.toString().padStart(2, '0')}, $year"
+        else -> "${month.name.take(3).lowercase().replaceFirstChar { it.uppercase() }} ${day.toString().padStart(2, '0')}, $year"
     }
 }
