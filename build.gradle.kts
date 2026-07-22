@@ -9,5 +9,6 @@ plugins {
     alias(libs.plugins.compose.multiplatform) apply false
     alias(libs.plugins.kotlin.serialization) apply false
     alias(libs.plugins.android.library) apply false
+    alias(libs.plugins.android.kmp.library) apply false
     alias(libs.plugins.vanniktech.maven) apply false
 }

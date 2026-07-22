@@ -9,7 +9,7 @@ plugins {
 }
 
 extensions.configure<LibraryExtension>() {
-    namespace = "com.naulian.composable.core"
+    namespace = "com.ckgin.composable.core"
     compileSdk = 37
 
     defaultConfig {
@@ -66,10 +66,10 @@ dependencies {
     debugImplementation(libs.androidx.compose.test.manifest)
 
     //naulian
-    implementation(libs.naulian.anhance) //android kt extension
-    implementation(libs.naulian.modify) //compose utils and extension
-    implementation(libs.naulian.neumorphic)
-    implementation(libs.naulian.glow)
+    implementation(libs.ckgin.anhance) //android kt extension
+    implementation(libs.ckgin.modify) //compose utils and extension
+    implementation(libs.ckgin.neumorphic)
+    implementation(libs.ckgin.glow)
 
     api(libs.androidx.navigation3.runtime)
     api(libs.androidx.navigation3.ui)

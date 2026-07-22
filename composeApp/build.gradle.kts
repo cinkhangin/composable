@@ -35,12 +35,12 @@ kotlin {
 
     sourceSets {
         commonMain.dependencies {
+            implementation(project(":ui"))
             implementation(compose.runtime)
             implementation(compose.foundation)
             implementation(compose.material3)
             implementation(compose.ui)
             implementation(compose.components.resources)
-            implementation("org.jetbrains.kotlinx:kotlinx-datetime:0.7.1")
         }
 
         androidMain.dependencies {
@@ -60,11 +60,11 @@ kotlin {
 }
 
 android {
-    namespace = "com.naulian.composable.cmp"
+    namespace = "com.ckgin.composable.cmp"
     compileSdk = 37
 
     defaultConfig {
-        applicationId = "com.naulian.composable"
+        applicationId = "com.ckgin.composable"
         minSdk = 28
         targetSdk = 37
         versionCode = 4
@@ -74,7 +74,7 @@ android {
 
 compose.desktop {
     application {
-        mainClass = "com.naulian.composable.DesktopMainKt"
+        mainClass = "com.ckgin.composable.DesktopMainKt"
 
         nativeDistributions {
             targetFormats(TargetFormat.Dmg, TargetFormat.Msi, TargetFormat.Deb)

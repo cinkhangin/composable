@@ -2,6 +2,7 @@
 
 
 include(":core")
+include(":ui")
 include(":composeApp")
 
 

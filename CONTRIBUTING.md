@@ -35,7 +35,7 @@ New components should:
 
 ## Multiplatform Requirements
 
-Components belong in `composeApp/src/commonMain` and must use Compose
+Components belong in `ui/src/commonMain` and must use Compose
 Multiplatform APIs. They should compile and provide a useful experience on all
 supported targets:
 
@@ -54,7 +54,7 @@ offer the full behavior should still receive a stable, meaningful fallback.
 Place shared component code under:
 
 ```text
-composeApp/src/commonMain/kotlin/com/naulian/composable/component/
+ui/src/commonMain/kotlin/com/naulian/composable/component/
 ```
 
 Use the existing category that best fits the component:
@@ -69,7 +69,7 @@ reusable component separate from catalog-only framing or sample content.
 Shared images, fonts, and other resources belong in:
 
 ```text
-composeApp/src/commonMain/composeResources/
+ui/src/commonMain/composeResources/
 ```
 
 ## Development Workflow
@@ -89,6 +89,7 @@ more than one size.
 Before submitting, run the relevant checks:
 
 ```bash
+./gradlew :ui:assemble
 ./gradlew :composeApp:compileDebugKotlinAndroid
 ./gradlew :composeApp:compileKotlinDesktop
 ./gradlew :composeApp:compileKotlinIosSimulatorArm64
