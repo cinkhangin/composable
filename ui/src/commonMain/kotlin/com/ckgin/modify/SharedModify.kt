@@ -16,13 +16,13 @@ import androidx.compose.ui.graphics.PathEffect
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.Dp
-import composable.ui.generated.resources.Res
-import composable.ui.generated.resources.ic_arrow_left
-import composable.ui.generated.resources.ic_done
-import composable.ui.generated.resources.ic_next
-import composable.ui.generated.resources.ic_pause
-import composable.ui.generated.resources.ic_play
-import composable.ui.generated.resources.ic_previous
+import serene.ui.generated.resources.Res
+import serene.ui.generated.resources.ic_arrow_left
+import serene.ui.generated.resources.ic_done
+import serene.ui.generated.resources.ic_next
+import serene.ui.generated.resources.ic_pause
+import serene.ui.generated.resources.ic_play
+import serene.ui.generated.resources.ic_previous
 
 val White = Color.White
 val Gray = Color(0xFF888888)

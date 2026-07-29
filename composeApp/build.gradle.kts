@@ -60,11 +60,11 @@ kotlin {
 }
 
 android {
-    namespace = "com.ckgin.composable.cmp"
+    namespace = "com.ckgin.serene.cmp"
     compileSdk = 37
 
     defaultConfig {
-        applicationId = "com.ckgin.composable"
+        applicationId = "com.ckgin.serene"
         minSdk = 28
         targetSdk = 37
         versionCode = 4
@@ -74,11 +74,11 @@ android {
 
 compose.desktop {
     application {
-        mainClass = "com.ckgin.composable.DesktopMainKt"
+        mainClass = "com.ckgin.serene.DesktopMainKt"
 
         nativeDistributions {
             targetFormats(TargetFormat.Dmg, TargetFormat.Msi, TargetFormat.Deb)
-            packageName = "Composable"
+            packageName = "Serene"
             packageVersion = "0.1.0"
         }
     }

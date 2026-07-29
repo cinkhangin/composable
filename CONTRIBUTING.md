@@ -1,6 +1,6 @@
-# Contributing to Composable
+# Contributing to Serene
 
-Thanks for contributing to Composable. This project is a multiplatform catalog
+Thanks for contributing to Serene. This project is a multiplatform catalog
 of polished, reusable Compose components for Android, iOS, desktop, and web.
 
 ## Component Standard
@@ -54,7 +54,7 @@ offer the full behavior should still receive a stable, meaningful fallback.
 Place shared component code under:
 
 ```text
-ui/src/commonMain/kotlin/com/naulian/composable/component/
+ui/src/commonMain/kotlin/com/ckgin/serene/component/
 ```
 
 Use the existing category that best fits the component:

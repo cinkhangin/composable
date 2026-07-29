@@ -60,4 +60,4 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "Composable"
+rootProject.name = "Serene"

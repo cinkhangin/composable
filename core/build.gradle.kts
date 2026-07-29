@@ -9,7 +9,7 @@ plugins {
 }
 
 extensions.configure<LibraryExtension>() {
-    namespace = "com.ckgin.composable.core"
+    namespace = "com.ckgin.serene.core"
     compileSdk = 37
 
     defaultConfig {

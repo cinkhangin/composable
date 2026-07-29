@@ -12,7 +12,7 @@ plugins {
 
 kotlin {
     android {
-        namespace = "com.ckgin.composable.ui"
+        namespace = "com.ckgin.serene.ui"
         compileSdk = 37
         minSdk = 28
 
@@ -53,7 +53,7 @@ kotlin {
 mavenPublishing {
     coordinates(
         groupId = "com.ckgin",
-        artifactId = "composable-ui",
+        artifactId = "serene-ui",
         version = "0.1.0"
     )
 
@@ -61,10 +61,10 @@ mavenPublishing {
     signAllPublications()
 
     pom {
-        name = "Composable UI"
+        name = "Serene UI"
         description = "Reusable Compose Multiplatform UI components for Android, iOS, desktop, and web."
         inceptionYear = "2025"
-        url = "https://github.com/cinkhangin/composable"
+        url = "https://github.com/cinkhangin/serene"
 
         licenses {
             license {
@@ -83,9 +83,9 @@ mavenPublishing {
         }
 
         scm {
-            url = "https://github.com/cinkhangin/composable"
-            connection = "scm:git:git://github.com/cinkhangin/composable.git"
-            developerConnection = "scm:git:ssh://git@github.com/cinkhangin/composable.git"
+            url = "https://github.com/cinkhangin/serene"
+            connection = "scm:git:git://github.com/cinkhangin/serene.git"
+            developerConnection = "scm:git:ssh://git@github.com/cinkhangin/serene.git"
         }
     }
 }
