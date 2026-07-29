@@ -26,3 +26,5 @@ local.properties
 *.ap_
 *.aab
 *.dex
+
+/gradle.properties
