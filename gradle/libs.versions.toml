@@ -23,7 +23,7 @@ material3 = "1.5.0-alpha24"
 
 # plugin
 kotlin = "2.4.10"
-agp = "9.3.0"
+agp = "9.3.1"
 
 ksp = "2.3.4"
 hilt = "2.60.1"

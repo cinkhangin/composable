@@ -77,7 +77,7 @@ mavenPublishing {
         developers {
             developer {
                 id = "cinkhangin"
-                name = "Naulian"
+                name = "Cin Khan Gin"
                 url = "https://github.com/cinkhangin"
             }
         }
